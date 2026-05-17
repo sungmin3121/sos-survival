@@ -661,16 +661,8 @@ function showScreen(id) {
   if(id==='lobby') { renderLobby(); hideHUD(); }
   if(id==='main') { renderFloatBg(); hideHUD(); }
   // 교사 버튼 표시
-  if(id !== 'login' && myRole === 'teacher' && !document.querySelector('#teacherBtn')) {
+  if(id !== 'login' && myRole === 'teacher' && !document.getElementById('teacherFloatBtn')) {
     showTeacherBtn();
-  }
-  // 학생이 로비로 가면 자기 섬 미션으로 리다이렉트
-  if(id === 'lobby' && myRole && myRole !== 'teacher') {
-    const teamNum = ROLE_TO_TEAM[myRole];
-    setTimeout(() => {
-      showScreen('mission');
-      initMission(teamNum, state.teamMission[teamNum-1] || 1);
-    }, 100);
   }
 }
 
@@ -3230,12 +3222,16 @@ async function doLogin() {
 
     status.textContent = '✅ 연결 완료!';
     setTimeout(() => {
-      showScreen('main');
-      // 교사면 모든 팀 버튼 제어 가능, 학생이면 자기 섬만
-      if(myRole !== 'teacher') {
+      if(myRole === 'teacher') {
+        // 교사: 메인 화면으로
+        showScreen('main');
+        renderLobby();
+      } else {
+        // 학생: 바로 미션 화면으로
         const teamNum = ROLE_TO_TEAM[myRole];
-        // 로비로 가면 자동으로 자기 섬 미션으로 이동
-        showScreen('mission');
+        document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+        document.getElementById('screen-mission').classList.add('active');
+        hideHUD();
         initMission(teamNum, state.teamMission[teamNum-1] || 1);
       }
     }, 800);
@@ -3401,10 +3397,11 @@ function isMyTeam(teamNum) {
   return ROLE_TO_TEAM[myRole] === teamNum;
 }
 
-// ── 교사 버튼 표시 (교사 접속 시) ──
 function showTeacherBtn() {
   if(myRole !== 'teacher') return;
+  if(document.getElementById('teacherFloatBtn')) return;
   const btn = document.createElement('button');
+  btn.id = 'teacherFloatBtn';
   btn.textContent = '👩‍🏫';
   btn.title = '교사 제어 패널';
   btn.style.cssText = 'position:fixed;bottom:1rem;left:1rem;z-index:200;background:var(--accent);color:#fff;border:none;border-radius:50%;width:44px;height:44px;font-size:1.2rem;cursor:pointer;box-shadow:0 4px 12px rgba(249,115,22,.4);';
