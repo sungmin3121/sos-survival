@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -26,102 +27,102 @@ body::before { content:''; position:fixed; inset:0; background:repeating-linear-
 
 /* ── MAIN ── */
 #screen-main { align-items:center; justify-content:center; position:relative;
-  background:radial-gradient(ellipse at 50% 0%,rgba(249,115,22,.15) 0%,transparent 60%),
-             radial-gradient(ellipse at 80% 80%,rgba(56,189,248,.08) 0%,transparent 50%),var(--bg); }
+background:radial-gradient(ellipse at 50% 0%,rgba(249,115,22,.15) 0%,transparent 60%),
+radial-gradient(ellipse at 80% 80%,rgba(56,189,248,.08) 0%,transparent 50%),var(–bg); }
 .float-bg { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
 .float-bg span { position:absolute; font-size:clamp(36px,7vw,72px); opacity:.06; animation:floatUp linear infinite; }
 @keyframes floatUp { 0%{transform:translateY(110vh) rotate(0deg)} 100%{transform:translateY(-20vh) rotate(360deg)} }
 .main-content { text-align:center; z-index:1; padding:2rem; }
-.sos-badge { display:inline-block; background:var(--danger); color:#fff; font-family:'Bebas Neue',sans-serif; font-size:1rem; letter-spacing:.3em; padding:.3rem 1.2rem; border-radius:2px; margin-bottom:1.5rem; animation:badgePulse 2s ease-in-out infinite; }
+.sos-badge { display:inline-block; background:var(–danger); color:#fff; font-family:‘Bebas Neue’,sans-serif; font-size:1rem; letter-spacing:.3em; padding:.3rem 1.2rem; border-radius:2px; margin-bottom:1.5rem; animation:badgePulse 2s ease-in-out infinite; }
 @keyframes badgePulse { 0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.4)} 50%{box-shadow:0 0 0 8px rgba(239,68,68,0)} }
-.main-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(3rem,10vw,7rem); line-height:.9; letter-spacing:.05em; margin-bottom:.5rem; }
-.title-sos { color:var(--text); }
-.title-secure { color:var(--accent); text-shadow:0 0 40px rgba(249,115,22,.5); animation:glitch 4s infinite; }
-.title-our { color:var(--accent2); }
-@keyframes glitch { 0%,90%,100%{text-shadow:0 0 40px rgba(249,115,22,.5)} 92%{text-shadow:-3px 0 var(--danger),3px 0 var(--accent2)} 94%{text-shadow:3px 0 var(--danger),-3px 0 var(--accent2)} 96%{text-shadow:0 0 40px rgba(249,115,22,.5)} }
-.main-sub { font-size:.75rem; color:var(--text2); letter-spacing:.2em; margin:1rem 0 .4rem; text-transform:uppercase; }
-.main-desc { font-size:.8rem; color:var(--text3); margin-bottom:2.5rem; font-family:'Noto Sans KR',sans-serif; line-height:1.8; }
-.stat-row { display:flex; gap:2rem; justify-content:center; margin-top:2.5rem; padding-top:2rem; border-top:1px solid var(--border); }
-.stat-num { font-family:'Bebas Neue',sans-serif; font-size:2rem; color:var(--accent2); }
-.stat-label { font-size:.62rem; color:var(--text3); letter-spacing:.15em; text-transform:uppercase; }
+.main-title { font-family:‘Bebas Neue’,sans-serif; font-size:clamp(3rem,10vw,7rem); line-height:.9; letter-spacing:.05em; margin-bottom:.5rem; }
+.title-sos { color:var(–text); }
+.title-secure { color:var(–accent); text-shadow:0 0 40px rgba(249,115,22,.5); animation:glitch 4s infinite; }
+.title-our { color:var(–accent2); }
+@keyframes glitch { 0%,90%,100%{text-shadow:0 0 40px rgba(249,115,22,.5)} 92%{text-shadow:-3px 0 var(–danger),3px 0 var(–accent2)} 94%{text-shadow:3px 0 var(–danger),-3px 0 var(–accent2)} 96%{text-shadow:0 0 40px rgba(249,115,22,.5)} }
+.main-sub { font-size:.75rem; color:var(–text2); letter-spacing:.2em; margin:1rem 0 .4rem; text-transform:uppercase; }
+.main-desc { font-size:.8rem; color:var(–text3); margin-bottom:2.5rem; font-family:‘Noto Sans KR’,sans-serif; line-height:1.8; }
+.stat-row { display:flex; gap:2rem; justify-content:center; margin-top:2.5rem; padding-top:2rem; border-top:1px solid var(–border); }
+.stat-num { font-family:‘Bebas Neue’,sans-serif; font-size:2rem; color:var(–accent2); }
+.stat-label { font-size:.62rem; color:var(–text3); letter-spacing:.15em; text-transform:uppercase; }
 
 /* ── BUTTONS ── */
-.btn { border:none; border-radius:4px; cursor:pointer; transition:all .2s; font-family:'Bebas Neue',sans-serif; }
-.btn-primary { background:var(--accent); color:#fff; font-size:1.3rem; letter-spacing:.15em; padding:.85rem 2.5rem; }
+.btn { border:none; border-radius:4px; cursor:pointer; transition:all .2s; font-family:‘Bebas Neue’,sans-serif; }
+.btn-primary { background:var(–accent); color:#fff; font-size:1.3rem; letter-spacing:.15em; padding:.85rem 2.5rem; }
 .btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(249,115,22,.4); }
 .btn-primary:active { transform:translateY(0); }
-.btn-secondary { background:transparent; color:var(--text2); border:1px solid var(--border); font-family:'Space Mono',monospace; font-size:.72rem; letter-spacing:.08em; padding:.55rem 1.4rem; border-radius:4px; cursor:pointer; transition:all .2s; margin-top:.75rem; }
-.btn-secondary:hover { border-color:var(--text3); color:var(--text); }
-.btn-ghost { background:transparent; color:var(--text3); border:1px solid var(--border); font-family:'Space Mono',monospace; font-size:.68rem; padding:.4rem .8rem; border-radius:4px; cursor:pointer; transition:all .2s; }
-.btn-ghost:hover { color:var(--text); border-color:var(--text3); }
+.btn-secondary { background:transparent; color:var(–text2); border:1px solid var(–border); font-family:‘Space Mono’,monospace; font-size:.72rem; letter-spacing:.08em; padding:.55rem 1.4rem; border-radius:4px; cursor:pointer; transition:all .2s; margin-top:.75rem; }
+.btn-secondary:hover { border-color:var(–text3); color:var(–text); }
+.btn-ghost { background:transparent; color:var(–text3); border:1px solid var(–border); font-family:‘Space Mono’,monospace; font-size:.68rem; padding:.4rem .8rem; border-radius:4px; cursor:pointer; transition:all .2s; }
+.btn-ghost:hover { color:var(–text); border-color:var(–text3); }
 
 /* ── LOBBY ── */
-#screen-lobby { background:var(--bg); padding:1.5rem; }
+#screen-lobby { background:var(–bg); padding:1.5rem; }
 .lobby-header { text-align:center; margin-bottom:1.5rem; }
-.lobby-title { font-family:'Bebas Neue',sans-serif; font-size:2.8rem; letter-spacing:.1em; color:var(--accent); }
-.lobby-sub { font-size:.7rem; color:var(--text3); letter-spacing:.15em; text-transform:uppercase; margin-top:.2rem; }
+.lobby-title { font-family:‘Bebas Neue’,sans-serif; font-size:2.8rem; letter-spacing:.1em; color:var(–accent); }
+.lobby-sub { font-size:.7rem; color:var(–text3); letter-spacing:.15em; text-transform:uppercase; margin-top:.2rem; }
 .team-cards-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:.85rem; margin-bottom:1.5rem; }
-.team-card { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:.9rem 1rem; display:flex; align-items:center; gap:.75rem; cursor:pointer; transition:all .2s; }
-.team-card:hover { border-color:var(--card-color,var(--accent)); transform:translateY(-2px); }
-.team-card.active-team { border-color:var(--card-color,var(--accent)); box-shadow:0 0 0 2px var(--card-color,var(--accent)); }
+.team-card { background:var(–surface); border:1px solid var(–border); border-radius:8px; padding:.9rem 1rem; display:flex; align-items:center; gap:.75rem; cursor:pointer; transition:all .2s; }
+.team-card:hover { border-color:var(–card-color,var(–accent)); transform:translateY(-2px); }
+.team-card.active-team { border-color:var(–card-color,var(–accent)); box-shadow:0 0 0 2px var(–card-color,var(–accent)); }
 .tc-emoji { font-size:1.8rem; }
 .tc-info { flex:1; }
-.tc-name { font-family:'Bebas Neue',sans-serif; font-size:1rem; letter-spacing:.08em; }
+.tc-name { font-family:‘Bebas Neue’,sans-serif; font-size:1rem; letter-spacing:.08em; }
 .tc-island { font-size:.62rem; letter-spacing:.05em; text-transform:uppercase; }
 .tc-coins { text-align:right; }
-.tc-coin-num { font-family:'Bebas Neue',sans-serif; font-size:1.6rem; color:var(--accent); }
-.tc-coin-label { font-size:.55rem; color:var(--text3); letter-spacing:.05em; }
-.mission-progress { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:1rem 1.1rem; margin-bottom:1.25rem; }
-.mp-title { font-family:'Bebas Neue',sans-serif; font-size:1rem; letter-spacing:.1em; color:var(--text2); margin-bottom:.75rem; }
+.tc-coin-num { font-family:‘Bebas Neue’,sans-serif; font-size:1.6rem; color:var(–accent); }
+.tc-coin-label { font-size:.55rem; color:var(–text3); letter-spacing:.05em; }
+.mission-progress { background:var(–surface); border:1px solid var(–border); border-radius:8px; padding:1rem 1.1rem; margin-bottom:1.25rem; }
+.mp-title { font-family:‘Bebas Neue’,sans-serif; font-size:1rem; letter-spacing:.1em; color:var(–text2); margin-bottom:.75rem; }
 .mp-items { display:grid; grid-template-columns:repeat(8,1fr); gap:.4rem; }
-.mp-item { background:var(--bg); border:1px solid var(--border); border-radius:6px; padding:.45rem .25rem; text-align:center; opacity:.4; transition:all .3s; }
-.mp-item.current { opacity:1; border-color:var(--accent); box-shadow:0 0 12px rgba(249,115,22,.25); }
-.mp-item.done { opacity:.7; border-color:var(--success); }
+.mp-item { background:var(–bg); border:1px solid var(–border); border-radius:6px; padding:.45rem .25rem; text-align:center; opacity:.4; transition:all .3s; }
+.mp-item.current { opacity:1; border-color:var(–accent); box-shadow:0 0 12px rgba(249,115,22,.25); }
+.mp-item.done { opacity:.7; border-color:var(–success); }
 .mp-emoji { font-size:1.1rem; display:block; margin-bottom:.12rem; }
-.mp-name { font-size:.52rem; color:var(--text3); font-family:'Noto Sans KR',sans-serif; }
-.bottom-bar { display:flex; gap:.75rem; align-items:center; justify-content:flex-end; padding-top:1rem; border-top:1px solid var(--border); }
-.bottom-bar-left { flex:1; font-size:.72rem; color:var(--text3); }
+.mp-name { font-size:.52rem; color:var(–text3); font-family:‘Noto Sans KR’,sans-serif; }
+.bottom-bar { display:flex; gap:.75rem; align-items:center; justify-content:flex-end; padding-top:1rem; border-top:1px solid var(–border); }
+.bottom-bar-left { flex:1; font-size:.72rem; color:var(–text3); }
 
 /* ── MISSION SCREEN ── */
-#screen-mission { background:var(--bg); }
+#screen-mission { background:var(–bg); }
 .mission-layout { display:grid; grid-template-columns:280px 1fr; min-height:100vh; }
-.mission-sidebar { background:var(--surface); border-right:1px solid var(--border); padding:1.25rem; display:flex; flex-direction:column; gap:1rem; }
-.sidebar-island { text-align:center; padding:1rem; border-radius:8px; border:1px solid var(--border); }
+.mission-sidebar { background:var(–surface); border-right:1px solid var(–border); padding:1.25rem; display:flex; flex-direction:column; gap:1rem; }
+.sidebar-island { text-align:center; padding:1rem; border-radius:8px; border:1px solid var(–border); }
 .sidebar-island-emoji { font-size:3rem; display:block; margin-bottom:.5rem; }
-.sidebar-island-name { font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:.08em; }
-.sidebar-island-crisis { font-size:.65rem; color:var(--text3); margin-top:.2rem; text-transform:uppercase; }
-.sidebar-coins { background:var(--bg); border-radius:8px; padding:.85rem; text-align:center; border:1px solid var(--border); }
-.sidebar-coin-label { font-size:.62rem; color:var(--text3); letter-spacing:.1em; text-transform:uppercase; margin-bottom:.25rem; }
-.sidebar-coin-num { font-family:'Bebas Neue',sans-serif; font-size:2.5rem; color:var(--accent); }
-.sidebar-items { background:var(--bg); border-radius:8px; padding:.85rem; border:1px solid var(--border); }
-.sidebar-items-label { font-size:.62rem; color:var(--text3); letter-spacing:.1em; text-transform:uppercase; margin-bottom:.5rem; }
+.sidebar-island-name { font-family:‘Bebas Neue’,sans-serif; font-size:1.3rem; letter-spacing:.08em; }
+.sidebar-island-crisis { font-size:.65rem; color:var(–text3); margin-top:.2rem; text-transform:uppercase; }
+.sidebar-coins { background:var(–bg); border-radius:8px; padding:.85rem; text-align:center; border:1px solid var(–border); }
+.sidebar-coin-label { font-size:.62rem; color:var(–text3); letter-spacing:.1em; text-transform:uppercase; margin-bottom:.25rem; }
+.sidebar-coin-num { font-family:‘Bebas Neue’,sans-serif; font-size:2.5rem; color:var(–accent); }
+.sidebar-items { background:var(–bg); border-radius:8px; padding:.85rem; border:1px solid var(–border); }
+.sidebar-items-label { font-size:.62rem; color:var(–text3); letter-spacing:.1em; text-transform:uppercase; margin-bottom:.5rem; }
 .items-list { display:flex; flex-wrap:wrap; gap:.4rem; }
-.item-chip { background:var(--surface); border:1px solid var(--border); border-radius:4px; padding:.25rem .6rem; font-size:.7rem; color:var(--text2); }
+.item-chip { background:var(–surface); border:1px solid var(–border); border-radius:4px; padding:.25rem .6rem; font-size:.7rem; color:var(–text2); }
 .sidebar-mission-list { flex:1; }
-.sml-title { font-size:.62rem; color:var(--text3); letter-spacing:.1em; text-transform:uppercase; margin-bottom:.5rem; }
-.sml-item { display:flex; align-items:center; gap:.5rem; padding:.35rem .5rem; border-radius:4px; font-size:.72rem; color:var(--text3); margin-bottom:.25rem; transition:all .2s; }
-.sml-item.current { background:rgba(249,115,22,.1); color:var(--accent); border:1px solid rgba(249,115,22,.2); }
-.sml-item.done { color:var(--success); }
+.sml-title { font-size:.62rem; color:var(–text3); letter-spacing:.1em; text-transform:uppercase; margin-bottom:.5rem; }
+.sml-item { display:flex; align-items:center; gap:.5rem; padding:.35rem .5rem; border-radius:4px; font-size:.72rem; color:var(–text3); margin-bottom:.25rem; transition:all .2s; }
+.sml-item.current { background:rgba(249,115,22,.1); color:var(–accent); border:1px solid rgba(249,115,22,.2); }
+.sml-item.done { color:var(–success); }
 .sml-emoji { font-size:.9rem; }
 
 /* MISSION MAIN */
 .mission-main { padding:2rem; overflow-y:auto; display:flex; flex-direction:column; }
 .mission-header { margin-bottom:1.5rem; }
-.mission-num { font-size:.7rem; color:var(--text3); letter-spacing:.2em; text-transform:uppercase; margin-bottom:.3rem; }
-.mission-title { font-family:'Bebas Neue',sans-serif; font-size:2.2rem; letter-spacing:.08em; color:var(--text); }
+.mission-num { font-size:.7rem; color:var(–text3); letter-spacing:.2em; text-transform:uppercase; margin-bottom:.3rem; }
+.mission-title { font-family:‘Bebas Neue’,sans-serif; font-size:2.2rem; letter-spacing:.08em; color:var(–text); }
 .mission-situation {
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-left:3px solid var(--accent);
-  border-radius:0 8px 8px 0;
-  padding:1rem 1.25rem;
-  margin-bottom:1.75rem;
-  font-size:.82rem;
-  line-height:1.7;
-  color:var(--text2);
-  font-family:'Noto Sans KR',sans-serif;
+background:var(–surface);
+border:1px solid var(–border);
+border-left:3px solid var(–accent);
+border-radius:0 8px 8px 0;
+padding:1rem 1.25rem;
+margin-bottom:1.75rem;
+font-size:.82rem;
+line-height:1.7;
+color:var(–text2);
+font-family:‘Noto Sans KR’,sans-serif;
 }
-.mission-situation strong { color:var(--accent); font-family:'Space Mono',monospace; }
+.mission-situation strong { color:var(–accent); font-family:‘Space Mono’,monospace; }
 
 /* STEP SYSTEM */
 .step { display:none; }
@@ -129,275 +130,275 @@ body::before { content:''; position:fixed; inset:0; background:repeating-linear-
 @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
 
 /* STEP 1: 의문사 선택 */
-.step-label { font-size:.7rem; color:var(--text3); letter-spacing:.15em; text-transform:uppercase; margin-bottom:1rem; }
-.wh-prompt { font-size:1.1rem; color:var(--text2); margin-bottom:1.5rem; font-family:'Noto Sans KR',sans-serif; line-height:1.8; }
-.wh-prompt .blank { display:inline-block; background:rgba(249,115,22,.15); border:1px dashed var(--accent); border-radius:4px; padding:.1rem .8rem; min-width:80px; text-align:center; color:var(--accent); font-family:'Space Mono',monospace; font-size:.9rem; vertical-align:middle; }
+.step-label { font-size:.7rem; color:var(–text3); letter-spacing:.15em; text-transform:uppercase; margin-bottom:1rem; }
+.wh-prompt { font-size:1.1rem; color:var(–text2); margin-bottom:1.5rem; font-family:‘Noto Sans KR’,sans-serif; line-height:1.8; }
+.wh-prompt .blank { display:inline-block; background:rgba(249,115,22,.15); border:1px dashed var(–accent); border-radius:4px; padding:.1rem .8rem; min-width:80px; text-align:center; color:var(–accent); font-family:‘Space Mono’,monospace; font-size:.9rem; vertical-align:middle; }
 .wh-cards { display:flex; gap:.85rem; flex-wrap:wrap; margin-bottom:1.5rem; }
 .wh-card {
-  background:var(--surface);
-  border:2px solid var(--border);
-  border-radius:8px;
-  padding:1rem 1.5rem;
-  cursor:pointer;
-  transition:all .2s;
-  text-align:center;
-  min-width:100px;
+background:var(–surface);
+border:2px solid var(–border);
+border-radius:8px;
+padding:1rem 1.5rem;
+cursor:pointer;
+transition:all .2s;
+text-align:center;
+min-width:100px;
 }
-.wh-card:hover { border-color:var(--accent); transform:translateY(-2px); }
-.wh-card.selected { border-color:var(--accent); background:rgba(249,115,22,.1); box-shadow:0 0 16px rgba(249,115,22,.2); }
-.wh-card.wrong { border-color:var(--danger); background:rgba(239,68,68,.1); animation:shake .3s ease; }
-.wh-card.correct { border-color:var(--success); background:rgba(34,197,94,.1); }
+.wh-card:hover { border-color:var(–accent); transform:translateY(-2px); }
+.wh-card.selected { border-color:var(–accent); background:rgba(249,115,22,.1); box-shadow:0 0 16px rgba(249,115,22,.2); }
+.wh-card.wrong { border-color:var(–danger); background:rgba(239,68,68,.1); animation:shake .3s ease; }
+.wh-card.correct { border-color:var(–success); background:rgba(34,197,94,.1); }
 @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
-.wh-word { font-family:'Bebas Neue',sans-serif; font-size:1.6rem; letter-spacing:.1em; }
-.wh-kr { font-size:.65rem; color:var(--text3); margin-top:.2rem; font-family:'Noto Sans KR',sans-serif; }
-.feedback-box { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:1rem 1.25rem; margin-top:1rem; font-size:.82rem; line-height:1.7; display:none; }
+.wh-word { font-family:‘Bebas Neue’,sans-serif; font-size:1.6rem; letter-spacing:.1em; }
+.wh-kr { font-size:.65rem; color:var(–text3); margin-top:.2rem; font-family:‘Noto Sans KR’,sans-serif; }
+.feedback-box { background:var(–surface); border:1px solid var(–border); border-radius:8px; padding:1rem 1.25rem; margin-top:1rem; font-size:.82rem; line-height:1.7; display:none; }
 .feedback-box.show { display:block; animation:fadeIn .3s ease; }
-.feedback-correct { border-color:var(--success); color:var(--success); }
-.feedback-wrong { border-color:var(--danger); color:var(--danger); }
+.feedback-correct { border-color:var(–success); color:var(–success); }
+.feedback-wrong { border-color:var(–danger); color:var(–danger); }
 
 /* STEP 2: 선택지 */
-.choice-label { font-size:.7rem; color:var(--text3); letter-spacing:.15em; text-transform:uppercase; margin-bottom:.75rem; }
+.choice-label { font-size:.7rem; color:var(–text3); letter-spacing:.15em; text-transform:uppercase; margin-bottom:.75rem; }
 .choices { display:flex; flex-direction:column; gap:.75rem; margin-bottom:1.5rem; }
 .choice-btn {
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:8px;
-  padding:1rem 1.25rem;
-  cursor:pointer;
-  transition:all .2s;
-  display:flex;
-  align-items:center;
-  gap:1rem;
-  text-align:left;
+background:var(–surface);
+border:1px solid var(–border);
+border-radius:8px;
+padding:1rem 1.25rem;
+cursor:pointer;
+transition:all .2s;
+display:flex;
+align-items:center;
+gap:1rem;
+text-align:left;
 }
-.choice-btn:hover { border-color:var(--accent2); transform:translateX(4px); }
-.choice-btn.chosen { border-color:var(--accent2); background:rgba(56,189,248,.08); pointer-events:none; }
-.choice-letter { font-family:'Bebas Neue',sans-serif; font-size:1.5rem; color:var(--text3); min-width:28px; }
-.choice-btn:hover .choice-letter, .choice-btn.chosen .choice-letter { color:var(--accent2); }
+.choice-btn:hover { border-color:var(–accent2); transform:translateX(4px); }
+.choice-btn.chosen { border-color:var(–accent2); background:rgba(56,189,248,.08); pointer-events:none; }
+.choice-letter { font-family:‘Bebas Neue’,sans-serif; font-size:1.5rem; color:var(–text3); min-width:28px; }
+.choice-btn:hover .choice-letter, .choice-btn.chosen .choice-letter { color:var(–accent2); }
 .choice-text { flex:1; }
-.choice-main { font-size:.9rem; color:var(--text); font-family:'Noto Sans KR',sans-serif; }
-.choice-sub { font-size:.72rem; color:var(--text3); margin-top:.2rem; font-family:'Space Mono',monospace; }
+.choice-main { font-size:.9rem; color:var(–text); font-family:‘Noto Sans KR’,sans-serif; }
+.choice-sub { font-size:.72rem; color:var(–text3); margin-top:.2rem; font-family:‘Space Mono’,monospace; }
 
 /* STEP 3: 결과 */
 .result-box { text-align:center; padding:2rem; }
 .result-emoji { font-size:4rem; display:block; margin-bottom:1rem; animation:popIn .4s cubic-bezier(.34,1.56,.64,1); }
 @keyframes popIn { from{transform:scale(0)} to{transform:scale(1)} }
-.result-title { font-family:'Bebas Neue',sans-serif; font-size:2rem; letter-spacing:.1em; margin-bottom:.5rem; }
-.result-coin { font-family:'Bebas Neue',sans-serif; font-size:3rem; margin:.75rem 0; }
-.result-coin.positive { color:var(--success); }
-.result-coin.negative { color:var(--danger); }
-.result-coin.neutral { color:var(--text2); }
-.result-desc { font-size:.82rem; color:var(--text2); line-height:1.7; font-family:'Noto Sans KR',sans-serif; margin-bottom:1.5rem; }
-.result-item { display:inline-block; background:rgba(249,115,22,.1); border:1px solid rgba(249,115,22,.3); border-radius:6px; padding:.4rem 1rem; font-size:.8rem; color:var(--accent); margin-bottom:1.5rem; }
+.result-title { font-family:‘Bebas Neue’,sans-serif; font-size:2rem; letter-spacing:.1em; margin-bottom:.5rem; }
+.result-coin { font-family:‘Bebas Neue’,sans-serif; font-size:3rem; margin:.75rem 0; }
+.result-coin.positive { color:var(–success); }
+.result-coin.negative { color:var(–danger); }
+.result-coin.neutral { color:var(–text2); }
+.result-desc { font-size:.82rem; color:var(–text2); line-height:1.7; font-family:‘Noto Sans KR’,sans-serif; margin-bottom:1.5rem; }
+.result-item { display:inline-block; background:rgba(249,115,22,.1); border:1px solid rgba(249,115,22,.3); border-radius:6px; padding:.4rem 1rem; font-size:.8rem; color:var(–accent); margin-bottom:1.5rem; }
 
 /* TEAM SELECTOR */
-.team-selector { background:var(--surface); border-bottom:1px solid var(--border); padding:.75rem 1.5rem; display:flex; align-items:center; gap:.75rem; flex-wrap:wrap; position:sticky; top:0; z-index:50; }
-.ts-label { font-size:.65rem; color:var(--text3); letter-spacing:.1em; text-transform:uppercase; }
-.ts-btn { background:var(--bg); border:1px solid var(--border); border-radius:4px; padding:.3rem .7rem; font-size:.72rem; font-family:'Space Mono',monospace; color:var(--text3); cursor:pointer; transition:all .2s; }
-.ts-btn:hover { border-color:var(--text3); color:var(--text); }
-.ts-btn.active { border-color:var(--btn-color,var(--accent)); color:var(--btn-color,var(--accent)); background:rgba(255,255,255,.03); }
+.team-selector { background:var(–surface); border-bottom:1px solid var(–border); padding:.75rem 1.5rem; display:flex; align-items:center; gap:.75rem; flex-wrap:wrap; position:sticky; top:0; z-index:50; }
+.ts-label { font-size:.65rem; color:var(–text3); letter-spacing:.1em; text-transform:uppercase; }
+.ts-btn { background:var(–bg); border:1px solid var(–border); border-radius:4px; padding:.3rem .7rem; font-size:.72rem; font-family:‘Space Mono’,monospace; color:var(–text3); cursor:pointer; transition:all .2s; }
+.ts-btn:hover { border-color:var(–text3); color:var(–text); }
+.ts-btn.active { border-color:var(–btn-color,var(–accent)); color:var(–btn-color,var(–accent)); background:rgba(255,255,255,.03); }
 
 @media(max-width:768px) {
-  .mission-layout { grid-template-columns:1fr; }
-  .mission-sidebar { display:none; }
-  .team-cards-grid { grid-template-columns:repeat(2,1fr); }
-  .mp-items { grid-template-columns:repeat(4,1fr); }
+.mission-layout { grid-template-columns:1fr; }
+.mission-sidebar { display:none; }
+.team-cards-grid { grid-template-columns:repeat(2,1fr); }
+.mp-items { grid-template-columns:repeat(4,1fr); }
 }
 .m2-chip {
-  background:rgba(249,115,22,.12);
-  border:1px solid rgba(249,115,22,.3);
-  border-radius:6px;
-  padding:.4rem .8rem;
-  font-family:'Space Mono',monospace;
-  font-size:.85rem;
-  color:var(--accent);
-  cursor:pointer;
-  transition:all .15s;
-  display:inline-flex;
-  align-items:center;
-  gap:.3rem;
+background:rgba(249,115,22,.12);
+border:1px solid rgba(249,115,22,.3);
+border-radius:6px;
+padding:.4rem .8rem;
+font-family:‘Space Mono’,monospace;
+font-size:.85rem;
+color:var(–accent);
+cursor:pointer;
+transition:all .15s;
+display:inline-flex;
+align-items:center;
+gap:.3rem;
 }
 .m2-chip:hover { background:rgba(249,115,22,.22); }
-.m3-food-card:hover { border-color:var(--accent) !important; transform:translateY(-2px); box-shadow:0 4px 16px rgba(0,0,0,.3); }
+.m3-food-card:hover { border-color:var(–accent) !important; transform:translateY(-2px); box-shadow:0 4px 16px rgba(0,0,0,.3); }
 
 /* LOGIN */
 .room-btn {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: .6rem;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.2rem;
-  color: var(--text3);
-  cursor: pointer;
-  transition: all .2s;
-  width: 100%;
+background: var(–bg);
+border: 1px solid var(–border);
+border-radius: 6px;
+padding: .6rem;
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 1.2rem;
+color: var(–text3);
+cursor: pointer;
+transition: all .2s;
+width: 100%;
 }
-.room-btn:hover { border-color: var(--text3); color: var(--text); }
-.room-btn.selected { border-color: var(--accent); color: var(--accent); background: rgba(249,115,22,.08); }
+.room-btn:hover { border-color: var(–text3); color: var(–text); }
+.room-btn.selected { border-color: var(–accent); color: var(–accent); background: rgba(249,115,22,.08); }
 .role-btn {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: .6rem .4rem;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-size: .72rem;
-  color: var(--text3);
-  cursor: pointer;
-  transition: all .2s;
-  text-align: center;
-  width: 100%;
+background: var(–bg);
+border: 1px solid var(–border);
+border-radius: 6px;
+padding: .6rem .4rem;
+font-family: ‘Noto Sans KR’, sans-serif;
+font-size: .72rem;
+color: var(–text3);
+cursor: pointer;
+transition: all .2s;
+text-align: center;
+width: 100%;
 }
-.role-btn:hover { border-color: var(--text3); color: var(--text); }
-.role-btn.selected { border-color: var(--accent); color: var(--accent); background: rgba(249,115,22,.08); }
+.role-btn:hover { border-color: var(–text3); color: var(–text); }
+.role-btn.selected { border-color: var(–accent); color: var(–accent); background: rgba(249,115,22,.08); }
 
 /* MOON EVENT */
 .moon-screen {
-  position: relative;
-  background: #050810;
-  min-height: 400px;
-  border-radius: 8px;
-  border: 1px solid rgba(56,189,248,.2);
-  overflow: hidden;
-  margin-bottom: 1rem;
+position: relative;
+background: #050810;
+min-height: 400px;
+border-radius: 8px;
+border: 1px solid rgba(56,189,248,.2);
+overflow: hidden;
+margin-bottom: 1rem;
 }
 .moon-stars {
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,.8) 0%, transparent 100%),
-    radial-gradient(1px 1px at 80% 10%, rgba(255,255,255,.6) 0%, transparent 100%),
-    radial-gradient(1px 1px at 50% 60%, rgba(255,255,255,.4) 0%, transparent 100%),
-    radial-gradient(1px 1px at 10% 80%, rgba(255,255,255,.7) 0%, transparent 100%),
-    radial-gradient(1px 1px at 90% 70%, rgba(255,255,255,.5) 0%, transparent 100%);
-  pointer-events: none;
+position: absolute;
+inset: 0;
+background-image: radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,.8) 0%, transparent 100%),
+radial-gradient(1px 1px at 80% 10%, rgba(255,255,255,.6) 0%, transparent 100%),
+radial-gradient(1px 1px at 50% 60%, rgba(255,255,255,.4) 0%, transparent 100%),
+radial-gradient(1px 1px at 10% 80%, rgba(255,255,255,.7) 0%, transparent 100%),
+radial-gradient(1px 1px at 90% 70%, rgba(255,255,255,.5) 0%, transparent 100%);
+pointer-events: none;
 }
 .moon-hp-bar {
-  height: 8px;
-  background: rgba(255,255,255,.1);
-  border-radius: 4px;
-  margin-bottom: .75rem;
-  overflow: hidden;
+height: 8px;
+background: rgba(255,255,255,.1);
+border-radius: 4px;
+margin-bottom: .75rem;
+overflow: hidden;
 }
 .moon-hp-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--success), #86efac);
-  border-radius: 4px;
-  transition: width .4s ease, background .4s;
+height: 100%;
+background: linear-gradient(90deg, var(–success), #86efac);
+border-radius: 4px;
+transition: width .4s ease, background .4s;
 }
-.moon-hp-fill.danger { background: linear-gradient(90deg, var(--danger), #fca5a5); }
+.moon-hp-fill.danger { background: linear-gradient(90deg, var(–danger), #fca5a5); }
 .meteor {
-  position: absolute;
-  background: rgba(56,189,248,.12);
-  border: 1px solid rgba(56,189,248,.3);
-  border-radius: 6px;
-  padding: .3rem .7rem;
-  font-family: 'Space Mono', monospace;
-  font-size: .8rem;
-  color: var(--accent2);
-  white-space: nowrap;
-  cursor: default;
-  user-select: none;
-  transition: opacity .2s;
+position: absolute;
+background: rgba(56,189,248,.12);
+border: 1px solid rgba(56,189,248,.3);
+border-radius: 6px;
+padding: .3rem .7rem;
+font-family: ‘Space Mono’, monospace;
+font-size: .8rem;
+color: var(–accent2);
+white-space: nowrap;
+cursor: default;
+user-select: none;
+transition: opacity .2s;
 }
-.meteor.why { color: var(--danger); border-color: rgba(239,68,68,.4); background: rgba(239,68,68,.1); }
+.meteor.why { color: var(–danger); border-color: rgba(239,68,68,.4); background: rgba(239,68,68,.1); }
 .meteor.destroyed { opacity: 0; transform: scale(1.3); transition: all .2s; }
 .moon-input-row {
-  display: flex;
-  gap: .75rem;
-  align-items: center;
-  margin-top: .75rem;
+display: flex;
+gap: .75rem;
+align-items: center;
+margin-top: .75rem;
 }
 .moon-input {
-  flex: 1;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: .6rem 1rem;
-  font-family: 'Space Mono', monospace;
-  font-size: .85rem;
-  color: var(--text);
-  outline: none;
-  transition: border-color .2s;
+flex: 1;
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 6px;
+padding: .6rem 1rem;
+font-family: ‘Space Mono’, monospace;
+font-size: .85rem;
+color: var(–text);
+outline: none;
+transition: border-color .2s;
 }
-.moon-input:focus { border-color: var(--accent2); }
-.moon-input.hit { border-color: var(--success); background: rgba(34,197,94,.08); }
-.moon-input.miss { border-color: var(--danger); background: rgba(239,68,68,.08); animation: shake .3s; }
+.moon-input:focus { border-color: var(–accent2); }
+.moon-input.hit { border-color: var(–success); background: rgba(34,197,94,.08); }
+.moon-input.miss { border-color: var(–danger); background: rgba(239,68,68,.08); animation: shake .3s; }
 .moon-score-row {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  font-size: .78rem;
-  color: var(--text3);
-  margin-bottom: .5rem;
+display: flex;
+gap: 1rem;
+align-items: center;
+font-size: .78rem;
+color: var(–text3);
+margin-bottom: .5rem;
 }
-.moon-score-val { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; }
-.moon-score-val.accent { color: var(--accent2); }
-.moon-score-val.danger { color: var(--danger); }
+.moon-score-val { font-family: ‘Bebas Neue’, sans-serif; font-size: 1.2rem; }
+.moon-score-val.accent { color: var(–accent2); }
+.moon-score-val.danger { color: var(–danger); }
 
 /* MISSION 4 */
 .m4-question {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: .9rem 1.1rem;
-  margin-bottom: .6rem;
-  transition: all .25s;
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 8px;
+padding: .9rem 1.1rem;
+margin-bottom: .6rem;
+transition: all .25s;
 }
-.m4-question.m4-correct { border-color: var(--success); background: rgba(34,197,94,.06); }
-.m4-question.m4-wrong { border-color: var(--danger); background: rgba(239,68,68,.06); }
-.m4-sentence { font-size: .9rem; color: var(--text); margin-bottom: .6rem; line-height: 1.6; }
-.m4-result { font-size: .78rem; color: var(--text2); font-family: 'Noto Sans KR', sans-serif; }
+.m4-question.m4-correct { border-color: var(–success); background: rgba(34,197,94,.06); }
+.m4-question.m4-wrong { border-color: var(–danger); background: rgba(239,68,68,.06); }
+.m4-sentence { font-size: .9rem; color: var(–text); margin-bottom: .6rem; line-height: 1.6; }
+.m4-result { font-size: .78rem; color: var(–text2); font-family: ‘Noto Sans KR’, sans-serif; }
 .m4-btns { display: flex; gap: .5rem; }
 .m4-ox-btn {
-  border: none; border-radius: 6px; padding: .4rem 1.2rem;
-  font-family: 'Space Mono', monospace; font-size: .8rem;
-  cursor: pointer; transition: all .2s;
+border: none; border-radius: 6px; padding: .4rem 1.2rem;
+font-family: ‘Space Mono’, monospace; font-size: .8rem;
+cursor: pointer; transition: all .2s;
 }
-.m4-o { background: rgba(34,197,94,.15); color: var(--success); border: 1px solid rgba(34,197,94,.3); }
+.m4-o { background: rgba(34,197,94,.15); color: var(–success); border: 1px solid rgba(34,197,94,.3); }
 .m4-o:hover { background: rgba(34,197,94,.25); }
-.m4-x { background: rgba(239,68,68,.15); color: var(--danger); border: 1px solid rgba(239,68,68,.3); }
+.m4-x { background: rgba(239,68,68,.15); color: var(–danger); border: 1px solid rgba(239,68,68,.3); }
 .m4-x:hover { background: rgba(239,68,68,.25); }
 /* ── HUD ── */
 .hud {
-  display: flex;
-  gap: .5rem;
-  align-items: center;
+display: flex;
+gap: .5rem;
+align-items: center;
 }
 .hud-coin {
-  background: rgba(10,14,26,.85);
-  border: 1px solid rgba(249,115,22,.35);
-  border-radius: 6px;
-  padding: .35rem .75rem;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.1rem;
-  color: var(--accent);
-  backdrop-filter: blur(8px);
-  display: flex;
-  align-items: center;
-  gap: .35rem;
+background: rgba(10,14,26,.85);
+border: 1px solid rgba(249,115,22,.35);
+border-radius: 6px;
+padding: .35rem .75rem;
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 1.1rem;
+color: var(–accent);
+backdrop-filter: blur(8px);
+display: flex;
+align-items: center;
+gap: .35rem;
 }
 .hud-items {
-  background: rgba(10,14,26,.85);
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: 6px;
-  padding: .35rem .75rem;
-  font-size: .8rem;
-  color: var(--text2);
-  backdrop-filter: blur(8px);
-  display: flex;
-  align-items: center;
-  gap: .3rem;
-  min-width: 60px;
+background: rgba(10,14,26,.85);
+border: 1px solid rgba(255,255,255,.08);
+border-radius: 6px;
+padding: .35rem .75rem;
+font-size: .8rem;
+color: var(–text2);
+backdrop-filter: blur(8px);
+display: flex;
+align-items: center;
+gap: .3rem;
+min-width: 60px;
 }
 .hud-island {
-  background: rgba(10,14,26,.85);
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: 6px;
-  padding: .35rem .75rem;
-  font-size: .75rem;
-  color: var(--text3);
-  backdrop-filter: blur(8px);
-  font-family: 'Space Mono', monospace;
+background: rgba(10,14,26,.85);
+border: 1px solid rgba(255,255,255,.08);
+border-radius: 6px;
+padding: .35rem .75rem;
+font-size: .75rem;
+color: var(–text3);
+backdrop-filter: blur(8px);
+font-family: ‘Space Mono’, monospace;
 }
 
 </style>
@@ -405,36 +406,38 @@ body::before { content:''; position:fixed; inset:0; background:repeating-linear-
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
   import { getDatabase, ref, set, get, onValue, update, remove } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyABfoRLNzMaW3X4-XVgQgO4T_rGSgJmrNc",
-    authDomain: "sos-survival.firebaseapp.com",
-    databaseURL: "https://sos-survival-default-rtdb.firebaseio.com",
-    projectId: "sos-survival",
-    storageBucket: "sos-survival.firebasestorage.app",
-    messagingSenderId: "248764760707",
-    appId: "1:248764760707:web:2cfd7f06c6ced0db4e11b6"
-  };
+const firebaseConfig = {
+apiKey: “AIzaSyABfoRLNzMaW3X4-XVgQgO4T_rGSgJmrNc”,
+authDomain: “sos-survival.firebaseapp.com”,
+databaseURL: “https://sos-survival-default-rtdb.firebaseio.com”,
+projectId: “sos-survival”,
+storageBucket: “sos-survival.firebasestorage.app”,
+messagingSenderId: “248764760707”,
+appId: “1:248764760707:web:2cfd7f06c6ced0db4e11b6”
+};
 
-  const app = initializeApp(firebaseConfig);
-  const db = getDatabase(app);
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
 
-  // 전역으로 노출
-  window.firebaseDB = db;
-  window.firebaseRef = ref;
-  window.firebaseSet = set;
-  window.firebaseGet = get;
-  window.firebaseOnValue = onValue;
-  window.firebaseUpdate = update;
-  window.firebaseRemove = remove;
-  window.firebaseReady = true;
+// 전역으로 노출
+window.firebaseDB = db;
+window.firebaseRef = ref;
+window.firebaseSet = set;
+window.firebaseGet = get;
+window.firebaseOnValue = onValue;
+window.firebaseUpdate = update;
+window.firebaseRemove = remove;
+window.firebaseReady = true;
 
-  // Firebase 준비 완료 이벤트
-  window.dispatchEvent(new Event('firebaseReady'));
+// Firebase 준비 완료 이벤트
+window.dispatchEvent(new Event(‘firebaseReady’));
 </script>
+
 </head>
 <body>
 
 <!-- ══ LOGIN SCREEN ══ -->
+
 <div id="screen-login" class="screen active" style="align-items:center;justify-content:center;
   background:radial-gradient(ellipse at 50% 0%,rgba(249,115,22,.15) 0%,transparent 60%),var(--bg);">
   <div style="text-align:center;z-index:1;padding:2rem;max-width:480px;width:100%;">
@@ -442,60 +445,64 @@ body::before { content:''; position:fixed; inset:0; background:repeating-linear-
     <div style="font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--accent);letter-spacing:.05em;margin-bottom:.25rem;">접속하기</div>
     <div style="font-size:.75rem;color:var(--text3);margin-bottom:2rem;font-family:'Noto Sans KR',sans-serif;">방 번호와 섬을 선택하세요</div>
 
-    <!-- 방 번호 -->
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.25rem;margin-bottom:1rem;text-align:left;">
-      <div style="font-size:.68rem;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.6rem;">🏫 방 번호 (반 구분용)</div>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;">
-        <button onclick="selectRoom(1)" id="roomBtn-1" class="room-btn">1반</button>
-        <button onclick="selectRoom(2)" id="roomBtn-2" class="room-btn">2반</button>
-        <button onclick="selectRoom(3)" id="roomBtn-3" class="room-btn">3반</button>
-        <button onclick="selectRoom(4)" id="roomBtn-4" class="room-btn">4반</button>
-      </div>
-    </div>
+```
+<!-- 방 번호 -->
+<div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.25rem;margin-bottom:1rem;text-align:left;">
+  <div style="font-size:.68rem;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.6rem;">🏫 방 번호 (반 구분용)</div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;">
+    <button onclick="selectRoom(1)" id="roomBtn-1" class="room-btn">1반</button>
+    <button onclick="selectRoom(2)" id="roomBtn-2" class="room-btn">2반</button>
+    <button onclick="selectRoom(3)" id="roomBtn-3" class="room-btn">3반</button>
+    <button onclick="selectRoom(4)" id="roomBtn-4" class="room-btn">4반</button>
+  </div>
+</div>
 
-    <!-- 섬 선택 (학생용) -->
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.25rem;margin-bottom:1rem;text-align:left;">
-      <div style="font-size:.68rem;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.6rem;">🏝️ 내 섬 선택</div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;">
-        <button onclick="selectRole('volcano')" id="roleBtn-volcano" class="role-btn">
-          <div style="font-size:1.2rem;">🌋</div><div>화산 섬</div>
-        </button>
-        <button onclick="selectRole('arctic')" id="roleBtn-arctic" class="role-btn">
-          <div style="font-size:1.2rem;">🧊</div><div>북극 섬</div>
-        </button>
-        <button onclick="selectRole('jungle')" id="roleBtn-jungle" class="role-btn">
-          <div style="font-size:1.2rem;">🌴</div><div>정글 섬</div>
-        </button>
-        <button onclick="selectRole('desert')" id="roleBtn-desert" class="role-btn">
-          <div style="font-size:1.2rem;">🏜️</div><div>사막 섬</div>
-        </button>
-        <button onclick="selectRole('ocean')" id="roleBtn-ocean" class="role-btn">
-          <div style="font-size:1.2rem;">🌊</div><div>바다 섬</div>
-        </button>
-        <button onclick="selectRole('dino')" id="roleBtn-dino" class="role-btn">
-          <div style="font-size:1.2rem;">🦕</div><div>공룡 섬</div>
-        </button>
-      </div>
-    </div>
-
-    <!-- 교사 접속 (URL에 ?teacher=sos2024 있을 때만 표시) -->
-    <div id="teacherLoginBox" style="display:none;background:rgba(249,115,22,.06);border:1px solid rgba(249,115,22,.2);border-radius:8px;padding:1rem;margin-bottom:1rem;text-align:left;">
-      <div style="font-size:.68rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.6rem;">👩‍🏫 교사 접속</div>
-      <button onclick="selectRole('teacher')" id="roleBtn-teacher" class="role-btn" style="width:100%;padding:.75rem;font-size:.9rem;">
-        👩‍🏫 교사로 접속
-      </button>
-    </div>
-
-    <div id="loginStatus" style="font-size:.75rem;color:var(--text3);margin-bottom:1rem;font-family:'Noto Sans KR',sans-serif;min-height:1.2rem;"></div>
-    <button id="loginBtn" onclick="doLogin()"
-      style="width:100%;background:var(--accent);color:#fff;border:none;border-radius:6px;padding:.9rem;
-      font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.1em;cursor:pointer;opacity:.4;pointer-events:none;transition:all .2s;">
-      ▶ 접속하기
+<!-- 섬 선택 (학생용) -->
+<div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.25rem;margin-bottom:1rem;text-align:left;">
+  <div style="font-size:.68rem;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.6rem;">🏝️ 내 섬 선택</div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;">
+    <button onclick="selectRole('volcano')" id="roleBtn-volcano" class="role-btn">
+      <div style="font-size:1.2rem;">🌋</div><div>화산 섬</div>
+    </button>
+    <button onclick="selectRole('arctic')" id="roleBtn-arctic" class="role-btn">
+      <div style="font-size:1.2rem;">🧊</div><div>북극 섬</div>
+    </button>
+    <button onclick="selectRole('jungle')" id="roleBtn-jungle" class="role-btn">
+      <div style="font-size:1.2rem;">🌴</div><div>정글 섬</div>
+    </button>
+    <button onclick="selectRole('desert')" id="roleBtn-desert" class="role-btn">
+      <div style="font-size:1.2rem;">🏜️</div><div>사막 섬</div>
+    </button>
+    <button onclick="selectRole('ocean')" id="roleBtn-ocean" class="role-btn">
+      <div style="font-size:1.2rem;">🌊</div><div>바다 섬</div>
+    </button>
+    <button onclick="selectRole('dino')" id="roleBtn-dino" class="role-btn">
+      <div style="font-size:1.2rem;">🦕</div><div>공룡 섬</div>
     </button>
   </div>
 </div>
 
+<!-- 교사 접속 (URL에 ?teacher=sos2024 있을 때만 표시) -->
+<div id="teacherLoginBox" style="display:none;background:rgba(249,115,22,.06);border:1px solid rgba(249,115,22,.2);border-radius:8px;padding:1rem;margin-bottom:1rem;text-align:left;">
+  <div style="font-size:.68rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.6rem;">👩‍🏫 교사 접속</div>
+  <button onclick="selectRole('teacher')" id="roleBtn-teacher" class="role-btn" style="width:100%;padding:.75rem;font-size:.9rem;">
+    👩‍🏫 교사로 접속
+  </button>
+</div>
+
+<div id="loginStatus" style="font-size:.75rem;color:var(--text3);margin-bottom:1rem;font-family:'Noto Sans KR',sans-serif;min-height:1.2rem;"></div>
+<button id="loginBtn" onclick="doLogin()"
+  style="width:100%;background:var(--accent);color:#fff;border:none;border-radius:6px;padding:.9rem;
+  font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.1em;cursor:pointer;opacity:.4;pointer-events:none;transition:all .2s;">
+  ▶ 접속하기
+</button>
+```
+
+  </div>
+</div>
+
 <!-- ══ MAIN ══ -->
+
 <div id="screen-main" class="screen active">
   <div class="float-bg" id="floatBg"></div>
   <div class="main-content">
@@ -518,6 +525,7 @@ body::before { content:''; position:fixed; inset:0; background:repeating-linear-
 </div>
 
 <!-- ══ LOBBY ══ -->
+
 <div id="screen-lobby" class="screen">
   <div style="padding:1.5rem;flex:1;overflow-y:auto;">
     <div class="lobby-header">
@@ -547,6 +555,7 @@ body::before { content:''; position:fixed; inset:0; background:repeating-linear-
 </div>
 
 <!-- ══ MISSION ══ -->
+
 <div id="screen-mission" class="screen">
   <!-- 팀 선택 바 + HUD -->
   <div style="display:flex;align-items:center;border-bottom:1px solid var(--border);background:var(--surface);">
@@ -1062,6 +1071,7 @@ function m3Pick(ti, idx){
     if(roll===5) { state.items[ti].push('lucky'); state.luckyActive = state.luckyActive || {}; state.luckyActive[ti] = true; }
     state.m3result = state.m3result || {};
     state.m3result[ti] = { roll, base, islandDesc, coins };
+    fbSaveState();
     renderMission3(ti+1);
     renderSidebar(ti+1);
     setTimeout(()=>{
@@ -1247,6 +1257,7 @@ function m2Pick(ti,idx){
     state.m2result = state.m2result || {};
     state.m2result[ti] = ch;
     state.missionStep['m2_'+ti]=3;
+    fbSaveState();
     renderMission2(ti+1);
     renderSidebar(ti+1);
     setTimeout(()=>{
@@ -1427,6 +1438,7 @@ function selectChoice(ti, idx) {
     state.m1result = state.m1result || {};
     state.m1result[ti] = choice;
     state.missionStep[ti] = 3;
+    fbSaveState();
     renderMission1(ti+1);
     renderSidebar(ti+1);
     setTimeout(()=>renderResult(ti, choice), 50);
@@ -2135,6 +2147,7 @@ function m5Result(ti, success) {
   state.m5result = state.m5result || {};
   state.m5result[ti] = success;
   state.missionStep['m5_'+ti] = 3;
+  fbSaveState();
   renderMission5(ti+1);
   renderSidebar(ti+1);
   setTimeout(() => m5RenderResult(ti, success), 50);
@@ -2588,6 +2601,7 @@ function m6Result(ti, success) {
   state.m6result = state.m6result || {};
   state.m6result[ti] = success;
   state.missionStep['m6_'+ti] = 3;
+  fbSaveState();
   renderMission6(ti+1);
   renderSidebar(ti+1);
   setTimeout(() => m6RenderResult(ti, success), 50);
@@ -2750,6 +2764,7 @@ function m4Check(ti) {
       state.m4result = state.m4result || {};
       state.m4result[ti] = { correct, coins: m4coins };
       state.missionStep['m4_'+ti] = 2;
+      fbSaveState();
       renderMission4(ti+1);
       renderSidebar(ti+1);
       setTimeout(() => m4RenderResult(ti, correct, m4coins), 50);
@@ -2898,529 +2913,425 @@ function renderMission7(teamNum) {
         onblur="this.style.borderColor='var(--border)'"
       >${state.m7text && state.m7text[ti] ? state.m7text[ti] : ''}</textarea>
 
-      <div style="display:flex;gap:.75rem;align-items:center;margin-top:.75rem;">
-        <div style="flex:1;font-size:.7rem;color:var(--text3);font-family:'Noto Sans KR',sans-serif;">모둠 전체 발표 완료 후 제출하세요!</div>
-        <button class="btn btn-primary" onclick="m7Submit(${ti})">제출 →</button>
-      </div>
-    </div>
+```
+  <div style="display:flex;gap:.75rem;align-items:center;margin-top:.75rem;">
+    <div style="flex:1;font-size:.7rem;color:var(--text3);font-family:'Noto Sans KR',sans-serif;">모둠 전체 발표 완료 후 제출하세요!</div>
+    <button class="btn btn-primary" onclick="m7Submit(${ti})">제출 →</button>
+  </div>
+</div>
 
-    <!-- STEP 2: 채점 -->
-    <div class="step ${step===2?'active':''}" id="m7step2-${ti}">
-      <div id="m7scoring-${ti}"></div>
-    </div>
+<!-- STEP 2: 채점 -->
+<div class="step ${step===2?'active':''}" id="m7step2-${ti}">
+  <div id="m7scoring-${ti}"></div>
+</div>
 
-    <!-- STEP 3: 결과 -->
-    <div class="step ${step===3?'active':''}" id="m7result-${ti}">
-      <div id="m7resultContent-${ti}"></div>
-    </div>
-  `;
+<!-- STEP 3: 결과 -->
+<div class="step ${step===3?'active':''}" id="m7result-${ti}">
+  <div id="m7resultContent-${ti}"></div>
+</div>
+```
 
-  if(step===2) setTimeout(()=>m7RenderScoring(ti), 50);
-  if(step===3 && state.m7result && state.m7result[ti]) setTimeout(()=>m7RenderFinalResult(ti, state.m7result[ti]), 50);
+`;
 
-  // textarea 저장
-  setTimeout(()=>{
-    const ta = document.getElementById('m7text-'+ti);
-    if(ta) ta.oninput = () => {
-      state.m7text = state.m7text || {};
-      state.m7text[ti] = ta.value;
-    };
-  }, 100);
+if(step===2) setTimeout(()=>m7RenderScoring(ti), 50);
+if(step===3 && state.m7result && state.m7result[ti]) setTimeout(()=>m7RenderFinalResult(ti, state.m7result[ti]), 50);
+
+// textarea 저장
+setTimeout(()=>{
+const ta = document.getElementById(‘m7text-’+ti);
+if(ta) ta.oninput = () => {
+state.m7text = state.m7text || {};
+state.m7text[ti] = ta.value;
+};
+}, 100);
 }
 
 function m7Submit(ti) {
-  const ta = document.getElementById('m7text-'+ti);
-  const text = ta ? ta.value.trim() : '';
-  if(!text) {
-    ta.style.borderColor = 'var(--danger)';
-    return;
-  }
-  state.m7text = state.m7text || {};
-  state.m7text[ti] = text;
-  state.missionStep['m7_'+ti] = 2;
-  renderMission7(ti+1);
-  setTimeout(()=>m7RenderScoring(ti), 50);
+const ta = document.getElementById(‘m7text-’+ti);
+const text = ta ? ta.value.trim() : ‘’;
+if(!text) {
+ta.style.borderColor = ‘var(–danger)’;
+return;
+}
+state.m7text = state.m7text || {};
+state.m7text[ti] = text;
+state.missionStep[‘m7_’+ti] = 2;
+renderMission7(ti+1);
+setTimeout(()=>m7RenderScoring(ti), 50);
 }
 
 function m7RenderScoring(ti) {
-  const sc = document.getElementById('m7scoring-'+ti);
-  if(!sc) return;
-  const m7 = MISSION7_DATA[ti];
-  const text = (state.m7text && state.m7text[ti]) || '';
+const sc = document.getElementById(‘m7scoring-’+ti);
+if(!sc) return;
+const m7 = MISSION7_DATA[ti];
+const text = (state.m7text && state.m7text[ti]) || ‘’;
 
-  // 자동 체크
-  const hasItImportant = /it is important to/i.test(text);
-  const hasMakeSure = /(make sure to|made sure to)/i.test(text);
-  const whPatterns = ['what to','where to','how to','who to','when to','which way to','how long to'];
-  const lowerText = text.toLowerCase();
-  // 각 패턴의 실제 등장 횟수 합산 (중복 위치 카운트)
-  let whCount = 0;
-  const usedPositions = new Set();
-  whPatterns.forEach(w => {
-    let pos = 0;
-    while((pos = lowerText.indexOf(w, pos)) !== -1) {
-      // 이미 카운트된 위치와 겹치지 않으면 카운트
-      let overlap = false;
-      for(let p of usedPositions) { if(Math.abs(p-pos)<6) { overlap=true; break; } }
-      if(!overlap) { whCount++; usedPositions.add(pos); }
-      pos += w.length;
-    }
-  });
-  const isEnglish = /[a-zA-Z]/.test(text) && text.replace(/[^a-zA-Z\s]/g,'').length > text.replace(/[^가-힣\s]/g,'').length;
+// 자동 체크
+const hasItImportant = /it is important to/i.test(text);
+const hasMakeSure = /(make sure to|made sure to)/i.test(text);
+const whPatterns = [‘what to’,‘where to’,‘how to’,‘who to’,‘when to’,‘which way to’,‘how long to’];
+const lowerText = text.toLowerCase();
+// 각 패턴의 실제 등장 횟수 합산 (중복 위치 카운트)
+let whCount = 0;
+const usedPositions = new Set();
+whPatterns.forEach(w => {
+let pos = 0;
+while((pos = lowerText.indexOf(w, pos)) !== -1) {
+// 이미 카운트된 위치와 겹치지 않으면 카운트
+let overlap = false;
+for(let p of usedPositions) { if(Math.abs(p-pos)<6) { overlap=true; break; } }
+if(!overlap) { whCount++; usedPositions.add(pos); }
+pos += w.length;
+}
+});
+const isEnglish = /[a-zA-Z]/.test(text) && text.replace(/[^a-zA-Z\s]/g,’’).length > text.replace(/[^가-힣\s]/g,’’).length;
 
-  sc.innerHTML = `
-    <div style="margin-bottom:1.25rem;">
-      <div style="font-size:.72rem;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem;">📝 작성한 안내문</div>
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;font-size:.82rem;color:var(--text);line-height:1.8;white-space:pre-wrap;font-family:'Noto Sans KR',sans-serif;">${text}</div>
-    </div>
-    <div style="font-size:.72rem;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem;">✅ 자동 체크</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:1.25rem;">
-      ${m7CheckItem('it is important to 포함', hasItImportant)}
-      ${m7CheckItem('make sure to / made sure to 포함', hasMakeSure)}
-      ${m7CheckItem('의문사+to부정사 3개 이상', whCount>=3, whCount+'개 발견')}
-      ${m7CheckItem('영어로 작성', isEnglish, isEnglish?'보너스 적용!':'한국어 → 보너스 없음')}
-    </div>
-    <div style="font-size:.72rem;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem;">👩‍🏫 선생님 채점</div>
-    <div style="background:var(--surface);border-radius:8px;padding:1rem;margin-bottom:1rem;font-family:'Noto Sans KR',sans-serif;font-size:.82rem;color:var(--text2);line-height:1.8;">
-      <strong style="color:${MISSION7_DATA[ti].island==='volcano'?ISLANDS[0].color:ISLANDS[ti].color};">필수 내용 (${MISSION7_DATA[ti].warning} ${MISSION7_DATA[ti].keyKr} 안내)</strong>가 포함됐나요?<br>
-      모둠 대표가 발화까지 완료했나요?
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem;margin-bottom:1rem;">
-      <button class="btn btn-primary" onclick="m7Score(${ti},'perfect')" style="background:var(--success);font-size:.8rem;padding:.6rem .5rem;">✅ 필수내용 포함<br>+ 발화 성공</button>
-      <button class="btn btn-primary" onclick="m7Score(${ti},'partial')" style="background:var(--accent);font-size:.8rem;padding:.6rem .5rem;">⚡ 필수내용 포함<br>발화 미완성</button>
-      <button class="btn btn-primary" onclick="m7Score(${ti},'miss')" style="background:var(--danger);font-size:.8rem;padding:.6rem .5rem;">❌ 필수내용<br>미포함</button>
-    </div>
-    <button class="btn-ghost" onclick="m7Edit(${ti})" style="width:100%;font-size:.72rem;">✏️ 다시 작성하기</button>
-  `;
+sc.innerHTML = `<div style="margin-bottom:1.25rem;"> <div style="font-size:.72rem;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem;">📝 작성한 안내문</div> <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;font-size:.82rem;color:var(--text);line-height:1.8;white-space:pre-wrap;font-family:'Noto Sans KR',sans-serif;">${text}</div> </div> <div style="font-size:.72rem;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem;">✅ 자동 체크</div> <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:1.25rem;"> ${m7CheckItem('it is important to 포함', hasItImportant)} ${m7CheckItem('make sure to / made sure to 포함', hasMakeSure)} ${m7CheckItem('의문사+to부정사 3개 이상', whCount>=3, whCount+'개 발견')} ${m7CheckItem('영어로 작성', isEnglish, isEnglish?'보너스 적용!':'한국어 → 보너스 없음')} </div> <div style="font-size:.72rem;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem;">👩‍🏫 선생님 채점</div> <div style="background:var(--surface);border-radius:8px;padding:1rem;margin-bottom:1rem;font-family:'Noto Sans KR',sans-serif;font-size:.82rem;color:var(--text2);line-height:1.8;"> <strong style="color:${MISSION7_DATA[ti].island==='volcano'?ISLANDS[0].color:ISLANDS[ti].color};">필수 내용 (${MISSION7_DATA[ti].warning} ${MISSION7_DATA[ti].keyKr} 안내)</strong>가 포함됐나요?<br> 모둠 대표가 발화까지 완료했나요? </div> <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem;margin-bottom:1rem;"> <button class="btn btn-primary" onclick="m7Score(${ti},'perfect')" style="background:var(--success);font-size:.8rem;padding:.6rem .5rem;">✅ 필수내용 포함<br>+ 발화 성공</button> <button class="btn btn-primary" onclick="m7Score(${ti},'partial')" style="background:var(--accent);font-size:.8rem;padding:.6rem .5rem;">⚡ 필수내용 포함<br>발화 미완성</button> <button class="btn btn-primary" onclick="m7Score(${ti},'miss')" style="background:var(--danger);font-size:.8rem;padding:.6rem .5rem;">❌ 필수내용<br>미포함</button> </div> <button class="btn-ghost" onclick="m7Edit(${ti})" style="width:100%;font-size:.72rem;">✏️ 다시 작성하기</button>`;
 }
 
 function m7CheckItem(label, passed, note) {
-  return '<div style="background:var(--surface);border:1px solid '+(passed?'var(--success)':'var(--border)')+';border-radius:6px;padding:.5rem .75rem;">'
-    +'<div style="font-size:.65rem;color:'+(passed?'var(--success)':'var(--text3)')+';">'+(passed?'✅ ':'❌ ')+label+'</div>'
-    +(note?'<div style="font-size:.62rem;color:var(--text3);margin-top:.15rem;">'+note+'</div>':'')
-    +'</div>';
+return ‘<div style="background:var(--surface);border:1px solid '+(passed?'var(--success)':'var(--border)')+';border-radius:6px;padding:.5rem .75rem;">’
++’<div style="font-size:.65rem;color:'+(passed?'var(--success)':'var(--text3)')+';">’+(passed?‘✅ ‘:‘❌ ‘)+label+’</div>’
++(note?’<div style="font-size:.62rem;color:var(--text3);margin-top:.15rem;">’+note+’</div>’:’’)
++’</div>’;
 }
 
 function m7Edit(ti) {
-  state.missionStep['m7_'+ti] = 1;
-  renderMission7(ti+1);
+state.missionStep[‘m7_’+ti] = 1;
+renderMission7(ti+1);
 }
 
 function m7Score(ti, grade) {
-  const text = (state.m7text && state.m7text[ti]) || '';
-  const isEnglish = /[a-zA-Z]/.test(text) && text.replace(/[^a-zA-Z\s]/g,'').length > text.replace(/[^가-힣\s]/g,'').length;
-  const hasGrammarError = /[가-힣]/.test(text) && isEnglish;
-  const whWords = ['what to','where to','how to','who to','when to','which way to','how long to'];
-  const whCount = whWords.filter(w => text.toLowerCase().includes(w)).length;
-  const hasItImportant = /it is important to/i.test(text);
-  const hasMakeSure = /(make sure to|made sure to)/i.test(text);
+const text = (state.m7text && state.m7text[ti]) || ‘’;
+const isEnglish = /[a-zA-Z]/.test(text) && text.replace(/[^a-zA-Z\s]/g,’’).length > text.replace(/[^가-힣\s]/g,’’).length;
+const hasGrammarError = /[가-힣]/.test(text) && isEnglish;
+const whWords = [‘what to’,‘where to’,‘how to’,‘who to’,‘when to’,‘which way to’,‘how long to’];
+const whCount = whWords.filter(w => text.toLowerCase().includes(w)).length;
+const hasItImportant = /it is important to/i.test(text);
+const hasMakeSure = /(make sure to|made sure to)/i.test(text);
 
-  let coins = 0;
-  let breakdown = [];
+let coins = 0;
+let breakdown = [];
 
-  if(grade==='perfect') {
-    coins += 2; breakdown.push('필수 내용 포함 +2');
-    coins += 1; breakdown.push('발화 성공 +1');
-  } else if(grade==='partial') {
-    coins += 2; breakdown.push('필수 내용 포함 +2');
-  } else {
-    breakdown.push('필수 내용 미포함 +0');
-  }
+if(grade===‘perfect’) {
+coins += 2; breakdown.push(‘필수 내용 포함 +2’);
+coins += 1; breakdown.push(‘발화 성공 +1’);
+} else if(grade===‘partial’) {
+coins += 2; breakdown.push(‘필수 내용 포함 +2’);
+} else {
+breakdown.push(‘필수 내용 미포함 +0’);
+}
 
-  if(whCount>=3) { coins+=2; breakdown.push('의문사+to부정사 3개↑ +2'); }
-  else if(whCount>=1) { coins+=1; breakdown.push('의문사+to부정사 '+whCount+'개 +1'); }
+if(whCount>=3) { coins+=2; breakdown.push(‘의문사+to부정사 3개↑ +2’); }
+else if(whCount>=1) { coins+=1; breakdown.push(’의문사+to부정사 ’+whCount+‘개 +1’); }
 
-  if(hasItImportant) { coins+=1; breakdown.push('it is important to +1'); }
-  if(hasMakeSure) { coins+=1; breakdown.push('make sure to +1'); }
+if(hasItImportant) { coins+=1; breakdown.push(‘it is important to +1’); }
+if(hasMakeSure) { coins+=1; breakdown.push(‘make sure to +1’); }
 
-  if(isEnglish && grade!=='miss') {
-    coins+=2; breakdown.push('영어 문법 오류 없음 +2');
-  } else if(!isEnglish) {
-    breakdown.push('한국어 작성 +0');
-  }
+if(isEnglish && grade!==‘miss’) {
+coins+=2; breakdown.push(‘영어 문법 오류 없음 +2’);
+} else if(!isEnglish) {
+breakdown.push(‘한국어 작성 +0’);
+}
 
-  state.coins[ti] += coins;
-  state.m7result = state.m7result || {};
-  state.m7result[ti] = { coins, breakdown, grade };
-  state.missionStep['m7_'+ti] = 3;
-  renderMission7(ti+1);
-  renderSidebar(ti+1);
-  setTimeout(()=>m7RenderFinalResult(ti, { coins, breakdown, grade }), 50);
+state.coins[ti] += coins;
+state.m7result = state.m7result || {};
+state.m7result[ti] = { coins, breakdown, grade };
+state.missionStep[‘m7_’+ti] = 3;
+fbSaveState();
+renderMission7(ti+1);
+renderSidebar(ti+1);
+setTimeout(()=>m7RenderFinalResult(ti, { coins, breakdown, grade }), 50);
 }
 
 function m7RenderFinalResult(ti, result) {
-  const rc = document.getElementById('m7resultContent-'+ti);
-  if(!rc) return;
-  const { coins, breakdown, grade } = result;
-  const emoji = grade==='perfect'?'🎉':grade==='partial'?'😮':coins>0?'👍':'😢';
-  const title = grade==='perfect'?'RESCUE COMPLETE!':grade==='partial'?'SIGNAL SENT!':coins>0?'TRIED HARD!':'KEEP GOING!';
+const rc = document.getElementById(‘m7resultContent-’+ti);
+if(!rc) return;
+const { coins, breakdown, grade } = result;
+const emoji = grade===‘perfect’?‘🎉’:grade===‘partial’?‘😮’:coins>0?‘👍’:‘😢’;
+const title = grade===‘perfect’?‘RESCUE COMPLETE!’:grade===‘partial’?‘SIGNAL SENT!’:coins>0?‘TRIED HARD!’:‘KEEP GOING!’;
 
-  rc.innerHTML = `
-    <div class="result-box">
-      <span class="result-emoji">${emoji}</span>
-      <div class="result-title">${title}</div>
-      <div class="result-coin positive">+${coins} 🪙</div>
-      <div style="background:var(--surface);border-radius:8px;padding:1rem;margin:1rem 0;text-align:left;">
-        <div style="font-size:.68rem;color:var(--text3);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.1em;">📊 점수 내역</div>
-        ${breakdown.map(b=>'<div style="font-size:.75rem;color:var(--text2);padding:.2rem 0;font-family:Noto Sans KR,sans-serif;">• '+b+'</div>').join('')}
-      </div>
-      <div style="background:var(--surface);border-radius:8px;padding:1rem;margin:.5rem 0;text-align:left;">
-        <div style="font-size:.68rem;color:var(--text3);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.1em;">작성한 안내문</div>
-        <div style="font-size:.78rem;color:var(--text2);line-height:1.8;white-space:pre-wrap;font-family:Noto Sans KR,sans-serif;">${(state.m7text&&state.m7text[ti])||''}</div>
-      </div>
-      <div style="display:flex;gap:.75rem;justify-content:center;margin-top:1.25rem;">
-        <button class="btn-ghost" onclick="showScreen('lobby')">← 로비로</button>
-        <button class="btn btn-primary" onclick="m7ShowFinal()">🏆 최종 결과 보기</button>
-      </div>
-    </div>
-  `;
+rc.innerHTML = `<div class="result-box"> <span class="result-emoji">${emoji}</span> <div class="result-title">${title}</div> <div class="result-coin positive">+${coins} 🪙</div> <div style="background:var(--surface);border-radius:8px;padding:1rem;margin:1rem 0;text-align:left;"> <div style="font-size:.68rem;color:var(--text3);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.1em;">📊 점수 내역</div> ${breakdown.map(b=>'<div style="font-size:.75rem;color:var(--text2);padding:.2rem 0;font-family:Noto Sans KR,sans-serif;">• '+b+'</div>').join('')} </div> <div style="background:var(--surface);border-radius:8px;padding:1rem;margin:.5rem 0;text-align:left;"> <div style="font-size:.68rem;color:var(--text3);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.1em;">작성한 안내문</div> <div style="font-size:.78rem;color:var(--text2);line-height:1.8;white-space:pre-wrap;font-family:Noto Sans KR,sans-serif;">${(state.m7text&&state.m7text[ti])||''}</div> </div> <div style="display:flex;gap:.75rem;justify-content:center;margin-top:1.25rem;"> <button class="btn-ghost" onclick="showScreen('lobby')">← 로비로</button> <button class="btn btn-primary" onclick="m7ShowFinal()">🏆 최종 결과 보기</button> </div> </div>`;
 }
 
 function m7ShowFinal() {
-  const main = document.getElementById('missionMain');
-  if(!main) return;
+const main = document.getElementById(‘missionMain’);
+if(!main) return;
 
-  // 모든 팀 미션 7 완료 체크
-  const allDone = state.teamMission.every(m => m >= 8);
-  if(!allDone) {
-    const doneCount = state.teamMission.filter(m => m >= 8).length;
-    main.innerHTML = `
-      <div class="mission-header">
-        <div class="mission-num">🏆 최종 결과 집계 중</div>
-        <div class="mission-title">⏳ 다른 모둠 대기 중...</div>
-      </div>
-      <div class="result-box">
-        <span class="result-emoji" style="animation:pulseGlow 1.5s infinite;">🏆</span>
-        <div class="result-title">CALCULATING...</div>
-        <div style="font-size:.78rem;color:var(--text3);margin:1rem 0;font-family:'Noto Sans KR',sans-serif;">${doneCount}/6 모둠 완료 — 모두 완료되면 결과가 나와요!</div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:1rem;">
-          ${ISLANDS.map((isl,i)=>{
-            const done = state.teamMission[i]>=8;
-            return '<div style="background:var(--surface);border:1px solid '+(done?isl.color:'var(--border)')+';border-radius:6px;padding:.5rem;text-align:center;">'
-              +'<div>'+isl.emoji+'</div>'
-              +'<div style="font-size:.65rem;color:'+(done?isl.color:'var(--text3)')+';">'+(done?'완료':'대기중')+'</div>'
-              +'</div>';
-          }).join('')}
-        </div>
-        <button class="btn-ghost" onclick="m7ShowFinal()" style="width:100%;">↺ 새로고침</button>
-      </div>
-    `;
-    return;
-  }
+// 모든 팀 미션 7 완료 체크
+const allDone = state.teamMission.every(m => m >= 8);
+if(!allDone) {
+const doneCount = state.teamMission.filter(m => m >= 8).length;
+main.innerHTML = `<div class="mission-header"> <div class="mission-num">🏆 최종 결과 집계 중</div> <div class="mission-title">⏳ 다른 모둠 대기 중...</div> </div> <div class="result-box"> <span class="result-emoji" style="animation:pulseGlow 1.5s infinite;">🏆</span> <div class="result-title">CALCULATING...</div> <div style="font-size:.78rem;color:var(--text3);margin:1rem 0;font-family:'Noto Sans KR',sans-serif;">${doneCount}/6 모둠 완료 — 모두 완료되면 결과가 나와요!</div> <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:1rem;"> ${ISLANDS.map((isl,i)=>{ const done = state.teamMission[i]>=8; return '<div style="background:var(--surface);border:1px solid '+(done?isl.color:'var(--border)')+';border-radius:6px;padding:.5rem;text-align:center;">' +'<div>'+isl.emoji+'</div>' +'<div style="font-size:.65rem;color:'+(done?isl.color:'var(--text3)')+';">'+(done?'완료':'대기중')+'</div>' +'</div>'; }).join('')} </div> <button class="btn-ghost" onclick="m7ShowFinal()" style="width:100%;">↺ 새로고침</button> </div>`;
+return;
+}
 
-  const totalCoins = state.coins.reduce((a,b)=>a+b,0);
-  const maxTeam = state.coins.indexOf(Math.max(...state.coins));
+const totalCoins = state.coins.reduce((a,b)=>a+b,0);
+const maxTeam = state.coins.indexOf(Math.max(…state.coins));
 
-  main.innerHTML = `
-    <div class="mission-header">
-      <div class="mission-num">🏆 GAME OVER</div>
-      <div class="mission-title">최종 결과</div>
-    </div>
-    <div class="result-box">
-      <span class="result-emoji">🏆</span>
-      <div class="result-title">SURVIVAL COMPLETE!</div>
-      <div style="font-size:.8rem;color:var(--text2);margin:.5rem 0 1.5rem;font-family:'Noto Sans KR',sans-serif;">모든 모둠이 살아남았어요! 수고했어요!</div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:1.5rem;">
-        ${ISLANDS.map((isl,i)=>{
-          const coins = state.coins[i];
-          const isWinner = i===maxTeam;
-          return '<div style="background:var(--surface);border:2px solid '+(isWinner?isl.color:'var(--border)')+';border-radius:8px;padding:.85rem;text-align:center;">'
-            +'<div style="font-size:1.5rem;">'+(isWinner?'👑':isl.emoji)+'</div>'
-            +'<div style="font-family:Bebas Neue,sans-serif;font-size:.9rem;letter-spacing:.08em;color:'+(isWinner?isl.color:'var(--text2)')+';">'+(i+1)+'모둠</div>'
-            +'<div style="font-size:.65rem;color:var(--text3);">'+isl.name+'</div>'
-            +'<div style="font-family:Bebas Neue,sans-serif;font-size:1.8rem;color:'+(isWinner?isl.color:'var(--text)')+';">'+coins+'</div>'
-            +'<div style="font-size:.6rem;color:var(--text3);">🪙 COINS</div>'
-            +'</div>';
-        }).join('')}
-      </div>
-      <div style="font-family:Bebas Neue,sans-serif;font-size:1.1rem;color:var(--accent2);margin-bottom:.25rem;">전체 획득 코인: ${totalCoins} 🪙</div>
-      <div style="font-size:.78rem;color:${ISLANDS[maxTeam].color};font-family:'Noto Sans KR',sans-serif;margin-bottom:1.25rem;">
-        🏆 우승: ${maxTeam+1}모둠 ${ISLANDS[maxTeam].name} (${state.coins[maxTeam]}코인)
-      </div>
-      <button class="btn btn-primary" onclick="showScreen('lobby')" style="width:100%;">← 로비로 돌아가기</button>
-    </div>
-  `;
+main.innerHTML = `<div class="mission-header"> <div class="mission-num">🏆 GAME OVER</div> <div class="mission-title">최종 결과</div> </div> <div class="result-box"> <span class="result-emoji">🏆</span> <div class="result-title">SURVIVAL COMPLETE!</div> <div style="font-size:.8rem;color:var(--text2);margin:.5rem 0 1.5rem;font-family:'Noto Sans KR',sans-serif;">모든 모둠이 살아남았어요! 수고했어요!</div> <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:1.5rem;"> ${ISLANDS.map((isl,i)=>{ const coins = state.coins[i]; const isWinner = i===maxTeam; return '<div style="background:var(--surface);border:2px solid '+(isWinner?isl.color:'var(--border)')+';border-radius:8px;padding:.85rem;text-align:center;">' +'<div style="font-size:1.5rem;">'+(isWinner?'👑':isl.emoji)+'</div>' +'<div style="font-family:Bebas Neue,sans-serif;font-size:.9rem;letter-spacing:.08em;color:'+(isWinner?isl.color:'var(--text2)')+';">'+(i+1)+'모둠</div>' +'<div style="font-size:.65rem;color:var(--text3);">'+isl.name+'</div>' +'<div style="font-family:Bebas Neue,sans-serif;font-size:1.8rem;color:'+(isWinner?isl.color:'var(--text)')+';">'+coins+'</div>' +'<div style="font-size:.6rem;color:var(--text3);">🪙 COINS</div>' +'</div>'; }).join('')} </div> <div style="font-family:Bebas Neue,sans-serif;font-size:1.1rem;color:var(--accent2);margin-bottom:.25rem;">전체 획득 코인: ${totalCoins} 🪙</div> <div style="font-size:.78rem;color:${ISLANDS[maxTeam].color};font-family:'Noto Sans KR',sans-serif;margin-bottom:1.25rem;"> 🏆 우승: ${maxTeam+1}모둠 ${ISLANDS[maxTeam].name} (${state.coins[maxTeam]}코인) </div> <button class="btn btn-primary" onclick="showScreen('lobby')" style="width:100%;">← 로비로 돌아가기</button> </div>`;
 }
 
 // ══ FIREBASE SYNC ══
-let myRole = null;   // 'teacher' | 'volcano' | 'arctic' | ...
+let myRole = null;   // ‘teacher’ | ‘volcano’ | ‘arctic’ | …
 let myRoom = null;   // 1~4
 let fbUnsubscribes = [];
 
 const ROLE_TO_TEAM = { volcano:1, arctic:2, jungle:3, desert:4, ocean:5, dino:6 };
-const TEAM_TO_ROLE = ['volcano','arctic','jungle','desert','ocean','dino'];
+const TEAM_TO_ROLE = [‘volcano’,‘arctic’,‘jungle’,‘desert’,‘ocean’,‘dino’];
 
 // ── 로그인 UI ──
 function selectRoom(n) {
-  myRoom = n;
-  document.querySelectorAll('.room-btn').forEach(b => b.classList.remove('selected'));
-  const btn = document.getElementById('roomBtn-'+n);
-  if(btn) btn.classList.add('selected');
-  updateLoginBtn();
+myRoom = n;
+document.querySelectorAll(’.room-btn’).forEach(b => b.classList.remove(‘selected’));
+const btn = document.getElementById(‘roomBtn-’+n);
+if(btn) btn.classList.add(‘selected’);
+updateLoginBtn();
 }
 
 function selectRole(role) {
-  myRole = role;
-  document.querySelectorAll('.role-btn').forEach(b => b.classList.remove('selected'));
-  const btn = document.getElementById('roleBtn-'+role);
-  if(btn) btn.classList.add('selected');
-  updateLoginBtn();
+myRole = role;
+document.querySelectorAll(’.role-btn’).forEach(b => b.classList.remove(‘selected’));
+const btn = document.getElementById(‘roleBtn-’+role);
+if(btn) btn.classList.add(‘selected’);
+updateLoginBtn();
 }
 
 function updateLoginBtn() {
-  const btn = document.getElementById('loginBtn');
-  const status = document.getElementById('loginStatus');
-  if(myRoom && myRole) {
-    btn.style.opacity='1'; btn.style.pointerEvents='auto';
-    status.textContent = myRoom+'반 · '+(myRole==='teacher'?'👩‍🏫 교사':'학생 ('+myRole+' 섬)');
-    status.style.color = 'var(--accent2)';
-  } else {
-    btn.style.opacity='0.4'; btn.style.pointerEvents='none';
-    status.textContent = '방 번호와 역할을 모두 선택하세요';
-    status.style.color = 'var(--text3)';
-  }
+const btn = document.getElementById(‘loginBtn’);
+const status = document.getElementById(‘loginStatus’);
+if(myRoom && myRole) {
+btn.style.opacity=‘1’; btn.style.pointerEvents=‘auto’;
+status.textContent = myRoom+‘반 · ‘+(myRole===‘teacher’?‘👩‍🏫 교사’:‘학생 (’+myRole+’ 섬)’);
+status.style.color = ‘var(–accent2)’;
+} else {
+btn.style.opacity=‘0.4’; btn.style.pointerEvents=‘none’;
+status.textContent = ‘방 번호와 역할을 모두 선택하세요’;
+status.style.color = ‘var(–text3)’;
+}
 }
 
 async function doLogin() {
-  if(!myRoom || !myRole) return;
-  const status = document.getElementById('loginStatus');
-  status.textContent = '🔄 Firebase 연결 중...';
+if(!myRoom || !myRole) return;
+const status = document.getElementById(‘loginStatus’);
+status.textContent = ‘🔄 연결 중…’;
 
-  // Firebase 준비 대기
-  if(!window.firebaseReady) {
-    await new Promise(r => window.addEventListener('firebaseReady', r, {once:true}));
-  }
+// Firebase 준비 대기 (최대 3초)
+if(!window.firebaseReady) {
+await Promise.race([
+new Promise(r => window.addEventListener(‘firebaseReady’, r, {once:true})),
+new Promise(r => setTimeout(r, 3000))
+]);
+}
 
-  const db = window.firebaseDB;
-  const roomRef = window.firebaseRef(db, 'rooms/room'+myRoom);
+const proceed = () => {
+status.textContent = ‘✅ 접속 완료!’;
+setTimeout(() => {
+if(myRole === ‘teacher’) {
+showScreen(‘main’);
+renderLobby();
+showTeacherBtn();
+} else {
+const teamNum = ROLE_TO_TEAM[myRole];
+document.querySelectorAll(’.screen’).forEach(s=>s.classList.remove(‘active’));
+document.getElementById(‘screen-mission’).classList.add(‘active’);
+hideHUD();
+initMission(teamNum, state.teamMission[teamNum-1] || 1);
+}
+}, 500);
+};
 
-  try {
-    // 방 초기화 여부 확인
-    const snap = await window.firebaseGet(roomRef);
-    if(!snap.exists()) {
-      await window.firebaseSet(roomRef, {
-        state: JSON.parse(JSON.stringify(state)),
-        connectedRoles: {},
-        createdAt: Date.now()
-      });
-    }
+// Firebase 사용 가능하면 동기화, 아니면 로컬로 진행
+if(window.firebaseReady && window.firebaseDB) {
+try {
+const db = window.firebaseDB;
+const roomRef = window.firebaseRef(db, ‘rooms/room’+myRoom);
+const snap = await window.firebaseGet(roomRef);
+if(!snap.exists()) {
+await window.firebaseSet(roomRef, {
+state: JSON.parse(JSON.stringify(state)),
+connectedRoles: {},
+createdAt: Date.now()
+});
+} else {
+const remoteState = snap.val().state;
+if(remoteState) Object.assign(state, remoteState);
+}
+await window.firebaseUpdate(
+window.firebaseRef(db, ‘rooms/room’+myRoom+’/connectedRoles’),
+{[myRole]: true}
+);
+fbSubscribe();
+status.textContent = ‘✅ Firebase 연결 완료!’;
+} catch(e) {
+console.warn(‘Firebase error, proceeding offline:’, e);
+status.textContent = ‘⚠️ 오프라인 모드로 진행’;
+}
+} else {
+status.textContent = ‘⚠️ 오프라인 모드로 진행’;
+}
 
-    // 접속 등록
-    await window.firebaseUpdate(window.firebaseRef(db, 'rooms/room'+myRoom+'/connectedRoles'), {
-      [myRole]: true
-    });
-
-    // 방 state 동기화
-    const stateSnap = await window.firebaseGet(window.firebaseRef(db, 'rooms/room'+myRoom+'/state'));
-    if(stateSnap.exists()) {
-      const remoteState = stateSnap.val();
-      Object.assign(state, remoteState);
-    }
-
-    // 실시간 리스너 등록
-    fbSubscribe();
-
-    status.textContent = '✅ 연결 완료!';
-    setTimeout(() => {
-      if(myRole === 'teacher') {
-        // 교사: 메인 화면으로
-        showScreen('main');
-        renderLobby();
-      } else {
-        // 학생: 바로 미션 화면으로
-        const teamNum = ROLE_TO_TEAM[myRole];
-        document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-        document.getElementById('screen-mission').classList.add('active');
-        hideHUD();
-        initMission(teamNum, state.teamMission[teamNum-1] || 1);
-      }
-    }, 800);
-  } catch(e) {
-    status.textContent = '❌ 연결 실패: '+e.message;
-    status.style.color = 'var(--danger)';
-  }
+proceed();
 }
 
 // ── 실시간 리스너 ──
 function fbSubscribe() {
-  const db = window.firebaseDB;
-  // state 변경 감지
-  const unsub = window.firebaseOnValue(
-    window.firebaseRef(db, 'rooms/room'+myRoom+'/state'),
-    (snap) => {
-      if(!snap.exists()) return;
-      const remote = snap.val();
-      // 내가 직접 업데이트한 게 아닌 경우만 적용
-      if(remote._lastUpdatedBy && remote._lastUpdatedBy !== myRole) {
-        const prev = JSON.stringify(state.coins) + JSON.stringify(state.teamMission);
-        Object.assign(state, remote);
-        const curr = JSON.stringify(state.coins) + JSON.stringify(state.teamMission);
-        if(prev !== curr) {
-          // 현재 보이는 화면 새로고침
-          refreshCurrentScreen();
-        }
-      }
-    }
-  );
-  fbUnsubscribes.push(unsub);
+const db = window.firebaseDB;
+// state 변경 감지
+const unsub = window.firebaseOnValue(
+window.firebaseRef(db, ‘rooms/room’+myRoom+’/state’),
+(snap) => {
+if(!snap.exists()) return;
+const remote = snap.val();
+// 내가 직접 업데이트한 게 아닌 경우만 적용
+if(remote._lastUpdatedBy && remote._lastUpdatedBy !== myRole) {
+const prev = JSON.stringify(state.coins) + JSON.stringify(state.teamMission);
+Object.assign(state, remote);
+const curr = JSON.stringify(state.coins) + JSON.stringify(state.teamMission);
+if(prev !== curr) {
+// 현재 보이는 화면 새로고침
+refreshCurrentScreen();
+}
+}
+}
+);
+fbUnsubscribes.push(unsub);
 
-  // 교사 명령 감지 (학생용)
-  if(myRole !== 'teacher') {
-    const cmdUnsub = window.firebaseOnValue(
-      window.firebaseRef(db, 'rooms/room'+myRoom+'/teacherCmd'),
-      (snap) => {
-        if(!snap.exists()) return;
-        const cmd = snap.val();
-        if(!cmd || cmd.processed) return;
-        if(cmd.target === myRole || cmd.target === 'all') {
-          handleTeacherCmd(cmd);
-        }
-      }
-    );
-    fbUnsubscribes.push(cmdUnsub);
-  }
+// 교사 명령 감지 (학생용)
+if(myRole !== ‘teacher’) {
+const cmdUnsub = window.firebaseOnValue(
+window.firebaseRef(db, ‘rooms/room’+myRoom+’/teacherCmd’),
+(snap) => {
+if(!snap.exists()) return;
+const cmd = snap.val();
+if(!cmd || cmd.processed) return;
+if(cmd.target === myRole || cmd.target === ‘all’) {
+handleTeacherCmd(cmd);
+}
+}
+);
+fbUnsubscribes.push(cmdUnsub);
+}
 }
 
 // ── state를 Firebase에 저장 ──
 async function fbSaveState() {
-  if(!myRoom || !window.firebaseReady) return;
-  const db = window.firebaseDB;
-  const saveData = JSON.parse(JSON.stringify(state));
-  saveData._lastUpdatedBy = myRole;
-  saveData._updatedAt = Date.now();
-  try {
-    await window.firebaseUpdate(window.firebaseRef(db, 'rooms/room'+myRoom), { state: saveData });
-  } catch(e) { console.warn('Firebase save failed:', e); }
+if(!myRoom || !window.firebaseReady) return;
+const db = window.firebaseDB;
+const saveData = JSON.parse(JSON.stringify(state));
+saveData._lastUpdatedBy = myRole;
+saveData._updatedAt = Date.now();
+try {
+await window.firebaseUpdate(window.firebaseRef(db, ‘rooms/room’+myRoom), { state: saveData });
+} catch(e) { console.warn(‘Firebase save failed:’, e); }
 }
 
 // ── 현재 화면 새로고침 ──
 function refreshCurrentScreen() {
-  const ti = state.currentTeam;
-  const mission = state.teamMission[ti] || 1;
-  renderSidebar(ti+1);
-  renderTeamSelector(ti+1);
-  updateMissionProgress();
-  if(myRole === 'teacher') renderLobby();
+const ti = state.currentTeam;
+const mission = state.teamMission[ti] || 1;
+renderSidebar(ti+1);
+renderTeamSelector(ti+1);
+updateMissionProgress();
+if(myRole === ‘teacher’) renderLobby();
 }
 
 // ── 교사 명령 처리 ──
 function handleTeacherCmd(cmd) {
-  if(cmd.type === 'gotoMission') {
-    initMission(ROLE_TO_TEAM[myRole], cmd.missionId);
-  } else if(cmd.type === 'skipMission') {
-    const teamNum = ROLE_TO_TEAM[myRole];
-    state.teamMission[teamNum-1] = cmd.missionId;
-    initMission(teamNum, cmd.missionId);
-  } else if(cmd.type === 'resetRoom') {
-    location.reload();
-  }
+if(cmd.type === ‘gotoMission’) {
+initMission(ROLE_TO_TEAM[myRole], cmd.missionId);
+} else if(cmd.type === ‘skipMission’) {
+const teamNum = ROLE_TO_TEAM[myRole];
+state.teamMission[teamNum-1] = cmd.missionId;
+initMission(teamNum, cmd.missionId);
+} else if(cmd.type === ‘resetRoom’) {
+location.reload();
+}
 }
 
 // ── 교사 제어 패널 ──
 function showTeacherPanel() {
-  if(myRole !== 'teacher') return;
-  const panel = document.getElementById('teacherPanel');
-  if(panel) { panel.style.display = panel.style.display==='none'?'block':'none'; return; }
+if(myRole !== ‘teacher’) return;
+const panel = document.getElementById(‘teacherPanel’);
+if(panel) { panel.style.display = panel.style.display===‘none’?‘block’:‘none’; return; }
 
-  const div = document.createElement('div');
-  div.id = 'teacherPanel';
-  div.style.cssText = 'position:fixed;bottom:1rem;right:1rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;z-index:200;min-width:280px;max-height:80vh;overflow-y:auto;';
-  div.innerHTML = `
-    <div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.1em;color:var(--accent);margin-bottom:.75rem;">👩‍🏫 교사 제어 패널</div>
-    <div style="font-size:.68rem;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem;">팀별 미션 스킵</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin-bottom:.75rem;">
-      ${TEAM_TO_ROLE.map((role,i)=>`
-        <select id="skipSelect-${i}" style="background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:.3rem;font-size:.72rem;color:var(--text);">
-          ${[1,2,3,4,5,6,7,8].map(m=>`<option value="${m}" ${state.teamMission[i]===m?'selected':''}>미션${m}</option>`).join('')}
-        </select>`).join('')}
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin-bottom:.75rem;">
-      ${TEAM_TO_ROLE.map((role,i)=>`
-        <button onclick="teacherSkip(${i})"
-          style="background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:.3rem .5rem;font-size:.68rem;color:var(--text2);cursor:pointer;">
-          ${ISLANDS[i].emoji} ${i+1}모둠 스킵
-        </button>`).join('')}
-    </div>
-    <div style="display:flex;gap:.4rem;">
-      <button onclick="teacherSyncNow()" style="flex:1;background:rgba(56,189,248,.15);border:1px solid rgba(56,189,248,.3);border-radius:4px;padding:.4rem;font-size:.72rem;color:var(--accent2);cursor:pointer;">🔄 동기화</button>
-      <button onclick="teacherResetRoom()" style="flex:1;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);border-radius:4px;padding:.4rem;font-size:.72rem;color:var(--danger);cursor:pointer;">🔄 방 초기화</button>
-    </div>
-    <button onclick="document.getElementById('teacherPanel').style.display='none'"
-      style="width:100%;margin-top:.5rem;background:transparent;border:1px solid var(--border);border-radius:4px;padding:.3rem;font-size:.68rem;color:var(--text3);cursor:pointer;">닫기</button>
-  `;
-  document.body.appendChild(div);
+const div = document.createElement(‘div’);
+div.id = ‘teacherPanel’;
+div.style.cssText = ‘position:fixed;bottom:1rem;right:1rem;background:var(–surface);border:1px solid var(–border);border-radius:8px;padding:1rem;z-index:200;min-width:280px;max-height:80vh;overflow-y:auto;’;
+div.innerHTML = ` <div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.1em;color:var(--accent);margin-bottom:.75rem;">👩‍🏫 교사 제어 패널</div> <div style="font-size:.68rem;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem;">팀별 미션 스킵</div> <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin-bottom:.75rem;"> ${TEAM_TO_ROLE.map((role,i)=>`
+<select id="skipSelect-${i}" style="background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:.3rem;font-size:.72rem;color:var(--text);">
+${[1,2,3,4,5,6,7,8].map(m=>`<option value="${m}" ${state.teamMission[i]===m?'selected':''}>미션${m}</option>`).join(’’)}
+</select>`).join('')} </div> <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin-bottom:.75rem;"> ${TEAM_TO_ROLE.map((role,i)=>`
+<button onclick="teacherSkip(${i})"
+style="background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:.3rem .5rem;font-size:.68rem;color:var(--text2);cursor:pointer;">
+${ISLANDS[i].emoji} ${i+1}모둠 스킵
+</button>`).join('')} </div> <div style="display:flex;gap:.4rem;"> <button onclick="teacherSyncNow()" style="flex:1;background:rgba(56,189,248,.15);border:1px solid rgba(56,189,248,.3);border-radius:4px;padding:.4rem;font-size:.72rem;color:var(--accent2);cursor:pointer;">🔄 동기화</button> <button onclick="teacherResetRoom()" style="flex:1;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);border-radius:4px;padding:.4rem;font-size:.72rem;color:var(--danger);cursor:pointer;">🔄 방 초기화</button> </div> <button onclick="document.getElementById('teacherPanel').style.display='none'" style="width:100%;margin-top:.5rem;background:transparent;border:1px solid var(--border);border-radius:4px;padding:.3rem;font-size:.68rem;color:var(--text3);cursor:pointer;">닫기</button> `;
+document.body.appendChild(div);
 }
 
 async function teacherSkip(ti) {
-  const sel = document.getElementById('skipSelect-'+ti);
-  if(!sel) return;
-  const missionId = parseInt(sel.value);
-  const role = TEAM_TO_ROLE[ti];
-  state.teamMission[ti] = missionId;
-  await fbSaveState();
-  // 해당 팀에게 명령 전송
-  if(window.firebaseReady) {
-    await window.firebaseSet(
-      window.firebaseRef(window.firebaseDB, 'rooms/room'+myRoom+'/teacherCmd'),
-      { type:'skipMission', target:role, missionId, ts:Date.now(), processed:false }
-    );
-  }
-  renderLobby();
-  alert(ISLANDS[ti].name + ' → 미션'+missionId+'로 스킵!');
+const sel = document.getElementById(‘skipSelect-’+ti);
+if(!sel) return;
+const missionId = parseInt(sel.value);
+const role = TEAM_TO_ROLE[ti];
+state.teamMission[ti] = missionId;
+await fbSaveState();
+// 해당 팀에게 명령 전송
+if(window.firebaseReady) {
+await window.firebaseSet(
+window.firebaseRef(window.firebaseDB, ‘rooms/room’+myRoom+’/teacherCmd’),
+{ type:‘skipMission’, target:role, missionId, ts:Date.now(), processed:false }
+);
+}
+renderLobby();
+alert(ISLANDS[ti].name + ’ → 미션’+missionId+‘로 스킵!’);
 }
 
 async function teacherSyncNow() {
-  await fbSaveState();
-  alert('동기화 완료!');
+await fbSaveState();
+alert(‘동기화 완료!’);
 }
 
 async function teacherResetRoom() {
-  if(!confirm('방 데이터를 초기화할까요? 모든 진행 상황이 사라져요.')) return;
-  if(window.firebaseReady) {
-    await window.firebaseRemove(window.firebaseRef(window.firebaseDB, 'rooms/room'+myRoom));
-  }
-  location.reload();
+if(!confirm(‘방 데이터를 초기화할까요? 모든 진행 상황이 사라져요.’)) return;
+if(window.firebaseReady) {
+await window.firebaseRemove(window.firebaseRef(window.firebaseDB, ‘rooms/room’+myRoom));
+}
+location.reload();
 }
 
-// ── state 변경 후 자동 저장 훅 ──
-// initMission, m1~7 등 주요 함수 완료 후 fbSaveState 호출
-const _origInitMission = initMission;
-function initMission(teamNum, missionId) {
-  _origInitMission(teamNum, missionId);
-  fbSaveState();
-}
-
-// 학생 역할일 때 다른 팀 제어 비활성화
+// ── 학생 역할일 때 다른 팀 제어 비활성화
 function isMyTeam(teamNum) {
-  if(myRole === 'teacher') return true;
-  if(!myRole) return true;
-  return ROLE_TO_TEAM[myRole] === teamNum;
+if(myRole === ‘teacher’) return true;
+if(!myRole) return true;
+return ROLE_TO_TEAM[myRole] === teamNum;
 }
 
 function showTeacherBtn() {
-  if(myRole !== 'teacher') return;
-  if(document.getElementById('teacherFloatBtn')) return;
-  const btn = document.createElement('button');
-  btn.id = 'teacherFloatBtn';
-  btn.textContent = '👩‍🏫';
-  btn.title = '교사 제어 패널';
-  btn.style.cssText = 'position:fixed;bottom:1rem;left:1rem;z-index:200;background:var(--accent);color:#fff;border:none;border-radius:50%;width:44px;height:44px;font-size:1.2rem;cursor:pointer;box-shadow:0 4px 12px rgba(249,115,22,.4);';
-  btn.onclick = showTeacherPanel;
-  document.body.appendChild(btn);
+if(myRole !== ‘teacher’) return;
+if(document.getElementById(‘teacherFloatBtn’)) return;
+const btn = document.createElement(‘button’);
+btn.id = ‘teacherFloatBtn’;
+btn.textContent = ‘👩‍🏫’;
+btn.title = ‘교사 제어 패널’;
+btn.style.cssText = ‘position:fixed;bottom:1rem;left:1rem;z-index:200;background:var(–accent);color:#fff;border:none;border-radius:50%;width:44px;height:44px;font-size:1.2rem;cursor:pointer;box-shadow:0 4px 12px rgba(249,115,22,.4);’;
+btn.onclick = showTeacherPanel;
+document.body.appendChild(btn);
 }
 
 // ══ INIT ══
 // URL에 ?teacher=sos2024 있으면 교사 로그인 버튼 표시
 (function() {
-  const params = new URLSearchParams(window.location.search);
-  if(params.get('teacher') === 'sos2024') {
-    const box = document.getElementById('teacherLoginBox');
-    if(box) box.style.display = 'block';
-  }
+const params = new URLSearchParams(window.location.search);
+if(params.get(‘teacher’) === ‘sos2024’) {
+const box = document.getElementById(‘teacherLoginBox’);
+if(box) box.style.display = ‘block’;
+}
 })();
 renderFloatBg();
-document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-document.getElementById('screen-login').classList.add('active');
+document.querySelectorAll(’.screen’).forEach(s => s.classList.remove(‘active’));
+document.getElementById(‘screen-login’).classList.add(‘active’);
 </script>
+
 </body>
 </html>
