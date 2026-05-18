@@ -33,33 +33,33 @@ radial-gradient(ellipse at 80% 80%,rgba(56,189,248,.08) 0%,transparent 50%),var(
 .float-bg span { position:absolute; font-size:clamp(36px,7vw,72px); opacity:.06; animation:floatUp linear infinite; }
 @keyframes floatUp { 0%{transform:translateY(110vh) rotate(0deg)} 100%{transform:translateY(-20vh) rotate(360deg)} }
 .main-content { text-align:center; z-index:1; padding:2rem; }
-.sos-badge { display:inline-block; background:var(--danger); color:#fff; font-family:‘Bebas Neue’,sans-serif; font-size:1rem; letter-spacing:.3em; padding:.3rem 1.2rem; border-radius:2px; margin-bottom:1.5rem; animation:badgePulse 2s ease-in-out infinite; }
+.sos-badge { display:inline-block; background:var(--danger); color:#fff; font-family:'Bebas Neue',sans-serif; font-size:1rem; letter-spacing:.3em; padding:.3rem 1.2rem; border-radius:2px; margin-bottom:1.5rem; animation:badgePulse 2s ease-in-out infinite; }
 @keyframes badgePulse { 0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.4)} 50%{box-shadow:0 0 0 8px rgba(239,68,68,0)} }
-.main-title { font-family:‘Bebas Neue’,sans-serif; font-size:clamp(3rem,10vw,7rem); line-height:.9; letter-spacing:.05em; margin-bottom:.5rem; }
+.main-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(3rem,10vw,7rem); line-height:.9; letter-spacing:.05em; margin-bottom:.5rem; }
 .title-sos { color:var(--text); }
 .title-secure { color:var(--accent); text-shadow:0 0 40px rgba(249,115,22,.5); animation:glitch 4s infinite; }
 .title-our { color:var(--accent2); }
 @keyframes glitch { 0%,90%,100%{text-shadow:0 0 40px rgba(249,115,22,.5)} 92%{text-shadow:-3px 0 var(--danger),3px 0 var(--accent2)} 94%{text-shadow:3px 0 var(--danger),-3px 0 var(--accent2)} 96%{text-shadow:0 0 40px rgba(249,115,22,.5)} }
 .main-sub { font-size:.75rem; color:var(--text2); letter-spacing:.2em; margin:1rem 0 .4rem; text-transform:uppercase; }
-.main-desc { font-size:.8rem; color:var(--text3); margin-bottom:2.5rem; font-family:‘Noto Sans KR’,sans-serif; line-height:1.8; }
+.main-desc { font-size:.8rem; color:var(--text3); margin-bottom:2.5rem; font-family:'Noto Sans KR',sans-serif; line-height:1.8; }
 .stat-row { display:flex; gap:2rem; justify-content:center; margin-top:2.5rem; padding-top:2rem; border-top:1px solid var(--border); }
-.stat-num { font-family:‘Bebas Neue’,sans-serif; font-size:2rem; color:var(--accent2); }
+.stat-num { font-family:'Bebas Neue',sans-serif; font-size:2rem; color:var(--accent2); }
 .stat-label { font-size:.62rem; color:var(--text3); letter-spacing:.15em; text-transform:uppercase; }
 
 /* ── BUTTONS ── */
-.btn { border:none; border-radius:4px; cursor:pointer; transition:all .2s; font-family:‘Bebas Neue’,sans-serif; }
+.btn { border:none; border-radius:4px; cursor:pointer; transition:all .2s; font-family:'Bebas Neue',sans-serif; }
 .btn-primary { background:var(--accent); color:#fff; font-size:1.3rem; letter-spacing:.15em; padding:.85rem 2.5rem; }
 .btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(249,115,22,.4); }
 .btn-primary:active { transform:translateY(0); }
-.btn-secondary { background:transparent; color:var(--text2); border:1px solid var(--border); font-family:‘Space Mono’,monospace; font-size:.72rem; letter-spacing:.08em; padding:.55rem 1.4rem; border-radius:4px; cursor:pointer; transition:all .2s; margin-top:.75rem; }
+.btn-secondary { background:transparent; color:var(--text2); border:1px solid var(--border); font-family:'Space Mono',monospace; font-size:.72rem; letter-spacing:.08em; padding:.55rem 1.4rem; border-radius:4px; cursor:pointer; transition:all .2s; margin-top:.75rem; }
 .btn-secondary:hover { border-color:var(--text3); color:var(--text); }
-.btn-ghost { background:transparent; color:var(--text3); border:1px solid var(--border); font-family:‘Space Mono’,monospace; font-size:.68rem; padding:.4rem .8rem; border-radius:4px; cursor:pointer; transition:all .2s; }
+.btn-ghost { background:transparent; color:var(--text3); border:1px solid var(--border); font-family:'Space Mono',monospace; font-size:.68rem; padding:.4rem .8rem; border-radius:4px; cursor:pointer; transition:all .2s; }
 .btn-ghost:hover { color:var(--text); border-color:var(--text3); }
 
 /* ── LOBBY ── */
 #screen-lobby { background:var(--bg); padding:1.5rem; }
 .lobby-header { text-align:center; margin-bottom:1.5rem; }
-.lobby-title { font-family:‘Bebas Neue’,sans-serif; font-size:2.8rem; letter-spacing:.1em; color:var(--accent); }
+.lobby-title { font-family:'Bebas Neue',sans-serif; font-size:2.8rem; letter-spacing:.1em; color:var(--accent); }
 .lobby-sub { font-size:.7rem; color:var(--text3); letter-spacing:.15em; text-transform:uppercase; margin-top:.2rem; }
 .team-cards-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:.85rem; margin-bottom:1.5rem; }
 .team-card { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:.9rem 1rem; display:flex; align-items:center; gap:.75rem; cursor:pointer; transition:all .2s; }
@@ -67,19 +67,19 @@ radial-gradient(ellipse at 80% 80%,rgba(56,189,248,.08) 0%,transparent 50%),var(
 .team-card.active-team { border-color:var(--card-color,var(--accent)); box-shadow:0 0 0 2px var(--card-color,var(--accent)); }
 .tc-emoji { font-size:1.8rem; }
 .tc-info { flex:1; }
-.tc-name { font-family:‘Bebas Neue’,sans-serif; font-size:1rem; letter-spacing:.08em; }
+.tc-name { font-family:'Bebas Neue',sans-serif; font-size:1rem; letter-spacing:.08em; }
 .tc-island { font-size:.62rem; letter-spacing:.05em; text-transform:uppercase; }
 .tc-coins { text-align:right; }
-.tc-coin-num { font-family:‘Bebas Neue’,sans-serif; font-size:1.6rem; color:var(--accent); }
+.tc-coin-num { font-family:'Bebas Neue',sans-serif; font-size:1.6rem; color:var(--accent); }
 .tc-coin-label { font-size:.55rem; color:var(--text3); letter-spacing:.05em; }
 .mission-progress { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:1rem 1.1rem; margin-bottom:1.25rem; }
-.mp-title { font-family:‘Bebas Neue’,sans-serif; font-size:1rem; letter-spacing:.1em; color:var(--text2); margin-bottom:.75rem; }
+.mp-title { font-family:'Bebas Neue',sans-serif; font-size:1rem; letter-spacing:.1em; color:var(--text2); margin-bottom:.75rem; }
 .mp-items { display:grid; grid-template-columns:repeat(8,1fr); gap:.4rem; }
 .mp-item { background:var(--bg); border:1px solid var(--border); border-radius:6px; padding:.45rem .25rem; text-align:center; opacity:.4; transition:all .3s; }
 .mp-item.current { opacity:1; border-color:var(--accent); box-shadow:0 0 12px rgba(249,115,22,.25); }
 .mp-item.done { opacity:.7; border-color:var(--success); }
 .mp-emoji { font-size:1.1rem; display:block; margin-bottom:.12rem; }
-.mp-name { font-size:.52rem; color:var(--text3); font-family:‘Noto Sans KR’,sans-serif; }
+.mp-name { font-size:.52rem; color:var(--text3); font-family:'Noto Sans KR',sans-serif; }
 .bottom-bar { display:flex; gap:.75rem; align-items:center; justify-content:flex-end; padding-top:1rem; border-top:1px solid var(--border); }
 .bottom-bar-left { flex:1; font-size:.72rem; color:var(--text3); }
 
@@ -89,11 +89,11 @@ radial-gradient(ellipse at 80% 80%,rgba(56,189,248,.08) 0%,transparent 50%),var(
 .mission-sidebar { background:var(--surface); border-right:1px solid var(--border); padding:1.25rem; display:flex; flex-direction:column; gap:1rem; }
 .sidebar-island { text-align:center; padding:1rem; border-radius:8px; border:1px solid var(--border); }
 .sidebar-island-emoji { font-size:3rem; display:block; margin-bottom:.5rem; }
-.sidebar-island-name { font-family:‘Bebas Neue’,sans-serif; font-size:1.3rem; letter-spacing:.08em; }
+.sidebar-island-name { font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:.08em; }
 .sidebar-island-crisis { font-size:.65rem; color:var(--text3); margin-top:.2rem; text-transform:uppercase; }
 .sidebar-coins { background:var(--bg); border-radius:8px; padding:.85rem; text-align:center; border:1px solid var(--border); }
 .sidebar-coin-label { font-size:.62rem; color:var(--text3); letter-spacing:.1em; text-transform:uppercase; margin-bottom:.25rem; }
-.sidebar-coin-num { font-family:‘Bebas Neue’,sans-serif; font-size:2.5rem; color:var(--accent); }
+.sidebar-coin-num { font-family:'Bebas Neue',sans-serif; font-size:2.5rem; color:var(--accent); }
 .sidebar-items { background:var(--bg); border-radius:8px; padding:.85rem; border:1px solid var(--border); }
 .sidebar-items-label { font-size:.62rem; color:var(--text3); letter-spacing:.1em; text-transform:uppercase; margin-bottom:.5rem; }
 .items-list { display:flex; flex-wrap:wrap; gap:.4rem; }
@@ -109,7 +109,7 @@ radial-gradient(ellipse at 80% 80%,rgba(56,189,248,.08) 0%,transparent 50%),var(
 .mission-main { padding:2rem; overflow-y:auto; display:flex; flex-direction:column; }
 .mission-header { margin-bottom:1.5rem; }
 .mission-num { font-size:.7rem; color:var(--text3); letter-spacing:.2em; text-transform:uppercase; margin-bottom:.3rem; }
-.mission-title { font-family:‘Bebas Neue’,sans-serif; font-size:2.2rem; letter-spacing:.08em; color:var(--text); }
+.mission-title { font-family:'Bebas Neue',sans-serif; font-size:2.2rem; letter-spacing:.08em; color:var(--text); }
 .mission-situation {
 background:var(--surface);
 border:1px solid var(--border);
@@ -120,9 +120,9 @@ margin-bottom:1.75rem;
 font-size:.82rem;
 line-height:1.7;
 color:var(--text2);
-font-family:‘Noto Sans KR’,sans-serif;
+font-family:'Noto Sans KR',sans-serif;
 }
-.mission-situation strong { color:var(--accent); font-family:‘Space Mono’,monospace; }
+.mission-situation strong { color:var(--accent); font-family:'Space Mono',monospace; }
 
 /* STEP SYSTEM */
 .step { display:none; }
@@ -132,8 +132,8 @@ font-family:‘Noto Sans KR’,sans-serif;
 
 /* STEP 1: 의문사 선택 */
 .step-label { font-size:.7rem; color:var(--text3); letter-spacing:.15em; text-transform:uppercase; margin-bottom:1rem; }
-.wh-prompt { font-size:1.1rem; color:var(--text2); margin-bottom:1.5rem; font-family:‘Noto Sans KR’,sans-serif; line-height:1.8; }
-.wh-prompt .blank { display:inline-block; background:rgba(249,115,22,.15); border:1px dashed var(--accent); border-radius:4px; padding:.1rem .8rem; min-width:80px; text-align:center; color:var(--accent); font-family:‘Space Mono’,monospace; font-size:.9rem; vertical-align:middle; }
+.wh-prompt { font-size:1.1rem; color:var(--text2); margin-bottom:1.5rem; font-family:'Noto Sans KR',sans-serif; line-height:1.8; }
+.wh-prompt .blank { display:inline-block; background:rgba(249,115,22,.15); border:1px dashed var(--accent); border-radius:4px; padding:.1rem .8rem; min-width:80px; text-align:center; color:var(--accent); font-family:'Space Mono',monospace; font-size:.9rem; vertical-align:middle; }
 .wh-cards { display:flex; gap:.85rem; flex-wrap:wrap; margin-bottom:1.5rem; }
 .wh-card {
 background:var(--surface);
@@ -150,8 +150,8 @@ min-width:100px;
 .wh-card.wrong { border-color:var(--danger); background:rgba(239,68,68,.1); animation:shake .3s ease; }
 .wh-card.correct { border-color:var(--success); background:rgba(34,197,94,.1); }
 @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
-.wh-word { font-family:‘Bebas Neue’,sans-serif; font-size:1.6rem; letter-spacing:.1em; }
-.wh-kr { font-size:.65rem; color:var(--text3); margin-top:.2rem; font-family:‘Noto Sans KR’,sans-serif; }
+.wh-word { font-family:'Bebas Neue',sans-serif; font-size:1.6rem; letter-spacing:.1em; }
+.wh-kr { font-size:.65rem; color:var(--text3); margin-top:.2rem; font-family:'Noto Sans KR',sans-serif; }
 .feedback-box { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:1rem 1.25rem; margin-top:1rem; font-size:.82rem; line-height:1.7; display:none; }
 .feedback-box.show { display:block; animation:fadeIn .3s ease; }
 .feedback-correct { border-color:var(--success); color:var(--success); }
@@ -174,28 +174,28 @@ text-align:left;
 }
 .choice-btn:hover { border-color:var(--accent2); transform:translateX(4px); }
 .choice-btn.chosen { border-color:var(--accent2); background:rgba(56,189,248,.08); pointer-events:none; }
-.choice-letter { font-family:‘Bebas Neue’,sans-serif; font-size:1.5rem; color:var(--text3); min-width:28px; }
+.choice-letter { font-family:'Bebas Neue',sans-serif; font-size:1.5rem; color:var(--text3); min-width:28px; }
 .choice-btn:hover .choice-letter, .choice-btn.chosen .choice-letter { color:var(--accent2); }
 .choice-text { flex:1; }
-.choice-main { font-size:.9rem; color:var(--text); font-family:‘Noto Sans KR’,sans-serif; }
-.choice-sub { font-size:.72rem; color:var(--text3); margin-top:.2rem; font-family:‘Space Mono’,monospace; }
+.choice-main { font-size:.9rem; color:var(--text); font-family:'Noto Sans KR',sans-serif; }
+.choice-sub { font-size:.72rem; color:var(--text3); margin-top:.2rem; font-family:'Space Mono',monospace; }
 
 /* STEP 3: 결과 */
 .result-box { text-align:center; padding:2rem; }
 .result-emoji { font-size:4rem; display:block; margin-bottom:1rem; animation:popIn .4s cubic-bezier(.34,1.56,.64,1); }
 @keyframes popIn { from{transform:scale(0)} to{transform:scale(1)} }
-.result-title { font-family:‘Bebas Neue’,sans-serif; font-size:2rem; letter-spacing:.1em; margin-bottom:.5rem; }
-.result-coin { font-family:‘Bebas Neue’,sans-serif; font-size:3rem; margin:.75rem 0; }
+.result-title { font-family:'Bebas Neue',sans-serif; font-size:2rem; letter-spacing:.1em; margin-bottom:.5rem; }
+.result-coin { font-family:'Bebas Neue',sans-serif; font-size:3rem; margin:.75rem 0; }
 .result-coin.positive { color:var(--success); }
 .result-coin.negative { color:var(--danger); }
 .result-coin.neutral { color:var(--text2); }
-.result-desc { font-size:.82rem; color:var(--text2); line-height:1.7; font-family:‘Noto Sans KR’,sans-serif; margin-bottom:1.5rem; }
+.result-desc { font-size:.82rem; color:var(--text2); line-height:1.7; font-family:'Noto Sans KR',sans-serif; margin-bottom:1.5rem; }
 .result-item { display:inline-block; background:rgba(249,115,22,.1); border:1px solid rgba(249,115,22,.3); border-radius:6px; padding:.4rem 1rem; font-size:.8rem; color:var(--accent); margin-bottom:1.5rem; }
 
 /* TEAM SELECTOR */
 .team-selector { background:var(--surface); border-bottom:1px solid var(--border); padding:.75rem 1.5rem; display:flex; align-items:center; gap:.75rem; flex-wrap:wrap; position:sticky; top:0; z-index:50; }
 .ts-label { font-size:.65rem; color:var(--text3); letter-spacing:.1em; text-transform:uppercase; }
-.ts-btn { background:var(--bg); border:1px solid var(--border); border-radius:4px; padding:.3rem .7rem; font-size:.72rem; font-family:‘Space Mono’,monospace; color:var(--text3); cursor:pointer; transition:all .2s; }
+.ts-btn { background:var(--bg); border:1px solid var(--border); border-radius:4px; padding:.3rem .7rem; font-size:.72rem; font-family:'Space Mono',monospace; color:var(--text3); cursor:pointer; transition:all .2s; }
 .ts-btn:hover { border-color:var(--text3); color:var(--text); }
 .ts-btn.active { border-color:var(--btn-color,var(--accent)); color:var(--btn-color,var(--accent)); background:rgba(255,255,255,.03); }
 
@@ -210,7 +210,7 @@ background:rgba(249,115,22,.12);
 border:1px solid rgba(249,115,22,.3);
 border-radius:6px;
 padding:.4rem .8rem;
-font-family:‘Space Mono’,monospace;
+font-family:'Space Mono',monospace;
 font-size:.85rem;
 color:var(--accent);
 cursor:pointer;
@@ -228,7 +228,7 @@ background: var(--bg);
 border: 1px solid var(--border);
 border-radius: 6px;
 padding: .6rem;
-font-family: ‘Bebas Neue’, sans-serif;
+font-family: 'Bebas Neue', sans-serif;
 font-size: 1.2rem;
 color: var(--text3);
 cursor: pointer;
@@ -243,7 +243,7 @@ background: var(--bg);
 border: 1px solid var(--border);
 border-radius: 6px;
 padding: .6rem .4rem;
-font-family: ‘Noto Sans KR’, sans-serif;
+font-family: 'Noto Sans KR', sans-serif;
 font-size: .72rem;
 color: var(--text3);
 cursor: pointer;
@@ -295,7 +295,7 @@ background: rgba(56,189,248,.12);
 border: 1px solid rgba(56,189,248,.3);
 border-radius: 6px;
 padding: .3rem .7rem;
-font-family: ‘Space Mono’, monospace;
+font-family: 'Space Mono', monospace;
 font-size: .8rem;
 color: var(--accent2);
 white-space: nowrap;
@@ -317,7 +317,7 @@ background: var(--surface);
 border: 1px solid var(--border);
 border-radius: 6px;
 padding: .6rem 1rem;
-font-family: ‘Space Mono’, monospace;
+font-family: 'Space Mono', monospace;
 font-size: .85rem;
 color: var(--text);
 outline: none;
@@ -334,7 +334,7 @@ font-size: .78rem;
 color: var(--text3);
 margin-bottom: .5rem;
 }
-.moon-score-val { font-family: ‘Bebas Neue’, sans-serif; font-size: 1.2rem; }
+.moon-score-val { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; }
 .moon-score-val.accent { color: var(--accent2); }
 .moon-score-val.danger { color: var(--danger); }
 
@@ -350,11 +350,11 @@ transition: all .25s;
 .m4-question.m4-correct { border-color: var(--success); background: rgba(34,197,94,.06); }
 .m4-question.m4-wrong { border-color: var(--danger); background: rgba(239,68,68,.06); }
 .m4-sentence { font-size: .9rem; color: var(--text); margin-bottom: .6rem; line-height: 1.6; }
-.m4-result { font-size: .78rem; color: var(--text2); font-family: ‘Noto Sans KR’, sans-serif; }
+.m4-result { font-size: .78rem; color: var(--text2); font-family: 'Noto Sans KR', sans-serif; }
 .m4-btns { display: flex; gap: .5rem; }
 .m4-ox-btn {
 border: none; border-radius: 6px; padding: .4rem 1.2rem;
-font-family: ‘Space Mono’, monospace; font-size: .8rem;
+font-family: 'Space Mono', monospace; font-size: .8rem;
 cursor: pointer; transition: all .2s;
 }
 .m4-o { background: rgba(34,197,94,.15); color: var(--success); border: 1px solid rgba(34,197,94,.3); }
@@ -372,7 +372,7 @@ background: rgba(10,14,26,.85);
 border: 1px solid rgba(249,115,22,.35);
 border-radius: 6px;
 padding: .35rem .75rem;
-font-family: ‘Bebas Neue’, sans-serif;
+font-family: 'Bebas Neue', sans-serif;
 font-size: 1.1rem;
 color: var(--accent);
 backdrop-filter: blur(8px);
@@ -401,7 +401,7 @@ padding: .35rem .75rem;
 font-size: .75rem;
 color: var(--text3);
 backdrop-filter: blur(8px);
-font-family: ‘Space Mono’, monospace;
+font-family: 'Space Mono', monospace;
 }
 
 </style>
@@ -410,13 +410,13 @@ font-family: ‘Space Mono’, monospace;
   import { getDatabase, ref, set, get, onValue, update, remove } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
 const firebaseConfig = {
-apiKey: “AIzaSyABfoRLNzMaW3X4-XVgQgO4T_rGSgJmrNc”,
-authDomain: “sos-survival.firebaseapp.com”,
-databaseURL: “https://sos-survival-default-rtdb.firebaseio.com”,
-projectId: “sos-survival”,
-storageBucket: “sos-survival.firebasestorage.app”,
-messagingSenderId: “248764760707”,
-appId: “1:248764760707:web:2cfd7f06c6ced0db4e11b6”
+apiKey: "AIzaSyABfoRLNzMaW3X4-XVgQgO4T_rGSgJmrNc",
+authDomain: "sos-survival.firebaseapp.com",
+databaseURL: "https://sos-survival-default-rtdb.firebaseio.com",
+projectId: "sos-survival",
+storageBucket: "sos-survival.firebasestorage.app",
+messagingSenderId: "248764760707",
+appId: "1:248764760707:web:2cfd7f06c6ced0db4e11b6"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -433,7 +433,7 @@ window.firebaseRemove = remove;
 window.firebaseReady = true;
 
 // Firebase 준비 완료 이벤트
-window.dispatchEvent(new Event(‘firebaseReady’));
+window.dispatchEvent(new Event('firebaseReady'));
 </script>
 
 </head>
@@ -2985,7 +2985,6 @@ function renderMission7(teamNum) {
         onblur="this.style.borderColor='var(--border)'"
       >${state.m7text && state.m7text[ti] ? state.m7text[ti] : ''}</textarea>
 
-```
   <div style="display:flex;gap:.75rem;align-items:center;margin-top:.75rem;">
     <div style="flex:1;font-size:.7rem;color:var(--text3);font-family:'Noto Sans KR',sans-serif;">모둠 전체 발표 완료 후 제출하세요!</div>
     <button class="btn btn-primary" onclick="m7Submit(${ti})">제출 →</button>
@@ -3001,7 +3000,6 @@ function renderMission7(teamNum) {
 <div class="step ${step===3?'active':''}" id="m7result-${ti}">
   <div id="m7resultContent-${ti}"></div>
 </div>
-```
 
 `;
 
@@ -3010,7 +3008,7 @@ if(step===3 && state.m7result && state.m7result[ti]) setTimeout(()=>m7RenderFina
 
 // textarea 저장
 setTimeout(()=>{
-const ta = document.getElementById(‘m7text-’+ti);
+const ta = document.getElementById('m7text-'+ti);
 if(ta) ta.oninput = () => {
 state.m7text = state.m7text || {};
 state.m7text[ti] = ta.value;
@@ -3019,29 +3017,29 @@ state.m7text[ti] = ta.value;
 }
 
 function m7Submit(ti) {
-const ta = document.getElementById(‘m7text-’+ti);
-const text = ta ? ta.value.trim() : ‘’;
+const ta = document.getElementById('m7text-'+ti);
+const text = ta ? ta.value.trim() : '';
 if(!text) {
-ta.style.borderColor = ‘var(--danger)’;
+ta.style.borderColor = 'var(--danger)';
 return;
 }
 state.m7text = state.m7text || {};
 state.m7text[ti] = text;
-state.missionStep[‘m7_’+ti] = 2;
+state.missionStep['m7_'+ti] = 2;
 renderMission7(ti+1);
 setTimeout(()=>m7RenderScoring(ti), 50);
 }
 
 function m7RenderScoring(ti) {
-const sc = document.getElementById(‘m7scoring-’+ti);
+const sc = document.getElementById('m7scoring-'+ti);
 if(!sc) return;
 const m7 = MISSION7_DATA[ti];
-const text = (state.m7text && state.m7text[ti]) || ‘’;
+const text = (state.m7text && state.m7text[ti]) || '';
 
 // 자동 체크
 const hasItImportant = /it is important to/i.test(text);
 const hasMakeSure = /(make sure to|made sure to)/i.test(text);
-const whPatterns = [‘what to’,‘where to’,‘how to’,‘who to’,‘when to’,‘which way to’,‘how long to’];
+const whPatterns = ['what to','where to','how to','who to','when to','which way to','how long to'];
 const lowerText = text.toLowerCase();
 // 각 패턴의 실제 등장 횟수 합산 (중복 위치 카운트)
 let whCount = 0;
@@ -3056,28 +3054,28 @@ if(!overlap) { whCount++; usedPositions.add(pos); }
 pos += w.length;
 }
 });
-const isEnglish = /[a-zA-Z]/.test(text) && text.replace(/[^a-zA-Z\s]/g,’’).length > text.replace(/[^가-힣\s]/g,’’).length;
+const isEnglish = /[a-zA-Z]/.test(text) && text.replace(/[^a-zA-Z\s]/g,'').length > text.replace(/[^가-힣\s]/g,'').length;
 
 sc.innerHTML = `<div style="margin-bottom:1.25rem;"> <div style="font-size:.72rem;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem;">📝 작성한 안내문</div> <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;font-size:.82rem;color:var(--text);line-height:1.8;white-space:pre-wrap;font-family:'Noto Sans KR',sans-serif;">${text}</div> </div> <div style="font-size:.72rem;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem;">✅ 자동 체크</div> <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:1.25rem;"> ${m7CheckItem('it is important to 포함', hasItImportant)} ${m7CheckItem('make sure to / made sure to 포함', hasMakeSure)} ${m7CheckItem('의문사+to부정사 3개 이상', whCount>=3, whCount+'개 발견')} ${m7CheckItem('영어로 작성', isEnglish, isEnglish?'보너스 적용!':'한국어 → 보너스 없음')} </div> <div style="font-size:.72rem;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem;">👩‍🏫 선생님 채점</div> <div style="background:var(--surface);border-radius:8px;padding:1rem;margin-bottom:1rem;font-family:'Noto Sans KR',sans-serif;font-size:.82rem;color:var(--text2);line-height:1.8;"> <strong style="color:${MISSION7_DATA[ti].island==='volcano'?ISLANDS[0].color:ISLANDS[ti].color};">필수 내용 (${MISSION7_DATA[ti].warning} ${MISSION7_DATA[ti].keyKr} 안내)</strong>가 포함됐나요?<br> 모둠 대표가 발화까지 완료했나요? </div> <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem;margin-bottom:1rem;"> <button class="btn btn-primary" onclick="m7Score(${ti},'perfect')" style="background:var(--success);font-size:.8rem;padding:.6rem .5rem;">✅ 필수내용 포함<br>+ 발화 성공</button> <button class="btn btn-primary" onclick="m7Score(${ti},'partial')" style="background:var(--accent);font-size:.8rem;padding:.6rem .5rem;">⚡ 필수내용 포함<br>발화 미완성</button> <button class="btn btn-primary" onclick="m7Score(${ti},'miss')" style="background:var(--danger);font-size:.8rem;padding:.6rem .5rem;">❌ 필수내용<br>미포함</button> </div> <button class="btn-ghost" onclick="m7Edit(${ti})" style="width:100%;font-size:.72rem;">✏️ 다시 작성하기</button>`;
 }
 
 function m7CheckItem(label, passed, note) {
-return ‘<div style="background:var(--surface);border:1px solid '+(passed?'var(--success)':'var(--border)')+';border-radius:6px;padding:.5rem .75rem;">’
-+’<div style="font-size:.65rem;color:'+(passed?'var(--success)':'var(--text3)')+';">’+(passed?‘✅ ‘:‘❌ ‘)+label+’</div>’
-+(note?’<div style="font-size:.62rem;color:var(--text3);margin-top:.15rem;">’+note+’</div>’:’’)
-+’</div>’;
+return '<div style="background:var(--surface);border:1px solid '+(passed?'var(--success)':'var(--border)')+';border-radius:6px;padding:.5rem .75rem;">'
++'<div style="font-size:.65rem;color:'+(passed?'var(--success)':'var(--text3)')+';">'+(passed?'✅ ':'❌ ')+label+'</div>'
++(note?'<div style="font-size:.62rem;color:var(--text3);margin-top:.15rem;">'+note+'</div>':'')
++'</div>';
 }
 
 function m7Edit(ti) {
-state.missionStep[‘m7_’+ti] = 1;
+state.missionStep['m7_'+ti] = 1;
 renderMission7(ti+1);
 }
 
 function m7Score(ti, grade) {
-const text = (state.m7text && state.m7text[ti]) || ‘’;
-const isEnglish = /[a-zA-Z]/.test(text) && text.replace(/[^a-zA-Z\s]/g,’’).length > text.replace(/[^가-힣\s]/g,’’).length;
+const text = (state.m7text && state.m7text[ti]) || '';
+const isEnglish = /[a-zA-Z]/.test(text) && text.replace(/[^a-zA-Z\s]/g,'').length > text.replace(/[^가-힣\s]/g,'').length;
 const hasGrammarError = /[가-힣]/.test(text) && isEnglish;
-const whWords = [‘what to’,‘where to’,‘how to’,‘who to’,‘when to’,‘which way to’,‘how long to’];
+const whWords = ['what to','where to','how to','who to','when to','which way to','how long to'];
 const whCount = whWords.filter(w => text.toLowerCase().includes(w)).length;
 const hasItImportant = /it is important to/i.test(text);
 const hasMakeSure = /(make sure to|made sure to)/i.test(text);
@@ -3085,31 +3083,31 @@ const hasMakeSure = /(make sure to|made sure to)/i.test(text);
 let coins = 0;
 let breakdown = [];
 
-if(grade===‘perfect’) {
-coins += 2; breakdown.push(‘필수 내용 포함 +2’);
-coins += 1; breakdown.push(‘발화 성공 +1’);
-} else if(grade===‘partial’) {
-coins += 2; breakdown.push(‘필수 내용 포함 +2’);
+if(grade==='perfect') {
+coins += 2; breakdown.push('필수 내용 포함 +2');
+coins += 1; breakdown.push('발화 성공 +1');
+} else if(grade==='partial') {
+coins += 2; breakdown.push('필수 내용 포함 +2');
 } else {
-breakdown.push(‘필수 내용 미포함 +0’);
+breakdown.push('필수 내용 미포함 +0');
 }
 
-if(whCount>=3) { coins+=2; breakdown.push(‘의문사+to부정사 3개↑ +2’); }
-else if(whCount>=1) { coins+=1; breakdown.push(’의문사+to부정사 ’+whCount+‘개 +1’); }
+if(whCount>=3) { coins+=2; breakdown.push('의문사+to부정사 3개↑ +2'); }
+else if(whCount>=1) { coins+=1; breakdown.push('의문사+to부정사 '+whCount+'개 +1'); }
 
-if(hasItImportant) { coins+=1; breakdown.push(‘it is important to +1’); }
-if(hasMakeSure) { coins+=1; breakdown.push(‘make sure to +1’); }
+if(hasItImportant) { coins+=1; breakdown.push('it is important to +1'); }
+if(hasMakeSure) { coins+=1; breakdown.push('make sure to +1'); }
 
-if(isEnglish && grade!==‘miss’) {
-coins+=2; breakdown.push(‘영어 문법 오류 없음 +2’);
+if(isEnglish && grade!=='miss') {
+coins+=2; breakdown.push('영어 문법 오류 없음 +2');
 } else if(!isEnglish) {
-breakdown.push(‘한국어 작성 +0’);
+breakdown.push('한국어 작성 +0');
 }
 
 state.coins[ti] += coins;
 state.m7result = state.m7result || {};
 state.m7result[ti] = { coins, breakdown, grade };
-state.missionStep[‘m7_’+ti] = 3;
+state.missionStep['m7_'+ti] = 3;
 // 미션7 완료 기록
 state.completedMission = state.completedMission || [0,0,0,0,0,0];
 state.completedMission[ti] = Math.max(state.completedMission[ti] || 0, 8);
@@ -3122,17 +3120,17 @@ setTimeout(()=>m7RenderFinalResult(ti, { coins, breakdown, grade }), 50);
 }
 
 function m7RenderFinalResult(ti, result) {
-const rc = document.getElementById(‘m7resultContent-’+ti);
+const rc = document.getElementById('m7resultContent-'+ti);
 if(!rc) return;
 const { coins, breakdown, grade } = result;
-const emoji = grade===‘perfect’?‘🎉’:grade===‘partial’?‘😮’:coins>0?‘👍’:‘😢’;
-const title = grade===‘perfect’?‘RESCUE COMPLETE!’:grade===‘partial’?‘SIGNAL SENT!’:coins>0?‘TRIED HARD!’:‘KEEP GOING!’;
+const emoji = grade==='perfect'?'🎉':grade==='partial'?'😮':coins>0?'👍':'😢';
+const title = grade==='perfect'?'RESCUE COMPLETE!':grade==='partial'?'SIGNAL SENT!':coins>0?'TRIED HARD!':'KEEP GOING!';
 
 rc.innerHTML = `<div class="result-box"> <span class="result-emoji">${emoji}</span> <div class="result-title">${title}</div> <div class="result-coin positive">+${coins} 🪙</div> <div style="background:var(--surface);border-radius:8px;padding:1rem;margin:1rem 0;text-align:left;"> <div style="font-size:.68rem;color:var(--text3);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.1em;">📊 점수 내역</div> ${breakdown.map(b=>'<div style="font-size:.75rem;color:var(--text2);padding:.2rem 0;font-family:Noto Sans KR,sans-serif;">• '+b+'</div>').join('')} </div> <div style="background:var(--surface);border-radius:8px;padding:1rem;margin:.5rem 0;text-align:left;"> <div style="font-size:.68rem;color:var(--text3);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.1em;">작성한 안내문</div> <div style="font-size:.78rem;color:var(--text2);line-height:1.8;white-space:pre-wrap;font-family:Noto Sans KR,sans-serif;">${(state.m7text&&state.m7text[ti])||''}</div> </div> <div style="display:flex;gap:.75rem;justify-content:center;margin-top:1.25rem;"> <button class="btn-ghost" onclick="showScreen('lobby')">← 로비로</button> <button class="btn btn-primary" onclick="m7ShowFinal()">🏆 최종 결과 보기</button> </div> </div>`;
 }
 
 function m7ShowFinal() {
-const main = document.getElementById(‘missionMain’);
+const main = document.getElementById('missionMain');
 if(!main) return;
 
 // 모든 팀 미션 7 완료 체크
@@ -3150,19 +3148,19 @@ main.innerHTML = `<div class="mission-header"> <div class="mission-num">🏆 GAM
 }
 
 // ══ FIREBASE SYNC ══
-let myRole = null;   // ‘teacher’ | ‘volcano’ | ‘arctic’ | …
+let myRole = null;   // 'teacher' | 'volcano' | 'arctic' | …
 let myRoom = null;   // 1~4
 let fbUnsubscribes = [];
 
 const ROLE_TO_TEAM = { volcano:1, arctic:2, jungle:3, desert:4, ocean:5, dino:6 };
-const TEAM_TO_ROLE = [‘volcano’,‘arctic’,‘jungle’,‘desert’,‘ocean’,‘dino’];
+const TEAM_TO_ROLE = ['volcano','arctic','jungle','desert','ocean','dino'];
 
 // ── 로그인 UI ──
 function updateSelectionVisuals() {
-document.querySelectorAll(‘.room-btn’).forEach(b => b.classList.remove(‘selected’));
-if(myRoom) { const b = document.getElementById(‘roomBtn-’+myRoom); if(b) b.classList.add(‘selected’); }
-document.querySelectorAll(‘.role-btn’).forEach(b => b.classList.remove(‘selected’));
-if(myRole) { const b = document.getElementById(‘roleBtn-’+myRole); if(b) b.classList.add(‘selected’); }
+document.querySelectorAll('.room-btn').forEach(b => b.classList.remove('selected'));
+if(myRoom) { const b = document.getElementById('roomBtn-'+myRoom); if(b) b.classList.add('selected'); }
+document.querySelectorAll('.role-btn').forEach(b => b.classList.remove('selected'));
+if(myRole) { const b = document.getElementById('roleBtn-'+myRole); if(b) b.classList.add('selected'); }
 }
 
 function selectRoom(n) {
@@ -3178,43 +3176,43 @@ updateLoginBtn();
 }
 
 function updateLoginBtn() {
-const btn = document.getElementById(‘loginBtn’);
-const status = document.getElementById(‘loginStatus’);
+const btn = document.getElementById('loginBtn');
+const status = document.getElementById('loginStatus');
 if(myRoom && myRole) {
-btn.style.opacity=‘1’; btn.style.pointerEvents=‘auto’;
-status.textContent = myRoom+‘반 · ‘+(myRole===‘teacher’?‘👩‍🏫 교사’:‘학생 (’+myRole+’ 섬)’);
-status.style.color = ‘var(--accent2)’;
+btn.style.opacity='1'; btn.style.pointerEvents='auto';
+status.textContent = myRoom+'반 · '+(myRole==='teacher'?'👩‍🏫 교사':'학생 ('+myRole+' 섬)');
+status.style.color = 'var(--accent2)';
 } else {
-btn.style.opacity=‘0.4’; btn.style.pointerEvents=‘none’;
-status.textContent = ‘방 번호와 역할을 모두 선택하세요’;
-status.style.color = ‘var(--text3)’;
+btn.style.opacity='0.4'; btn.style.pointerEvents='none';
+status.textContent = '방 번호와 역할을 모두 선택하세요';
+status.style.color = 'var(--text3)';
 }
 }
 
 async function doLogin() {
 if(!myRoom || !myRole) return;
-const status = document.getElementById(‘loginStatus’);
-status.textContent = ‘🔄 연결 중…’;
+const status = document.getElementById('loginStatus');
+status.textContent = '🔄 연결 중…';
 
 // Firebase 준비 대기 (최대 3초)
 if(!window.firebaseReady) {
 await Promise.race([
-new Promise(r => window.addEventListener(‘firebaseReady’, r, {once:true})),
+new Promise(r => window.addEventListener('firebaseReady', r, {once:true})),
 new Promise(r => setTimeout(r, 3000))
 ]);
 }
 
 const proceed = () => {
-status.textContent = ‘✅ 접속 완료!’;
+status.textContent = '✅ 접속 완료!';
 setTimeout(() => {
-if(myRole === ‘teacher’) {
-showScreen(‘main’);
+if(myRole === 'teacher') {
+showScreen('main');
 renderLobby();
 showTeacherBtn();
 } else {
 const teamNum = ROLE_TO_TEAM[myRole];
-document.querySelectorAll(’.screen’).forEach(s=>s.classList.remove(‘active’));
-document.getElementById(‘screen-mission’).classList.add(‘active’);
+document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+document.getElementById('screen-mission').classList.add('active');
 hideHUD();
 initMission(teamNum, state.teamMission[teamNum-1] || 1);
 }
@@ -3225,7 +3223,7 @@ initMission(teamNum, state.teamMission[teamNum-1] || 1);
 if(window.firebaseReady && window.firebaseDB) {
 try {
 const db = window.firebaseDB;
-const roomRef = window.firebaseRef(db, ‘rooms/room’+myRoom);
+const roomRef = window.firebaseRef(db, 'rooms/room'+myRoom);
 const snap = await window.firebaseGet(roomRef);
 if(!snap.exists()) {
 await window.firebaseSet(roomRef, {
@@ -3238,17 +3236,17 @@ const remoteState = snap.val().state;
 if(remoteState) Object.assign(state, remoteState);
 }
 await window.firebaseUpdate(
-window.firebaseRef(db, ‘rooms/room’+myRoom+’/connectedRoles’),
+window.firebaseRef(db, 'rooms/room'+myRoom+'/connectedRoles'),
 {[myRole]: true}
 );
 fbSubscribe();
-status.textContent = ‘✅ Firebase 연결 완료!’;
+status.textContent = '✅ Firebase 연결 완료!';
 } catch(e) {
-console.warn(‘Firebase error, proceeding offline:’, e);
-status.textContent = ‘⚠️ 오프라인 모드로 진행’;
+console.warn('Firebase error, proceeding offline:', e);
+status.textContent = '⚠️ 오프라인 모드로 진행';
 }
 } else {
-status.textContent = ‘⚠️ 오프라인 모드로 진행’;
+status.textContent = '⚠️ 오프라인 모드로 진행';
 }
 
 proceed();
@@ -3259,7 +3257,7 @@ function fbSubscribe() {
 const db = window.firebaseDB;
 // state 변경 감지
 const unsub = window.firebaseOnValue(
-window.firebaseRef(db, ‘rooms/room’+myRoom+’/state’),
+window.firebaseRef(db, 'rooms/room'+myRoom+'/state'),
 (snap) => {
 if(!snap.exists()) return;
 const remote = snap.val();
@@ -3278,14 +3276,14 @@ refreshCurrentScreen();
 fbUnsubscribes.push(unsub);
 
 // 교사 명령 감지 (학생용)
-if(myRole !== ‘teacher’) {
+if(myRole !== 'teacher') {
 const cmdUnsub = window.firebaseOnValue(
-window.firebaseRef(db, ‘rooms/room’+myRoom+’/teacherCmd’),
+window.firebaseRef(db, 'rooms/room'+myRoom+'/teacherCmd'),
 (snap) => {
 if(!snap.exists()) return;
 const cmd = snap.val();
 if(!cmd || cmd.processed) return;
-if(cmd.target === myRole || cmd.target === ‘all’) {
+if(cmd.target === myRole || cmd.target === 'all') {
 handleTeacherCmd(cmd);
 }
 }
@@ -3302,8 +3300,8 @@ const saveData = JSON.parse(JSON.stringify(state));
 saveData._lastUpdatedBy = myRole;
 saveData._updatedAt = Date.now();
 try {
-await window.firebaseUpdate(window.firebaseRef(db, ‘rooms/room’+myRoom), { state: saveData });
-} catch(e) { console.warn(‘Firebase save failed:’, e); }
+await window.firebaseUpdate(window.firebaseRef(db, 'rooms/room'+myRoom), { state: saveData });
+} catch(e) { console.warn('Firebase save failed:', e); }
 }
 
 // ── 현재 화면 새로고침 ──
@@ -3312,7 +3310,7 @@ const ti = state.currentTeam;
 renderSidebar(ti+1);
 renderTeamSelector(ti+1);
 updateMissionProgress();
-if(myRole === ‘teacher’) { renderLobby(); updateTeacherMonitor(); }
+if(myRole === 'teacher') { renderLobby(); updateTeacherMonitor(); }
 checkGlobalGate();
 if(waitingForMission && canAdvance(waitingForMission.toMission)) {
   const { ti: wti, toMission } = waitingForMission;
@@ -3325,38 +3323,38 @@ if(waitingForMission && canAdvance(waitingForMission.toMission)) {
 
 // ── 교사 명령 처리 ──
 function handleTeacherCmd(cmd) {
-if(cmd.type === ‘gotoMission’) {
+if(cmd.type === 'gotoMission') {
 initMission(ROLE_TO_TEAM[myRole], cmd.missionId);
-} else if(cmd.type === ‘skipMission’) {
+} else if(cmd.type === 'skipMission') {
 const teamNum = ROLE_TO_TEAM[myRole];
 state.teamMission[teamNum-1] = cmd.missionId;
 waitingForMission = null;
 initMission(teamNum, cmd.missionId);
-} else if(cmd.type === ‘forceAllMission’) {
+} else if(cmd.type === 'forceAllMission') {
 for(let i=0;i<6;i++) state.teamMission[i] = cmd.missionId;
 state.globalMission = cmd.missionId;
 state.completedMission = Array(6).fill(cmd.missionId - 1);
 waitingForMission = null;
 const teamNum = ROLE_TO_TEAM[myRole];
 initMission(teamNum, cmd.missionId);
-} else if(cmd.type === ‘resetRoom’) {
+} else if(cmd.type === 'resetRoom') {
 location.reload();
 }
 }
 
 // ── 교사 제어 패널 ──
 function showTeacherPanel() {
-if(myRole !== ‘teacher’) return;
-const existing = document.getElementById(‘teacherPanel’);
-if(existing) { existing.style.display = existing.style.display===’none’?’block’:’none’; if(existing.style.display!==’none’) updateTeacherMonitor(); return; }
+if(myRole !== 'teacher') return;
+const existing = document.getElementById('teacherPanel');
+if(existing) { existing.style.display = existing.style.display==='none'?'block':'none'; if(existing.style.display!=='none') updateTeacherMonitor(); return; }
 
-const div = document.createElement(‘div’);
-div.id = ‘teacherPanel’;
-div.style.cssText = ‘position:fixed;bottom:1rem;right:1rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;z-index:200;width:380px;max-height:90vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,.5);’;
+const div = document.createElement('div');
+div.id = 'teacherPanel';
+div.style.cssText = 'position:fixed;bottom:1rem;right:1rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;z-index:200;width:380px;max-height:90vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,.5);';
 div.innerHTML = `
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;">
-    <div style="font-family:’Bebas Neue’,sans-serif;font-size:1rem;letter-spacing:.1em;color:var(--accent);">👩‍🏫 교사 제어 패널</div>
-    <button onclick="document.getElementById(‘teacherPanel’).style.display=’none’" style="background:transparent;border:none;color:var(--text3);cursor:pointer;font-size:1rem;line-height:1;">✕</button>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.1em;color:var(--accent);">👩‍🏫 교사 제어 패널</div>
+    <button onclick="document.getElementById('teacherPanel').style.display='none'" style="background:transparent;border:none;color:var(--text3);cursor:pointer;font-size:1rem;line-height:1;">✕</button>
   </div>
 
   <div style="font-size:.65rem;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem;">📊 실시간 모둠 현황</div>
@@ -3365,9 +3363,9 @@ div.innerHTML = `
   <div style="font-size:.65rem;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem;">🚀 전체 모둠 강제 이동</div>
   <div style="display:flex;gap:.4rem;margin-bottom:.75rem;align-items:center;">
     <select id="forceAllSelect" style="flex:1;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:.35rem;font-size:.72rem;color:var(--text);">
-      ${[1,2,3,4,5,6,7,8].map(m=>`<option value="${m}">미션 ${m}</option>`).join(‘’)}
+      ${[1,2,3,4,5,6,7,8].map(m=>`<option value="${m}">미션 ${m}</option>`).join('')}
     </select>
-    <button onclick="teacherForceAll(parseInt(document.getElementById(‘forceAllSelect’).value))"
+    <button onclick="teacherForceAll(parseInt(document.getElementById('forceAllSelect').value))"
       style="background:var(--accent);border:none;border-radius:4px;padding:.35rem .85rem;font-size:.72rem;color:#fff;cursor:pointer;white-space:nowrap;">
       전체 이동 →
     </button>
@@ -3377,15 +3375,15 @@ div.innerHTML = `
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:.35rem;margin-bottom:.35rem;">
     ${TEAM_TO_ROLE.map((role,i)=>`
     <select id="skipSelect-${i}" style="background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:.3rem;font-size:.7rem;color:var(--text);">
-      ${[1,2,3,4,5,6,7,8].map(m=>`<option value="${m}" ${state.teamMission[i]===m?’selected’:’’}>미션${m}</option>`).join(‘’)}
-    </select>`).join(‘’)}
+      ${[1,2,3,4,5,6,7,8].map(m=>`<option value="${m}" ${state.teamMission[i]===m?'selected':''}>미션${m}</option>`).join('')}
+    </select>`).join('')}
   </div>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:.35rem;margin-bottom:.75rem;">
     ${TEAM_TO_ROLE.map((role,i)=>`
     <button onclick="teacherSkip(${i})"
       style="background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:.3rem .5rem;font-size:.68rem;color:var(--text2);cursor:pointer;">
       ${ISLANDS[i].emoji} ${i+1}모둠 스킵
-    </button>`).join(‘’)}
+    </button>`).join('')}
   </div>
 
   <div style="display:flex;gap:.4rem;">
@@ -3397,9 +3395,9 @@ updateTeacherMonitor();
 }
 
 function updateTeacherMonitor() {
-const panel = document.getElementById(‘teacherMonitor’);
+const panel = document.getElementById('teacherMonitor');
 if(!panel) return;
-const MN = {0:’시작전’,1:’위치파악’,2:’거주지’,3:’식량’,4:’동료’,5:’달기지’,6:’위기’,7:’신호’,8:’탈출’};
+const MN = {0:'시작전',1:'위치파악',2:'거주지',3:'식량',4:'동료',5:'달기지',6:'위기',7:'신호',8:'탈출'};
 panel.innerHTML = ISLANDS.map((isl, i) => {
   const mission = state.teamMission[i] || 1;
   const completed = (state.completedMission || [])[i] || 0;
@@ -3407,16 +3405,16 @@ panel.innerHTML = ISLANDS.map((isl, i) => {
   const isDone = completed >= mission;
   const isWaiting = isDone && mission < (state.globalMission || 1);
   return `
-    <div style="background:var(--bg);border:2px solid ${isDone?isl.color:’rgba(255,255,255,.08)’};border-radius:6px;padding:.5rem;text-align:center;">
+    <div style="background:var(--bg);border:2px solid ${isDone?isl.color:'rgba(255,255,255,.08)'};border-radius:6px;padding:.5rem;text-align:center;">
       <div style="font-size:1.1rem;">${isl.emoji}</div>
-      <div style="font-family:’Bebas Neue’,sans-serif;font-size:.78rem;color:${isl.color};">${i+1}모둠</div>
-      <div style="font-size:.58rem;color:var(--text3);margin:.1rem 0;">${MN[mission]||’?’}</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:.78rem;color:${isl.color};">${i+1}모둠</div>
+      <div style="font-size:.58rem;color:var(--text3);margin:.1rem 0;">${MN[mission]||'?'}</div>
       <div style="font-size:.65rem;color:var(--accent);">🪙 ${coins}</div>
-      <div style="font-size:.58rem;color:${isDone?’var(--success)’:isWaiting?’var(--accent)’:’var(--accent2)’};margin-top:.1rem;">
-        ${isDone?’✅ 완료’:isWaiting?’⏸️ 대기’:’⏳ 진행중’}
+      <div style="font-size:.58rem;color:${isDone?'var(--success)':isWaiting?'var(--accent)':'var(--accent2)'};margin-top:.1rem;">
+        ${isDone?'✅ 완료':isWaiting?'⏸️ 대기':'⏳ 진행중'}
       </div>
     </div>`;
-}).join(‘’);
+}).join('');
 }
 
 async function teacherForceAll(missionId) {
@@ -3428,17 +3426,17 @@ state.completedMission = Array(6).fill(missionId - 1);
 await fbSaveState();
 if(window.firebaseReady) {
   await window.firebaseSet(
-    window.firebaseRef(window.firebaseDB, ‘rooms/room’+myRoom+’/teacherCmd’),
-    { type:’forceAllMission’, missionId, target:’all’, ts:Date.now(), processed:false }
+    window.firebaseRef(window.firebaseDB, 'rooms/room'+myRoom+'/teacherCmd'),
+    { type:'forceAllMission', missionId, target:'all', ts:Date.now(), processed:false }
   );
 }
 renderLobby();
 updateTeacherMonitor();
-alert(‘모든 모둠을 미션 ‘ + missionId + ‘로 이동했어요!’);
+alert('모든 모둠을 미션 ' + missionId + '로 이동했어요!');
 }
 
 async function teacherSkip(ti) {
-const sel = document.getElementById(‘skipSelect-’+ti);
+const sel = document.getElementById('skipSelect-'+ti);
 if(!sel) return;
 const missionId = parseInt(sel.value);
 const role = TEAM_TO_ROLE[ti];
@@ -3451,43 +3449,43 @@ await fbSaveState();
 // 해당 팀에게 명령 전송
 if(window.firebaseReady) {
 await window.firebaseSet(
-window.firebaseRef(window.firebaseDB, ‘rooms/room’+myRoom+’/teacherCmd’),
-{ type:’skipMission’, target:role, missionId, ts:Date.now(), processed:false }
+window.firebaseRef(window.firebaseDB, 'rooms/room'+myRoom+'/teacherCmd'),
+{ type:'skipMission', target:role, missionId, ts:Date.now(), processed:false }
 );
 }
 renderLobby();
 updateTeacherMonitor();
-alert(ISLANDS[ti].name + ‘ → 미션’+missionId+’로 스킵!’);
+alert(ISLANDS[ti].name + ' → 미션'+missionId+'로 스킵!');
 }
 
 async function teacherSyncNow() {
 await fbSaveState();
-alert(‘동기화 완료!’);
+alert('동기화 완료!');
 }
 
 async function teacherResetRoom() {
-if(!confirm(‘방 데이터를 초기화할까요? 모든 진행 상황이 사라져요.’)) return;
+if(!confirm('방 데이터를 초기화할까요? 모든 진행 상황이 사라져요.')) return;
 if(window.firebaseReady) {
-await window.firebaseRemove(window.firebaseRef(window.firebaseDB, ‘rooms/room’+myRoom));
+await window.firebaseRemove(window.firebaseRef(window.firebaseDB, 'rooms/room'+myRoom));
 }
 location.reload();
 }
 
 // ── 학생 역할일 때 다른 팀 제어 비활성화
 function isMyTeam(teamNum) {
-if(myRole === ‘teacher’) return true;
+if(myRole === 'teacher') return true;
 if(!myRole) return true;
 return ROLE_TO_TEAM[myRole] === teamNum;
 }
 
 function showTeacherBtn() {
-if(myRole !== ‘teacher’) return;
-if(document.getElementById(‘teacherFloatBtn’)) return;
-const btn = document.createElement(‘button’);
-btn.id = ‘teacherFloatBtn’;
-btn.textContent = ‘👩‍🏫’;
-btn.title = ‘교사 제어 패널’;
-btn.style.cssText = ‘position:fixed;bottom:1rem;left:1rem;z-index:200;background:var(--accent);color:#fff;border:none;border-radius:50%;width:44px;height:44px;font-size:1.2rem;cursor:pointer;box-shadow:0 4px 12px rgba(249,115,22,.4);’;
+if(myRole !== 'teacher') return;
+if(document.getElementById('teacherFloatBtn')) return;
+const btn = document.createElement('button');
+btn.id = 'teacherFloatBtn';
+btn.textContent = '👩‍🏫';
+btn.title = '교사 제어 패널';
+btn.style.cssText = 'position:fixed;bottom:1rem;left:1rem;z-index:200;background:var(--accent);color:#fff;border:none;border-radius:50%;width:44px;height:44px;font-size:1.2rem;cursor:pointer;box-shadow:0 4px 12px rgba(249,115,22,.4);';
 btn.onclick = showTeacherPanel;
 document.body.appendChild(btn);
 }
@@ -3496,14 +3494,14 @@ document.body.appendChild(btn);
 // URL에 ?teacher=sos2024 있으면 교사 로그인 버튼 표시
 (function() {
 const params = new URLSearchParams(window.location.search);
-if(params.get(‘teacher’) === ‘sos2024’) {
-const box = document.getElementById(‘teacherLoginBox’);
-if(box) box.style.display = ‘block’;
+if(params.get('teacher') === 'sos2024') {
+const box = document.getElementById('teacherLoginBox');
+if(box) box.style.display = 'block';
 }
 })();
 renderFloatBg();
-document.querySelectorAll(’.screen’).forEach(s => s.classList.remove(‘active’));
-document.getElementById(‘screen-login’).classList.add(‘active’);
+document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+document.getElementById('screen-login').classList.add('active');
 </script>
 
 </body>
