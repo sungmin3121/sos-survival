@@ -3148,7 +3148,13 @@ const { coins, breakdown, grade } = result;
 const emoji = grade==='perfect'?'🎉':grade==='partial'?'😮':coins>0?'👍':'😢';
 const title = grade==='perfect'?'RESCUE COMPLETE!':grade==='partial'?'SIGNAL SENT!':coins>0?'TRIED HARD!':'KEEP GOING!';
 
-rc.innerHTML = `<div class="result-box"> <span class="result-emoji">${emoji}</span> <div class="result-title">${title}</div> <div class="result-coin positive">+${coins} 🪙</div> <div style="background:var(--surface);border-radius:8px;padding:1rem;margin:1rem 0;text-align:left;"> <div style="font-size:.68rem;color:var(--text3);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.1em;">📊 점수 내역</div> ${breakdown.map(b=>'<div style="font-size:.75rem;color:var(--text2);padding:.2rem 0;font-family:Noto Sans KR,sans-serif;">• '+b+'</div>').join('')} </div> <div style="background:var(--surface);border-radius:8px;padding:1rem;margin:.5rem 0;text-align:left;"> <div style="font-size:.68rem;color:var(--text3);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.1em;">작성한 안내문</div> <div style="font-size:.78rem;color:var(--text2);line-height:1.8;white-space:pre-wrap;font-family:Noto Sans KR,sans-serif;">${(state.m7text&&state.m7text[ti])||''}</div> </div> <div style="display:flex;gap:.75rem;justify-content:center;margin-top:1.25rem;"> <button class="btn-ghost" onclick="showScreen('lobby')">← 로비로</button> <button class="btn btn-primary" onclick="m7ShowFinal()">🏆 최종 결과 보기</button> </div> </div>`;
+const allDone = state.teamMission.every(m => m >= 8);
+const doneCount = state.teamMission.filter(m => m >= 8).length;
+const finalBtnHtml = allDone
+  ? '<button class="btn btn-primary" onclick="m7ShowFinal()">🏆 최종 결과 보기</button>'
+  : `<div style="background:rgba(56,189,248,.07);border:1px solid rgba(56,189,248,.2);border-radius:8px;padding:.55rem .9rem;font-size:.75rem;color:var(--text3);font-family:'Noto Sans KR',sans-serif;">⏳ ${doneCount}/6 완료 — 모든 모둠이 끝나면 결과가 나타나요</div>`;
+
+rc.innerHTML = `<div class="result-box"> <span class="result-emoji">${emoji}</span> <div class="result-title">${title}</div> <div class="result-coin positive">+${coins} 🪙</div> <div style="background:var(--surface);border-radius:8px;padding:1rem;margin:1rem 0;text-align:left;"> <div style="font-size:.68rem;color:var(--text3);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.1em;">📊 점수 내역</div> ${breakdown.map(b=>'<div style="font-size:.75rem;color:var(--text2);padding:.2rem 0;font-family:Noto Sans KR,sans-serif;">• '+b+'</div>').join('')} </div> <div style="background:var(--surface);border-radius:8px;padding:1rem;margin:.5rem 0;text-align:left;"> <div style="font-size:.68rem;color:var(--text3);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.1em;">작성한 안내문</div> <div style="font-size:.78rem;color:var(--text2);line-height:1.8;white-space:pre-wrap;font-family:Noto Sans KR,sans-serif;">${(state.m7text&&state.m7text[ti])||''}</div> </div> <div style="display:flex;gap:.75rem;justify-content:center;margin-top:1.25rem;"> <button class="btn-ghost" onclick="showScreen('lobby')">← 로비로</button> ${finalBtnHtml} </div> </div>`;
 }
 
 function m7ShowFinal() {
@@ -3694,7 +3700,7 @@ function showM7Review() {
     const result = (state.m7result && state.m7result[ti]) || null;
     const grade = result ? result.grade : null;
     const coins = result ? result.coins : null;
-    const breakdown = result ? (result.breakdown || '') : '';
+    const breakdown = result ? (result.breakdown || []) : [];
 
     const gradeHtml = grade
       ? `<span style="background:${GRADE_COLOR[grade]}22;border:1px solid ${GRADE_COLOR[grade]}66;border-radius:10px;padding:.15rem .6rem;font-size:.68rem;color:${GRADE_COLOR[grade]};white-space:nowrap;">${GRADE_LABEL[grade]||grade}</span>`
@@ -3708,8 +3714,8 @@ function showM7Review() {
       ? `<div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:6px;padding:.75rem;font-size:.78rem;color:var(--text);line-height:1.8;white-space:pre-wrap;font-family:'Noto Sans KR',sans-serif;max-height:160px;overflow-y:auto;">${text.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>`
       : '<div style="background:rgba(255,255,255,.03);border:1px dashed rgba(255,255,255,.1);border-radius:6px;padding:.75rem;font-size:.78rem;color:var(--text3);text-align:center;">미제출</div>';
 
-    const breakdownHtml = breakdown
-      ? `<div style="font-size:.65rem;color:var(--text3);margin-top:.4rem;line-height:1.6;">${breakdown.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>`
+    const breakdownHtml = breakdown.length
+      ? `<div style="font-size:.65rem;color:var(--text3);margin-top:.4rem;line-height:1.6;">${breakdown.map(b=>String(b).replace(/</g,'&lt;').replace(/>/g,'&gt;')).join(' · ')}</div>`
       : '';
 
     return `<div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.85rem;display:flex;flex-direction:column;gap:.5rem;">
