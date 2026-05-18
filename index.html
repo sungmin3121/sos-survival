@@ -28,115 +28,116 @@ body::before { content:''; position:fixed; inset:0; background:repeating-linear-
 /* ── MAIN ── */
 #screen-main { align-items:center; justify-content:center; position:relative;
 background:radial-gradient(ellipse at 50% 0%,rgba(249,115,22,.15) 0%,transparent 60%),
-radial-gradient(ellipse at 80% 80%,rgba(56,189,248,.08) 0%,transparent 50%),var(–bg); }
+radial-gradient(ellipse at 80% 80%,rgba(56,189,248,.08) 0%,transparent 50%),var(--bg); }
 .float-bg { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
 .float-bg span { position:absolute; font-size:clamp(36px,7vw,72px); opacity:.06; animation:floatUp linear infinite; }
 @keyframes floatUp { 0%{transform:translateY(110vh) rotate(0deg)} 100%{transform:translateY(-20vh) rotate(360deg)} }
 .main-content { text-align:center; z-index:1; padding:2rem; }
-.sos-badge { display:inline-block; background:var(–danger); color:#fff; font-family:‘Bebas Neue’,sans-serif; font-size:1rem; letter-spacing:.3em; padding:.3rem 1.2rem; border-radius:2px; margin-bottom:1.5rem; animation:badgePulse 2s ease-in-out infinite; }
+.sos-badge { display:inline-block; background:var(--danger); color:#fff; font-family:‘Bebas Neue’,sans-serif; font-size:1rem; letter-spacing:.3em; padding:.3rem 1.2rem; border-radius:2px; margin-bottom:1.5rem; animation:badgePulse 2s ease-in-out infinite; }
 @keyframes badgePulse { 0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.4)} 50%{box-shadow:0 0 0 8px rgba(239,68,68,0)} }
 .main-title { font-family:‘Bebas Neue’,sans-serif; font-size:clamp(3rem,10vw,7rem); line-height:.9; letter-spacing:.05em; margin-bottom:.5rem; }
-.title-sos { color:var(–text); }
-.title-secure { color:var(–accent); text-shadow:0 0 40px rgba(249,115,22,.5); animation:glitch 4s infinite; }
-.title-our { color:var(–accent2); }
-@keyframes glitch { 0%,90%,100%{text-shadow:0 0 40px rgba(249,115,22,.5)} 92%{text-shadow:-3px 0 var(–danger),3px 0 var(–accent2)} 94%{text-shadow:3px 0 var(–danger),-3px 0 var(–accent2)} 96%{text-shadow:0 0 40px rgba(249,115,22,.5)} }
-.main-sub { font-size:.75rem; color:var(–text2); letter-spacing:.2em; margin:1rem 0 .4rem; text-transform:uppercase; }
-.main-desc { font-size:.8rem; color:var(–text3); margin-bottom:2.5rem; font-family:‘Noto Sans KR’,sans-serif; line-height:1.8; }
-.stat-row { display:flex; gap:2rem; justify-content:center; margin-top:2.5rem; padding-top:2rem; border-top:1px solid var(–border); }
-.stat-num { font-family:‘Bebas Neue’,sans-serif; font-size:2rem; color:var(–accent2); }
-.stat-label { font-size:.62rem; color:var(–text3); letter-spacing:.15em; text-transform:uppercase; }
+.title-sos { color:var(--text); }
+.title-secure { color:var(--accent); text-shadow:0 0 40px rgba(249,115,22,.5); animation:glitch 4s infinite; }
+.title-our { color:var(--accent2); }
+@keyframes glitch { 0%,90%,100%{text-shadow:0 0 40px rgba(249,115,22,.5)} 92%{text-shadow:-3px 0 var(--danger),3px 0 var(--accent2)} 94%{text-shadow:3px 0 var(--danger),-3px 0 var(--accent2)} 96%{text-shadow:0 0 40px rgba(249,115,22,.5)} }
+.main-sub { font-size:.75rem; color:var(--text2); letter-spacing:.2em; margin:1rem 0 .4rem; text-transform:uppercase; }
+.main-desc { font-size:.8rem; color:var(--text3); margin-bottom:2.5rem; font-family:‘Noto Sans KR’,sans-serif; line-height:1.8; }
+.stat-row { display:flex; gap:2rem; justify-content:center; margin-top:2.5rem; padding-top:2rem; border-top:1px solid var(--border); }
+.stat-num { font-family:‘Bebas Neue’,sans-serif; font-size:2rem; color:var(--accent2); }
+.stat-label { font-size:.62rem; color:var(--text3); letter-spacing:.15em; text-transform:uppercase; }
 
 /* ── BUTTONS ── */
 .btn { border:none; border-radius:4px; cursor:pointer; transition:all .2s; font-family:‘Bebas Neue’,sans-serif; }
-.btn-primary { background:var(–accent); color:#fff; font-size:1.3rem; letter-spacing:.15em; padding:.85rem 2.5rem; }
+.btn-primary { background:var(--accent); color:#fff; font-size:1.3rem; letter-spacing:.15em; padding:.85rem 2.5rem; }
 .btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(249,115,22,.4); }
 .btn-primary:active { transform:translateY(0); }
-.btn-secondary { background:transparent; color:var(–text2); border:1px solid var(–border); font-family:‘Space Mono’,monospace; font-size:.72rem; letter-spacing:.08em; padding:.55rem 1.4rem; border-radius:4px; cursor:pointer; transition:all .2s; margin-top:.75rem; }
-.btn-secondary:hover { border-color:var(–text3); color:var(–text); }
-.btn-ghost { background:transparent; color:var(–text3); border:1px solid var(–border); font-family:‘Space Mono’,monospace; font-size:.68rem; padding:.4rem .8rem; border-radius:4px; cursor:pointer; transition:all .2s; }
-.btn-ghost:hover { color:var(–text); border-color:var(–text3); }
+.btn-secondary { background:transparent; color:var(--text2); border:1px solid var(--border); font-family:‘Space Mono’,monospace; font-size:.72rem; letter-spacing:.08em; padding:.55rem 1.4rem; border-radius:4px; cursor:pointer; transition:all .2s; margin-top:.75rem; }
+.btn-secondary:hover { border-color:var(--text3); color:var(--text); }
+.btn-ghost { background:transparent; color:var(--text3); border:1px solid var(--border); font-family:‘Space Mono’,monospace; font-size:.68rem; padding:.4rem .8rem; border-radius:4px; cursor:pointer; transition:all .2s; }
+.btn-ghost:hover { color:var(--text); border-color:var(--text3); }
 
 /* ── LOBBY ── */
-#screen-lobby { background:var(–bg); padding:1.5rem; }
+#screen-lobby { background:var(--bg); padding:1.5rem; }
 .lobby-header { text-align:center; margin-bottom:1.5rem; }
-.lobby-title { font-family:‘Bebas Neue’,sans-serif; font-size:2.8rem; letter-spacing:.1em; color:var(–accent); }
-.lobby-sub { font-size:.7rem; color:var(–text3); letter-spacing:.15em; text-transform:uppercase; margin-top:.2rem; }
+.lobby-title { font-family:‘Bebas Neue’,sans-serif; font-size:2.8rem; letter-spacing:.1em; color:var(--accent); }
+.lobby-sub { font-size:.7rem; color:var(--text3); letter-spacing:.15em; text-transform:uppercase; margin-top:.2rem; }
 .team-cards-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:.85rem; margin-bottom:1.5rem; }
-.team-card { background:var(–surface); border:1px solid var(–border); border-radius:8px; padding:.9rem 1rem; display:flex; align-items:center; gap:.75rem; cursor:pointer; transition:all .2s; }
-.team-card:hover { border-color:var(–card-color,var(–accent)); transform:translateY(-2px); }
-.team-card.active-team { border-color:var(–card-color,var(–accent)); box-shadow:0 0 0 2px var(–card-color,var(–accent)); }
+.team-card { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:.9rem 1rem; display:flex; align-items:center; gap:.75rem; cursor:pointer; transition:all .2s; }
+.team-card:hover { border-color:var(--card-color,var(--accent)); transform:translateY(-2px); }
+.team-card.active-team { border-color:var(--card-color,var(--accent)); box-shadow:0 0 0 2px var(--card-color,var(--accent)); }
 .tc-emoji { font-size:1.8rem; }
 .tc-info { flex:1; }
 .tc-name { font-family:‘Bebas Neue’,sans-serif; font-size:1rem; letter-spacing:.08em; }
 .tc-island { font-size:.62rem; letter-spacing:.05em; text-transform:uppercase; }
 .tc-coins { text-align:right; }
-.tc-coin-num { font-family:‘Bebas Neue’,sans-serif; font-size:1.6rem; color:var(–accent); }
-.tc-coin-label { font-size:.55rem; color:var(–text3); letter-spacing:.05em; }
-.mission-progress { background:var(–surface); border:1px solid var(–border); border-radius:8px; padding:1rem 1.1rem; margin-bottom:1.25rem; }
-.mp-title { font-family:‘Bebas Neue’,sans-serif; font-size:1rem; letter-spacing:.1em; color:var(–text2); margin-bottom:.75rem; }
+.tc-coin-num { font-family:‘Bebas Neue’,sans-serif; font-size:1.6rem; color:var(--accent); }
+.tc-coin-label { font-size:.55rem; color:var(--text3); letter-spacing:.05em; }
+.mission-progress { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:1rem 1.1rem; margin-bottom:1.25rem; }
+.mp-title { font-family:‘Bebas Neue’,sans-serif; font-size:1rem; letter-spacing:.1em; color:var(--text2); margin-bottom:.75rem; }
 .mp-items { display:grid; grid-template-columns:repeat(8,1fr); gap:.4rem; }
-.mp-item { background:var(–bg); border:1px solid var(–border); border-radius:6px; padding:.45rem .25rem; text-align:center; opacity:.4; transition:all .3s; }
-.mp-item.current { opacity:1; border-color:var(–accent); box-shadow:0 0 12px rgba(249,115,22,.25); }
-.mp-item.done { opacity:.7; border-color:var(–success); }
+.mp-item { background:var(--bg); border:1px solid var(--border); border-radius:6px; padding:.45rem .25rem; text-align:center; opacity:.4; transition:all .3s; }
+.mp-item.current { opacity:1; border-color:var(--accent); box-shadow:0 0 12px rgba(249,115,22,.25); }
+.mp-item.done { opacity:.7; border-color:var(--success); }
 .mp-emoji { font-size:1.1rem; display:block; margin-bottom:.12rem; }
-.mp-name { font-size:.52rem; color:var(–text3); font-family:‘Noto Sans KR’,sans-serif; }
-.bottom-bar { display:flex; gap:.75rem; align-items:center; justify-content:flex-end; padding-top:1rem; border-top:1px solid var(–border); }
-.bottom-bar-left { flex:1; font-size:.72rem; color:var(–text3); }
+.mp-name { font-size:.52rem; color:var(--text3); font-family:‘Noto Sans KR’,sans-serif; }
+.bottom-bar { display:flex; gap:.75rem; align-items:center; justify-content:flex-end; padding-top:1rem; border-top:1px solid var(--border); }
+.bottom-bar-left { flex:1; font-size:.72rem; color:var(--text3); }
 
 /* ── MISSION SCREEN ── */
-#screen-mission { background:var(–bg); }
+#screen-mission { background:var(--bg); }
 .mission-layout { display:grid; grid-template-columns:280px 1fr; min-height:100vh; }
-.mission-sidebar { background:var(–surface); border-right:1px solid var(–border); padding:1.25rem; display:flex; flex-direction:column; gap:1rem; }
-.sidebar-island { text-align:center; padding:1rem; border-radius:8px; border:1px solid var(–border); }
+.mission-sidebar { background:var(--surface); border-right:1px solid var(--border); padding:1.25rem; display:flex; flex-direction:column; gap:1rem; }
+.sidebar-island { text-align:center; padding:1rem; border-radius:8px; border:1px solid var(--border); }
 .sidebar-island-emoji { font-size:3rem; display:block; margin-bottom:.5rem; }
 .sidebar-island-name { font-family:‘Bebas Neue’,sans-serif; font-size:1.3rem; letter-spacing:.08em; }
-.sidebar-island-crisis { font-size:.65rem; color:var(–text3); margin-top:.2rem; text-transform:uppercase; }
-.sidebar-coins { background:var(–bg); border-radius:8px; padding:.85rem; text-align:center; border:1px solid var(–border); }
-.sidebar-coin-label { font-size:.62rem; color:var(–text3); letter-spacing:.1em; text-transform:uppercase; margin-bottom:.25rem; }
-.sidebar-coin-num { font-family:‘Bebas Neue’,sans-serif; font-size:2.5rem; color:var(–accent); }
-.sidebar-items { background:var(–bg); border-radius:8px; padding:.85rem; border:1px solid var(–border); }
-.sidebar-items-label { font-size:.62rem; color:var(–text3); letter-spacing:.1em; text-transform:uppercase; margin-bottom:.5rem; }
+.sidebar-island-crisis { font-size:.65rem; color:var(--text3); margin-top:.2rem; text-transform:uppercase; }
+.sidebar-coins { background:var(--bg); border-radius:8px; padding:.85rem; text-align:center; border:1px solid var(--border); }
+.sidebar-coin-label { font-size:.62rem; color:var(--text3); letter-spacing:.1em; text-transform:uppercase; margin-bottom:.25rem; }
+.sidebar-coin-num { font-family:‘Bebas Neue’,sans-serif; font-size:2.5rem; color:var(--accent); }
+.sidebar-items { background:var(--bg); border-radius:8px; padding:.85rem; border:1px solid var(--border); }
+.sidebar-items-label { font-size:.62rem; color:var(--text3); letter-spacing:.1em; text-transform:uppercase; margin-bottom:.5rem; }
 .items-list { display:flex; flex-wrap:wrap; gap:.4rem; }
-.item-chip { background:var(–surface); border:1px solid var(–border); border-radius:4px; padding:.25rem .6rem; font-size:.7rem; color:var(–text2); }
+.item-chip { background:var(--surface); border:1px solid var(--border); border-radius:4px; padding:.25rem .6rem; font-size:.7rem; color:var(--text2); }
 .sidebar-mission-list { flex:1; }
-.sml-title { font-size:.62rem; color:var(–text3); letter-spacing:.1em; text-transform:uppercase; margin-bottom:.5rem; }
-.sml-item { display:flex; align-items:center; gap:.5rem; padding:.35rem .5rem; border-radius:4px; font-size:.72rem; color:var(–text3); margin-bottom:.25rem; transition:all .2s; }
-.sml-item.current { background:rgba(249,115,22,.1); color:var(–accent); border:1px solid rgba(249,115,22,.2); }
-.sml-item.done { color:var(–success); }
+.sml-title { font-size:.62rem; color:var(--text3); letter-spacing:.1em; text-transform:uppercase; margin-bottom:.5rem; }
+.sml-item { display:flex; align-items:center; gap:.5rem; padding:.35rem .5rem; border-radius:4px; font-size:.72rem; color:var(--text3); margin-bottom:.25rem; transition:all .2s; }
+.sml-item.current { background:rgba(249,115,22,.1); color:var(--accent); border:1px solid rgba(249,115,22,.2); }
+.sml-item.done { color:var(--success); }
 .sml-emoji { font-size:.9rem; }
 
 /* MISSION MAIN */
 .mission-main { padding:2rem; overflow-y:auto; display:flex; flex-direction:column; }
 .mission-header { margin-bottom:1.5rem; }
-.mission-num { font-size:.7rem; color:var(–text3); letter-spacing:.2em; text-transform:uppercase; margin-bottom:.3rem; }
-.mission-title { font-family:‘Bebas Neue’,sans-serif; font-size:2.2rem; letter-spacing:.08em; color:var(–text); }
+.mission-num { font-size:.7rem; color:var(--text3); letter-spacing:.2em; text-transform:uppercase; margin-bottom:.3rem; }
+.mission-title { font-family:‘Bebas Neue’,sans-serif; font-size:2.2rem; letter-spacing:.08em; color:var(--text); }
 .mission-situation {
-background:var(–surface);
-border:1px solid var(–border);
-border-left:3px solid var(–accent);
+background:var(--surface);
+border:1px solid var(--border);
+border-left:3px solid var(--accent);
 border-radius:0 8px 8px 0;
 padding:1rem 1.25rem;
 margin-bottom:1.75rem;
 font-size:.82rem;
 line-height:1.7;
-color:var(–text2);
+color:var(--text2);
 font-family:‘Noto Sans KR’,sans-serif;
 }
-.mission-situation strong { color:var(–accent); font-family:‘Space Mono’,monospace; }
+.mission-situation strong { color:var(--accent); font-family:‘Space Mono’,monospace; }
 
 /* STEP SYSTEM */
 .step { display:none; }
 .step.active { display:block; animation:fadeIn .35s ease; }
 @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+@keyframes pulseGlow { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.6;transform:scale(1.15)} }
 
 /* STEP 1: 의문사 선택 */
-.step-label { font-size:.7rem; color:var(–text3); letter-spacing:.15em; text-transform:uppercase; margin-bottom:1rem; }
-.wh-prompt { font-size:1.1rem; color:var(–text2); margin-bottom:1.5rem; font-family:‘Noto Sans KR’,sans-serif; line-height:1.8; }
-.wh-prompt .blank { display:inline-block; background:rgba(249,115,22,.15); border:1px dashed var(–accent); border-radius:4px; padding:.1rem .8rem; min-width:80px; text-align:center; color:var(–accent); font-family:‘Space Mono’,monospace; font-size:.9rem; vertical-align:middle; }
+.step-label { font-size:.7rem; color:var(--text3); letter-spacing:.15em; text-transform:uppercase; margin-bottom:1rem; }
+.wh-prompt { font-size:1.1rem; color:var(--text2); margin-bottom:1.5rem; font-family:‘Noto Sans KR’,sans-serif; line-height:1.8; }
+.wh-prompt .blank { display:inline-block; background:rgba(249,115,22,.15); border:1px dashed var(--accent); border-radius:4px; padding:.1rem .8rem; min-width:80px; text-align:center; color:var(--accent); font-family:‘Space Mono’,monospace; font-size:.9rem; vertical-align:middle; }
 .wh-cards { display:flex; gap:.85rem; flex-wrap:wrap; margin-bottom:1.5rem; }
 .wh-card {
-background:var(–surface);
-border:2px solid var(–border);
+background:var(--surface);
+border:2px solid var(--border);
 border-radius:8px;
 padding:1rem 1.5rem;
 cursor:pointer;
@@ -144,24 +145,24 @@ transition:all .2s;
 text-align:center;
 min-width:100px;
 }
-.wh-card:hover { border-color:var(–accent); transform:translateY(-2px); }
-.wh-card.selected { border-color:var(–accent); background:rgba(249,115,22,.1); box-shadow:0 0 16px rgba(249,115,22,.2); }
-.wh-card.wrong { border-color:var(–danger); background:rgba(239,68,68,.1); animation:shake .3s ease; }
-.wh-card.correct { border-color:var(–success); background:rgba(34,197,94,.1); }
+.wh-card:hover { border-color:var(--accent); transform:translateY(-2px); }
+.wh-card.selected { border-color:var(--accent); background:rgba(249,115,22,.1); box-shadow:0 0 16px rgba(249,115,22,.2); }
+.wh-card.wrong { border-color:var(--danger); background:rgba(239,68,68,.1); animation:shake .3s ease; }
+.wh-card.correct { border-color:var(--success); background:rgba(34,197,94,.1); }
 @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
 .wh-word { font-family:‘Bebas Neue’,sans-serif; font-size:1.6rem; letter-spacing:.1em; }
-.wh-kr { font-size:.65rem; color:var(–text3); margin-top:.2rem; font-family:‘Noto Sans KR’,sans-serif; }
-.feedback-box { background:var(–surface); border:1px solid var(–border); border-radius:8px; padding:1rem 1.25rem; margin-top:1rem; font-size:.82rem; line-height:1.7; display:none; }
+.wh-kr { font-size:.65rem; color:var(--text3); margin-top:.2rem; font-family:‘Noto Sans KR’,sans-serif; }
+.feedback-box { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:1rem 1.25rem; margin-top:1rem; font-size:.82rem; line-height:1.7; display:none; }
 .feedback-box.show { display:block; animation:fadeIn .3s ease; }
-.feedback-correct { border-color:var(–success); color:var(–success); }
-.feedback-wrong { border-color:var(–danger); color:var(–danger); }
+.feedback-correct { border-color:var(--success); color:var(--success); }
+.feedback-wrong { border-color:var(--danger); color:var(--danger); }
 
 /* STEP 2: 선택지 */
-.choice-label { font-size:.7rem; color:var(–text3); letter-spacing:.15em; text-transform:uppercase; margin-bottom:.75rem; }
+.choice-label { font-size:.7rem; color:var(--text3); letter-spacing:.15em; text-transform:uppercase; margin-bottom:.75rem; }
 .choices { display:flex; flex-direction:column; gap:.75rem; margin-bottom:1.5rem; }
 .choice-btn {
-background:var(–surface);
-border:1px solid var(–border);
+background:var(--surface);
+border:1px solid var(--border);
 border-radius:8px;
 padding:1rem 1.25rem;
 cursor:pointer;
@@ -171,13 +172,13 @@ align-items:center;
 gap:1rem;
 text-align:left;
 }
-.choice-btn:hover { border-color:var(–accent2); transform:translateX(4px); }
-.choice-btn.chosen { border-color:var(–accent2); background:rgba(56,189,248,.08); pointer-events:none; }
-.choice-letter { font-family:‘Bebas Neue’,sans-serif; font-size:1.5rem; color:var(–text3); min-width:28px; }
-.choice-btn:hover .choice-letter, .choice-btn.chosen .choice-letter { color:var(–accent2); }
+.choice-btn:hover { border-color:var(--accent2); transform:translateX(4px); }
+.choice-btn.chosen { border-color:var(--accent2); background:rgba(56,189,248,.08); pointer-events:none; }
+.choice-letter { font-family:‘Bebas Neue’,sans-serif; font-size:1.5rem; color:var(--text3); min-width:28px; }
+.choice-btn:hover .choice-letter, .choice-btn.chosen .choice-letter { color:var(--accent2); }
 .choice-text { flex:1; }
-.choice-main { font-size:.9rem; color:var(–text); font-family:‘Noto Sans KR’,sans-serif; }
-.choice-sub { font-size:.72rem; color:var(–text3); margin-top:.2rem; font-family:‘Space Mono’,monospace; }
+.choice-main { font-size:.9rem; color:var(--text); font-family:‘Noto Sans KR’,sans-serif; }
+.choice-sub { font-size:.72rem; color:var(--text3); margin-top:.2rem; font-family:‘Space Mono’,monospace; }
 
 /* STEP 3: 결과 */
 .result-box { text-align:center; padding:2rem; }
@@ -185,18 +186,18 @@ text-align:left;
 @keyframes popIn { from{transform:scale(0)} to{transform:scale(1)} }
 .result-title { font-family:‘Bebas Neue’,sans-serif; font-size:2rem; letter-spacing:.1em; margin-bottom:.5rem; }
 .result-coin { font-family:‘Bebas Neue’,sans-serif; font-size:3rem; margin:.75rem 0; }
-.result-coin.positive { color:var(–success); }
-.result-coin.negative { color:var(–danger); }
-.result-coin.neutral { color:var(–text2); }
-.result-desc { font-size:.82rem; color:var(–text2); line-height:1.7; font-family:‘Noto Sans KR’,sans-serif; margin-bottom:1.5rem; }
-.result-item { display:inline-block; background:rgba(249,115,22,.1); border:1px solid rgba(249,115,22,.3); border-radius:6px; padding:.4rem 1rem; font-size:.8rem; color:var(–accent); margin-bottom:1.5rem; }
+.result-coin.positive { color:var(--success); }
+.result-coin.negative { color:var(--danger); }
+.result-coin.neutral { color:var(--text2); }
+.result-desc { font-size:.82rem; color:var(--text2); line-height:1.7; font-family:‘Noto Sans KR’,sans-serif; margin-bottom:1.5rem; }
+.result-item { display:inline-block; background:rgba(249,115,22,.1); border:1px solid rgba(249,115,22,.3); border-radius:6px; padding:.4rem 1rem; font-size:.8rem; color:var(--accent); margin-bottom:1.5rem; }
 
 /* TEAM SELECTOR */
-.team-selector { background:var(–surface); border-bottom:1px solid var(–border); padding:.75rem 1.5rem; display:flex; align-items:center; gap:.75rem; flex-wrap:wrap; position:sticky; top:0; z-index:50; }
-.ts-label { font-size:.65rem; color:var(–text3); letter-spacing:.1em; text-transform:uppercase; }
-.ts-btn { background:var(–bg); border:1px solid var(–border); border-radius:4px; padding:.3rem .7rem; font-size:.72rem; font-family:‘Space Mono’,monospace; color:var(–text3); cursor:pointer; transition:all .2s; }
-.ts-btn:hover { border-color:var(–text3); color:var(–text); }
-.ts-btn.active { border-color:var(–btn-color,var(–accent)); color:var(–btn-color,var(–accent)); background:rgba(255,255,255,.03); }
+.team-selector { background:var(--surface); border-bottom:1px solid var(--border); padding:.75rem 1.5rem; display:flex; align-items:center; gap:.75rem; flex-wrap:wrap; position:sticky; top:0; z-index:50; }
+.ts-label { font-size:.65rem; color:var(--text3); letter-spacing:.1em; text-transform:uppercase; }
+.ts-btn { background:var(--bg); border:1px solid var(--border); border-radius:4px; padding:.3rem .7rem; font-size:.72rem; font-family:‘Space Mono’,monospace; color:var(--text3); cursor:pointer; transition:all .2s; }
+.ts-btn:hover { border-color:var(--text3); color:var(--text); }
+.ts-btn.active { border-color:var(--btn-color,var(--accent)); color:var(--btn-color,var(--accent)); background:rgba(255,255,255,.03); }
 
 @media(max-width:768px) {
 .mission-layout { grid-template-columns:1fr; }
@@ -211,7 +212,7 @@ border-radius:6px;
 padding:.4rem .8rem;
 font-family:‘Space Mono’,monospace;
 font-size:.85rem;
-color:var(–accent);
+color:var(--accent);
 cursor:pointer;
 transition:all .15s;
 display:inline-flex;
@@ -219,38 +220,38 @@ align-items:center;
 gap:.3rem;
 }
 .m2-chip:hover { background:rgba(249,115,22,.22); }
-.m3-food-card:hover { border-color:var(–accent) !important; transform:translateY(-2px); box-shadow:0 4px 16px rgba(0,0,0,.3); }
+.m3-food-card:hover { border-color:var(--accent) !important; transform:translateY(-2px); box-shadow:0 4px 16px rgba(0,0,0,.3); }
 
 /* LOGIN */
 .room-btn {
-background: var(–bg);
-border: 1px solid var(–border);
+background: var(--bg);
+border: 1px solid var(--border);
 border-radius: 6px;
 padding: .6rem;
 font-family: ‘Bebas Neue’, sans-serif;
 font-size: 1.2rem;
-color: var(–text3);
+color: var(--text3);
 cursor: pointer;
 transition: all .2s;
 width: 100%;
 }
-.room-btn:hover { border-color: var(–text3); color: var(–text); }
-.room-btn.selected { border-color: var(–accent); color: var(–accent); background: rgba(249,115,22,.08); }
+.room-btn:hover { border-color: var(--text3); color: var(--text); }
+.room-btn.selected { border-color: var(--accent); color: var(--accent); background: rgba(249,115,22,.08); }
 .role-btn {
-background: var(–bg);
-border: 1px solid var(–border);
+background: var(--bg);
+border: 1px solid var(--border);
 border-radius: 6px;
 padding: .6rem .4rem;
 font-family: ‘Noto Sans KR’, sans-serif;
 font-size: .72rem;
-color: var(–text3);
+color: var(--text3);
 cursor: pointer;
 transition: all .2s;
 text-align: center;
 width: 100%;
 }
-.role-btn:hover { border-color: var(–text3); color: var(–text); }
-.role-btn.selected { border-color: var(–accent); color: var(–accent); background: rgba(249,115,22,.08); }
+.role-btn:hover { border-color: var(--text3); color: var(--text); }
+.role-btn.selected { border-color: var(--accent); color: var(--accent); background: rgba(249,115,22,.08); }
 
 /* MOON EVENT */
 .moon-screen {
@@ -281,11 +282,11 @@ overflow: hidden;
 }
 .moon-hp-fill {
 height: 100%;
-background: linear-gradient(90deg, var(–success), #86efac);
+background: linear-gradient(90deg, var(--success), #86efac);
 border-radius: 4px;
 transition: width .4s ease, background .4s;
 }
-.moon-hp-fill.danger { background: linear-gradient(90deg, var(–danger), #fca5a5); }
+.moon-hp-fill.danger { background: linear-gradient(90deg, var(--danger), #fca5a5); }
 .meteor {
 position: absolute;
 background: rgba(56,189,248,.12);
@@ -294,13 +295,13 @@ border-radius: 6px;
 padding: .3rem .7rem;
 font-family: ‘Space Mono’, monospace;
 font-size: .8rem;
-color: var(–accent2);
+color: var(--accent2);
 white-space: nowrap;
 cursor: default;
 user-select: none;
 transition: opacity .2s;
 }
-.meteor.why { color: var(–danger); border-color: rgba(239,68,68,.4); background: rgba(239,68,68,.1); }
+.meteor.why { color: var(--danger); border-color: rgba(239,68,68,.4); background: rgba(239,68,68,.1); }
 .meteor.destroyed { opacity: 0; transform: scale(1.3); transition: all .2s; }
 .moon-input-row {
 display: flex;
@@ -310,53 +311,53 @@ margin-top: .75rem;
 }
 .moon-input {
 flex: 1;
-background: var(–surface);
-border: 1px solid var(–border);
+background: var(--surface);
+border: 1px solid var(--border);
 border-radius: 6px;
 padding: .6rem 1rem;
 font-family: ‘Space Mono’, monospace;
 font-size: .85rem;
-color: var(–text);
+color: var(--text);
 outline: none;
 transition: border-color .2s;
 }
-.moon-input:focus { border-color: var(–accent2); }
-.moon-input.hit { border-color: var(–success); background: rgba(34,197,94,.08); }
-.moon-input.miss { border-color: var(–danger); background: rgba(239,68,68,.08); animation: shake .3s; }
+.moon-input:focus { border-color: var(--accent2); }
+.moon-input.hit { border-color: var(--success); background: rgba(34,197,94,.08); }
+.moon-input.miss { border-color: var(--danger); background: rgba(239,68,68,.08); animation: shake .3s; }
 .moon-score-row {
 display: flex;
 gap: 1rem;
 align-items: center;
 font-size: .78rem;
-color: var(–text3);
+color: var(--text3);
 margin-bottom: .5rem;
 }
 .moon-score-val { font-family: ‘Bebas Neue’, sans-serif; font-size: 1.2rem; }
-.moon-score-val.accent { color: var(–accent2); }
-.moon-score-val.danger { color: var(–danger); }
+.moon-score-val.accent { color: var(--accent2); }
+.moon-score-val.danger { color: var(--danger); }
 
 /* MISSION 4 */
 .m4-question {
-background: var(–surface);
-border: 1px solid var(–border);
+background: var(--surface);
+border: 1px solid var(--border);
 border-radius: 8px;
 padding: .9rem 1.1rem;
 margin-bottom: .6rem;
 transition: all .25s;
 }
-.m4-question.m4-correct { border-color: var(–success); background: rgba(34,197,94,.06); }
-.m4-question.m4-wrong { border-color: var(–danger); background: rgba(239,68,68,.06); }
-.m4-sentence { font-size: .9rem; color: var(–text); margin-bottom: .6rem; line-height: 1.6; }
-.m4-result { font-size: .78rem; color: var(–text2); font-family: ‘Noto Sans KR’, sans-serif; }
+.m4-question.m4-correct { border-color: var(--success); background: rgba(34,197,94,.06); }
+.m4-question.m4-wrong { border-color: var(--danger); background: rgba(239,68,68,.06); }
+.m4-sentence { font-size: .9rem; color: var(--text); margin-bottom: .6rem; line-height: 1.6; }
+.m4-result { font-size: .78rem; color: var(--text2); font-family: ‘Noto Sans KR’, sans-serif; }
 .m4-btns { display: flex; gap: .5rem; }
 .m4-ox-btn {
 border: none; border-radius: 6px; padding: .4rem 1.2rem;
 font-family: ‘Space Mono’, monospace; font-size: .8rem;
 cursor: pointer; transition: all .2s;
 }
-.m4-o { background: rgba(34,197,94,.15); color: var(–success); border: 1px solid rgba(34,197,94,.3); }
+.m4-o { background: rgba(34,197,94,.15); color: var(--success); border: 1px solid rgba(34,197,94,.3); }
 .m4-o:hover { background: rgba(34,197,94,.25); }
-.m4-x { background: rgba(239,68,68,.15); color: var(–danger); border: 1px solid rgba(239,68,68,.3); }
+.m4-x { background: rgba(239,68,68,.15); color: var(--danger); border: 1px solid rgba(239,68,68,.3); }
 .m4-x:hover { background: rgba(239,68,68,.25); }
 /* ── HUD ── */
 .hud {
@@ -371,7 +372,7 @@ border-radius: 6px;
 padding: .35rem .75rem;
 font-family: ‘Bebas Neue’, sans-serif;
 font-size: 1.1rem;
-color: var(–accent);
+color: var(--accent);
 backdrop-filter: blur(8px);
 display: flex;
 align-items: center;
@@ -383,7 +384,7 @@ border: 1px solid rgba(255,255,255,.08);
 border-radius: 6px;
 padding: .35rem .75rem;
 font-size: .8rem;
-color: var(–text2);
+color: var(--text2);
 backdrop-filter: blur(8px);
 display: flex;
 align-items: center;
@@ -396,7 +397,7 @@ border: 1px solid rgba(255,255,255,.08);
 border-radius: 6px;
 padding: .35rem .75rem;
 font-size: .75rem;
-color: var(–text3);
+color: var(--text3);
 backdrop-filter: blur(8px);
 font-family: ‘Space Mono’, monospace;
 }
@@ -445,7 +446,6 @@ window.dispatchEvent(new Event(‘firebaseReady’));
     <div style="font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--accent);letter-spacing:.05em;margin-bottom:.25rem;">접속하기</div>
     <div style="font-size:.75rem;color:var(--text3);margin-bottom:2rem;font-family:'Noto Sans KR',sans-serif;">방 번호와 섬을 선택하세요</div>
 
-```
 <!-- 방 번호 -->
 <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.25rem;margin-bottom:1rem;text-align:left;">
   <div style="font-size:.68rem;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.6rem;">🏫 방 번호 (반 구분용)</div>
@@ -496,14 +496,13 @@ window.dispatchEvent(new Event(‘firebaseReady’));
   font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.1em;cursor:pointer;opacity:.4;pointer-events:none;transition:all .2s;">
   ▶ 접속하기
 </button>
-```
 
   </div>
 </div>
 
 <!-- ══ MAIN ══ -->
 
-<div id="screen-main" class="screen active">
+<div id="screen-main" class="screen">
   <div class="float-bg" id="floatBg"></div>
   <div class="main-content">
     <div class="sos-badge">🆘 EMERGENCY BROADCAST</div>
@@ -661,6 +660,8 @@ const state = {
   missionStep: {},
   missionChoice: {},
   teamMission: [1,1,1,1,1,1], // 각 팀의 현재 미션 번호
+  completedMission: [0,0,0,0,0,0], // 각 팀이 완료한 마지막 미션 번호
+  globalMission: 1, // 전체 모둠이 진행 가능한 미션 번호
 };
 
 // ══ SCREEN ══
@@ -723,6 +724,70 @@ function updateMissionProgress() {
     if(m.id === state.currentMission) el.classList.add('current');
     else if(typeof m.id === 'number' && m.id < state.currentMission) el.classList.add('done');
   });
+}
+
+// ══ 단계 제한 게이트 ══
+let waitingForMission = null;
+
+function tryAdvanceMission(ti, toMission) {
+  state.completedMission = state.completedMission || [0,0,0,0,0,0];
+  state.completedMission[ti] = Math.max(state.completedMission[ti] || 0, toMission - 1);
+  checkGlobalGate();
+  fbSaveState();
+  if(canAdvance(toMission)) {
+    waitingForMission = null;
+    initMission(ti + 1, toMission);
+  } else {
+    waitingForMission = { ti, toMission };
+    showWaitingForTeams(ti, toMission);
+  }
+}
+
+function canAdvance(toMission) {
+  if(myRole === 'teacher') return true;
+  return toMission <= (state.globalMission || 1);
+}
+
+function checkGlobalGate() {
+  const current = state.globalMission || 1;
+  const cm = state.completedMission || [0,0,0,0,0,0];
+  const allDone = cm.every(c => (c || 0) >= current);
+  if(allDone && current < 8) {
+    state.globalMission = current + 1;
+  }
+}
+
+function showWaitingForTeams(ti, toMission) {
+  const main = document.getElementById('missionMain');
+  if(!main) return;
+  const MN = {1:'위치파악',2:'거주지',3:'식량',4:'동료',5:'달기지',6:'위기',7:'신호',8:'탈출'};
+  const cm = state.completedMission || [0,0,0,0,0,0];
+  const done = cm.filter(c => (c || 0) >= toMission-1).length;
+  main.innerHTML = `
+    <div class="mission-header">
+      <div class="mission-num">⏳ 다음 미션 대기 중</div>
+      <div class="mission-title">🕐 ${MN[toMission] || '다음 미션'} 대기 중...</div>
+    </div>
+    <div class="result-box">
+      <span class="result-emoji" style="animation:pulseGlow 1.5s ease-in-out infinite;">⏳</span>
+      <div class="result-title">WAITING FOR OTHERS</div>
+      <div style="font-size:.82rem;color:var(--accent2);margin:.5rem 0 1rem;font-family:'Noto Sans KR',sans-serif;">
+        ${MN[toMission-1]||'이전 미션'} 완료! 다른 모둠이 완료할 때까지 기다려주세요.
+      </div>
+      <div style="background:var(--surface);border-radius:8px;padding:1rem;margin-bottom:1rem;">
+        <div style="font-size:.7rem;color:var(--text3);margin-bottom:.65rem;text-transform:uppercase;letter-spacing:.1em;">모둠 완료 현황</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;">
+          ${ISLANDS.map((isl,i)=>{
+            const ok=(state.completedMission||[])[i]>=toMission-1;
+            return '<div style="background:var(--bg);border:1px solid '+(ok?isl.color:'var(--border)')+';border-radius:6px;padding:.5rem;text-align:center;">'
+              +'<div style="font-size:1.1rem;">'+isl.emoji+'</div>'
+              +'<div style="font-size:.6rem;color:'+(ok?isl.color:'var(--text3)')+';">'+(ok?'✅ 완료':'⏳ 진행중')+'</div>'
+              +'</div>';
+          }).join('')}
+        </div>
+      </div>
+      <div style="font-size:.75rem;color:var(--text3);font-family:\'Noto Sans KR\',sans-serif;">${done}/6 모둠 완료 — 모두 완료되면 자동으로 다음 미션이 시작돼요!</div>
+    </div>`;
 }
 
 // ── 코인 적용 헬퍼 (NPC 버프 + 행운의 열매 효과 포함) ──
@@ -1091,7 +1156,7 @@ function m3Pick(ti, idx){
             <button class="btn btn-primary" id="m3next">미션 4 → 🤝</button>
           </div>
         </div>`;
-      const nb3=document.getElementById('m3next'); if(nb3) nb3.onclick=()=>initMission(ti+1,4);
+      const nb3=document.getElementById('m3next'); if(nb3) nb3.onclick=()=>tryAdvanceMission(ti,4);
     },50);
   },700);
 }
@@ -1282,7 +1347,7 @@ function m2Pick(ti,idx){
             <button class="btn btn-primary" id="m2next">미션 3 → 🍖</button>
           </div>
         </div>`;
-      const nb=document.getElementById('m2next'); if(nb) nb.onclick=()=>initMission(ti+1,3);
+      const nb=document.getElementById('m2next'); if(nb) nb.onclick=()=>tryAdvanceMission(ti,3);
     },50);
   },600);
 }
@@ -1474,7 +1539,7 @@ function renderResult(ti, choice) {
     </div>
   `;
   state.missionStep[ti] = 3;
-  setTimeout(()=>{ const b=document.getElementById('m1next'); if(b) b.onclick=()=>initMission(ti+1,2); },50);
+  setTimeout(()=>{ const b=document.getElementById('m1next'); if(b) b.onclick=()=>tryAdvanceMission(ti,2); },50);
 }
 
 
@@ -1723,6 +1788,11 @@ function moonEnd(ti, survived) {
   state.moonResult[ti] = { score, hp, coins, survived };
   state.moonScores = state.moonScores || {};
   state.moonScores[ti] = score;
+
+  // 달 기지 완료 기록 (게이트용)
+  state.completedMission = state.completedMission || [0,0,0,0,0,0];
+  state.completedMission[ti] = Math.max(state.completedMission[ti] || 0, 5);
+  checkGlobalGate();
 
   renderSidebar(ti+1);
 
@@ -1981,7 +2051,7 @@ function m2RestoreResult(ti) {
         <button class="btn btn-primary" id="m2next">미션 3 → 🍖</button>
       </div>
     </div>`;
-  setTimeout(()=>{ const nb=document.getElementById('m2next'); if(nb) nb.onclick=()=>initMission(ti+1,3); },50);
+  setTimeout(()=>{ const nb=document.getElementById('m2next'); if(nb) nb.onclick=()=>tryAdvanceMission(ti,3); },50);
 }
 
 function m3RestoreResult(ti) {
@@ -2004,7 +2074,7 @@ function m3RestoreResult(ti) {
         <button class="btn btn-primary" id="m3next">미션 4 → 🤝</button>
       </div>
     </div>`;
-  setTimeout(()=>{ const nb=document.getElementById('m3next'); if(nb) nb.onclick=()=>initMission(ti+1,4); },50);
+  setTimeout(()=>{ const nb=document.getElementById('m3next'); if(nb) nb.onclick=()=>tryAdvanceMission(ti,4); },50);
 }
 
 
@@ -2180,7 +2250,7 @@ function m5RenderResult(ti, success) {
   `;
   setTimeout(() => {
     const nb = document.getElementById('m5next');
-    if(nb) nb.onclick = () => initMission(ti+1, 7);
+    if(nb) nb.onclick = () => tryAdvanceMission(ti, 7);
   }, 50);
 }
 
@@ -2631,7 +2701,7 @@ function m6RenderResult(ti, success) {
       </div>
     </div>
   `;
-  setTimeout(()=>{ const nb=document.getElementById('m6next'); if(nb) nb.onclick=()=>initMission(ti+1,8); },50);
+  setTimeout(()=>{ const nb=document.getElementById('m6next'); if(nb) nb.onclick=()=>tryAdvanceMission(ti,8); },50);
 }
 
 // ══ MISSION 4: 동료 만나기 ══
@@ -2810,7 +2880,7 @@ function m4RenderResult(ti, correct, coins) {
   `;
   setTimeout(() => {
     const nb = document.getElementById('m4next');
-    if(nb) nb.onclick = () => initMission(ti+1, 5);
+    if(nb) nb.onclick = () => tryAdvanceMission(ti, 5);
   }, 50);
 }
 
@@ -2950,7 +3020,7 @@ function m7Submit(ti) {
 const ta = document.getElementById(‘m7text-’+ti);
 const text = ta ? ta.value.trim() : ‘’;
 if(!text) {
-ta.style.borderColor = ‘var(–danger)’;
+ta.style.borderColor = ‘var(--danger)’;
 return;
 }
 state.m7text = state.m7text || {};
@@ -3038,6 +3108,11 @@ state.coins[ti] += coins;
 state.m7result = state.m7result || {};
 state.m7result[ti] = { coins, breakdown, grade };
 state.missionStep[‘m7_’+ti] = 3;
+// 미션7 완료 기록
+state.completedMission = state.completedMission || [0,0,0,0,0,0];
+state.completedMission[ti] = Math.max(state.completedMission[ti] || 0, 8);
+state.teamMission[ti] = 8;
+checkGlobalGate();
 fbSaveState();
 renderMission7(ti+1);
 renderSidebar(ti+1);
@@ -3067,7 +3142,7 @@ return;
 }
 
 const totalCoins = state.coins.reduce((a,b)=>a+b,0);
-const maxTeam = state.coins.indexOf(Math.max(…state.coins));
+const maxTeam = state.coins.indexOf(Math.max(...state.coins));
 
 main.innerHTML = `<div class="mission-header"> <div class="mission-num">🏆 GAME OVER</div> <div class="mission-title">최종 결과</div> </div> <div class="result-box"> <span class="result-emoji">🏆</span> <div class="result-title">SURVIVAL COMPLETE!</div> <div style="font-size:.8rem;color:var(--text2);margin:.5rem 0 1.5rem;font-family:'Noto Sans KR',sans-serif;">모든 모둠이 살아남았어요! 수고했어요!</div> <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:1.5rem;"> ${ISLANDS.map((isl,i)=>{ const coins = state.coins[i]; const isWinner = i===maxTeam; return '<div style="background:var(--surface);border:2px solid '+(isWinner?isl.color:'var(--border)')+';border-radius:8px;padding:.85rem;text-align:center;">' +'<div style="font-size:1.5rem;">'+(isWinner?'👑':isl.emoji)+'</div>' +'<div style="font-family:Bebas Neue,sans-serif;font-size:.9rem;letter-spacing:.08em;color:'+(isWinner?isl.color:'var(--text2)')+';">'+(i+1)+'모둠</div>' +'<div style="font-size:.65rem;color:var(--text3);">'+isl.name+'</div>' +'<div style="font-family:Bebas Neue,sans-serif;font-size:1.8rem;color:'+(isWinner?isl.color:'var(--text)')+';">'+coins+'</div>' +'<div style="font-size:.6rem;color:var(--text3);">🪙 COINS</div>' +'</div>'; }).join('')} </div> <div style="font-family:Bebas Neue,sans-serif;font-size:1.1rem;color:var(--accent2);margin-bottom:.25rem;">전체 획득 코인: ${totalCoins} 🪙</div> <div style="font-size:.78rem;color:${ISLANDS[maxTeam].color};font-family:'Noto Sans KR',sans-serif;margin-bottom:1.25rem;"> 🏆 우승: ${maxTeam+1}모둠 ${ISLANDS[maxTeam].name} (${state.coins[maxTeam]}코인) </div> <button class="btn btn-primary" onclick="showScreen('lobby')" style="width:100%;">← 로비로 돌아가기</button> </div>`;
 }
@@ -3103,11 +3178,11 @@ const status = document.getElementById(‘loginStatus’);
 if(myRoom && myRole) {
 btn.style.opacity=‘1’; btn.style.pointerEvents=‘auto’;
 status.textContent = myRoom+‘반 · ‘+(myRole===‘teacher’?‘👩‍🏫 교사’:‘학생 (’+myRole+’ 섬)’);
-status.style.color = ‘var(–accent2)’;
+status.style.color = ‘var(--accent2)’;
 } else {
 btn.style.opacity=‘0.4’; btn.style.pointerEvents=‘none’;
 status.textContent = ‘방 번호와 역할을 모두 선택하세요’;
-status.style.color = ‘var(–text3)’;
+status.style.color = ‘var(--text3)’;
 }
 }
 
@@ -3229,11 +3304,18 @@ await window.firebaseUpdate(window.firebaseRef(db, ‘rooms/room’+myRoom), { s
 // ── 현재 화면 새로고침 ──
 function refreshCurrentScreen() {
 const ti = state.currentTeam;
-const mission = state.teamMission[ti] || 1;
 renderSidebar(ti+1);
 renderTeamSelector(ti+1);
 updateMissionProgress();
-if(myRole === ‘teacher’) renderLobby();
+if(myRole === ‘teacher’) { renderLobby(); updateTeacherMonitor(); }
+checkGlobalGate();
+if(waitingForMission && canAdvance(waitingForMission.toMission)) {
+  const { ti: wti, toMission } = waitingForMission;
+  waitingForMission = null;
+  initMission(wti+1, toMission);
+} else if(waitingForMission) {
+  showWaitingForTeams(waitingForMission.ti, waitingForMission.toMission);
+}
 }
 
 // ── 교사 명령 처리 ──
@@ -3243,6 +3325,14 @@ initMission(ROLE_TO_TEAM[myRole], cmd.missionId);
 } else if(cmd.type === ‘skipMission’) {
 const teamNum = ROLE_TO_TEAM[myRole];
 state.teamMission[teamNum-1] = cmd.missionId;
+waitingForMission = null;
+initMission(teamNum, cmd.missionId);
+} else if(cmd.type === ‘forceAllMission’) {
+for(let i=0;i<6;i++) state.teamMission[i] = cmd.missionId;
+state.globalMission = cmd.missionId;
+state.completedMission = Array(6).fill(cmd.missionId - 1);
+waitingForMission = null;
+const teamNum = ROLE_TO_TEAM[myRole];
 initMission(teamNum, cmd.missionId);
 } else if(cmd.type === ‘resetRoom’) {
 location.reload();
@@ -3252,21 +3342,94 @@ location.reload();
 // ── 교사 제어 패널 ──
 function showTeacherPanel() {
 if(myRole !== ‘teacher’) return;
-const panel = document.getElementById(‘teacherPanel’);
-if(panel) { panel.style.display = panel.style.display===‘none’?‘block’:‘none’; return; }
+const existing = document.getElementById(‘teacherPanel’);
+if(existing) { existing.style.display = existing.style.display===’none’?’block’:’none’; if(existing.style.display!==’none’) updateTeacherMonitor(); return; }
 
 const div = document.createElement(‘div’);
 div.id = ‘teacherPanel’;
-div.style.cssText = ‘position:fixed;bottom:1rem;right:1rem;background:var(–surface);border:1px solid var(–border);border-radius:8px;padding:1rem;z-index:200;min-width:280px;max-height:80vh;overflow-y:auto;’;
-div.innerHTML = ` <div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.1em;color:var(--accent);margin-bottom:.75rem;">👩‍🏫 교사 제어 패널</div> <div style="font-size:.68rem;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem;">팀별 미션 스킵</div> <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin-bottom:.75rem;"> ${TEAM_TO_ROLE.map((role,i)=>`
-<select id="skipSelect-${i}" style="background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:.3rem;font-size:.72rem;color:var(--text);">
-${[1,2,3,4,5,6,7,8].map(m=>`<option value="${m}" ${state.teamMission[i]===m?'selected':''}>미션${m}</option>`).join(’’)}
-</select>`).join('')} </div> <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin-bottom:.75rem;"> ${TEAM_TO_ROLE.map((role,i)=>`
-<button onclick="teacherSkip(${i})"
-style="background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:.3rem .5rem;font-size:.68rem;color:var(--text2);cursor:pointer;">
-${ISLANDS[i].emoji} ${i+1}모둠 스킵
-</button>`).join('')} </div> <div style="display:flex;gap:.4rem;"> <button onclick="teacherSyncNow()" style="flex:1;background:rgba(56,189,248,.15);border:1px solid rgba(56,189,248,.3);border-radius:4px;padding:.4rem;font-size:.72rem;color:var(--accent2);cursor:pointer;">🔄 동기화</button> <button onclick="teacherResetRoom()" style="flex:1;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);border-radius:4px;padding:.4rem;font-size:.72rem;color:var(--danger);cursor:pointer;">🔄 방 초기화</button> </div> <button onclick="document.getElementById('teacherPanel').style.display='none'" style="width:100%;margin-top:.5rem;background:transparent;border:1px solid var(--border);border-radius:4px;padding:.3rem;font-size:.68rem;color:var(--text3);cursor:pointer;">닫기</button> `;
+div.style.cssText = ‘position:fixed;bottom:1rem;right:1rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;z-index:200;width:380px;max-height:90vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,.5);’;
+div.innerHTML = `
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;">
+    <div style="font-family:’Bebas Neue’,sans-serif;font-size:1rem;letter-spacing:.1em;color:var(--accent);">👩‍🏫 교사 제어 패널</div>
+    <button onclick="document.getElementById(‘teacherPanel’).style.display=’none’" style="background:transparent;border:none;color:var(--text3);cursor:pointer;font-size:1rem;line-height:1;">✕</button>
+  </div>
+
+  <div style="font-size:.65rem;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem;">📊 실시간 모둠 현황</div>
+  <div id="teacherMonitor" style="display:grid;grid-template-columns:repeat(3,1fr);gap:.35rem;margin-bottom:.75rem;"></div>
+
+  <div style="font-size:.65rem;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem;">🚀 전체 모둠 강제 이동</div>
+  <div style="display:flex;gap:.4rem;margin-bottom:.75rem;align-items:center;">
+    <select id="forceAllSelect" style="flex:1;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:.35rem;font-size:.72rem;color:var(--text);">
+      ${[1,2,3,4,5,6,7,8].map(m=>`<option value="${m}">미션 ${m}</option>`).join(‘’)}
+    </select>
+    <button onclick="teacherForceAll(parseInt(document.getElementById(‘forceAllSelect’).value))"
+      style="background:var(--accent);border:none;border-radius:4px;padding:.35rem .85rem;font-size:.72rem;color:#fff;cursor:pointer;white-space:nowrap;">
+      전체 이동 →
+    </button>
+  </div>
+
+  <div style="font-size:.65rem;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem;">팀별 미션 스킵</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:.35rem;margin-bottom:.35rem;">
+    ${TEAM_TO_ROLE.map((role,i)=>`
+    <select id="skipSelect-${i}" style="background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:.3rem;font-size:.7rem;color:var(--text);">
+      ${[1,2,3,4,5,6,7,8].map(m=>`<option value="${m}" ${state.teamMission[i]===m?’selected’:’’}>미션${m}</option>`).join(‘’)}
+    </select>`).join(‘’)}
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:.35rem;margin-bottom:.75rem;">
+    ${TEAM_TO_ROLE.map((role,i)=>`
+    <button onclick="teacherSkip(${i})"
+      style="background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:.3rem .5rem;font-size:.68rem;color:var(--text2);cursor:pointer;">
+      ${ISLANDS[i].emoji} ${i+1}모둠 스킵
+    </button>`).join(‘’)}
+  </div>
+
+  <div style="display:flex;gap:.4rem;">
+    <button onclick="teacherSyncNow()" style="flex:1;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.3);border-radius:4px;padding:.4rem;font-size:.7rem;color:var(--accent2);cursor:pointer;">🔄 동기화</button>
+    <button onclick="teacherResetRoom()" style="flex:1;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.3);border-radius:4px;padding:.4rem;font-size:.7rem;color:var(--danger);cursor:pointer;">🗑️ 방 초기화</button>
+  </div>`;
 document.body.appendChild(div);
+updateTeacherMonitor();
+}
+
+function updateTeacherMonitor() {
+const panel = document.getElementById(‘teacherMonitor’);
+if(!panel) return;
+const MN = {0:’시작전’,1:’위치파악’,2:’거주지’,3:’식량’,4:’동료’,5:’달기지’,6:’위기’,7:’신호’,8:’탈출’};
+panel.innerHTML = ISLANDS.map((isl, i) => {
+  const mission = state.teamMission[i] || 1;
+  const completed = (state.completedMission || [])[i] || 0;
+  const coins = state.coins[i];
+  const isDone = completed >= mission;
+  const isWaiting = isDone && mission < (state.globalMission || 1);
+  return `
+    <div style="background:var(--bg);border:2px solid ${isDone?isl.color:’rgba(255,255,255,.08)’};border-radius:6px;padding:.5rem;text-align:center;">
+      <div style="font-size:1.1rem;">${isl.emoji}</div>
+      <div style="font-family:’Bebas Neue’,sans-serif;font-size:.78rem;color:${isl.color};">${i+1}모둠</div>
+      <div style="font-size:.58rem;color:var(--text3);margin:.1rem 0;">${MN[mission]||’?’}</div>
+      <div style="font-size:.65rem;color:var(--accent);">🪙 ${coins}</div>
+      <div style="font-size:.58rem;color:${isDone?’var(--success)’:isWaiting?’var(--accent)’:’var(--accent2)’};margin-top:.1rem;">
+        ${isDone?’✅ 완료’:isWaiting?’⏸️ 대기’:’⏳ 진행중’}
+      </div>
+    </div>`;
+}).join(‘’);
+}
+
+async function teacherForceAll(missionId) {
+if(!missionId || missionId < 1 || missionId > 8) return;
+if(!confirm(`모든 모둠을 미션 ${missionId}로 강제 이동할까요?`)) return;
+for(let i=0;i<6;i++) state.teamMission[i] = missionId;
+state.globalMission = missionId;
+state.completedMission = Array(6).fill(missionId - 1);
+await fbSaveState();
+if(window.firebaseReady) {
+  await window.firebaseSet(
+    window.firebaseRef(window.firebaseDB, ‘rooms/room’+myRoom+’/teacherCmd’),
+    { type:’forceAllMission’, missionId, target:’all’, ts:Date.now(), processed:false }
+  );
+}
+renderLobby();
+updateTeacherMonitor();
+alert(‘모든 모둠을 미션 ‘ + missionId + ‘로 이동했어요!’);
 }
 
 async function teacherSkip(ti) {
@@ -3275,16 +3438,21 @@ if(!sel) return;
 const missionId = parseInt(sel.value);
 const role = TEAM_TO_ROLE[ti];
 state.teamMission[ti] = missionId;
+// 스킵된 팀의 완료 기록 & 글로벌 게이트 조정
+state.completedMission = state.completedMission || [0,0,0,0,0,0];
+state.completedMission[ti] = Math.max(state.completedMission[ti] || 0, missionId - 1);
+state.globalMission = Math.max(state.globalMission || 1, missionId);
 await fbSaveState();
 // 해당 팀에게 명령 전송
 if(window.firebaseReady) {
 await window.firebaseSet(
 window.firebaseRef(window.firebaseDB, ‘rooms/room’+myRoom+’/teacherCmd’),
-{ type:‘skipMission’, target:role, missionId, ts:Date.now(), processed:false }
+{ type:’skipMission’, target:role, missionId, ts:Date.now(), processed:false }
 );
 }
 renderLobby();
-alert(ISLANDS[ti].name + ’ → 미션’+missionId+‘로 스킵!’);
+updateTeacherMonitor();
+alert(ISLANDS[ti].name + ‘ → 미션’+missionId+’로 스킵!’);
 }
 
 async function teacherSyncNow() {
@@ -3314,7 +3482,7 @@ const btn = document.createElement(‘button’);
 btn.id = ‘teacherFloatBtn’;
 btn.textContent = ‘👩‍🏫’;
 btn.title = ‘교사 제어 패널’;
-btn.style.cssText = ‘position:fixed;bottom:1rem;left:1rem;z-index:200;background:var(–accent);color:#fff;border:none;border-radius:50%;width:44px;height:44px;font-size:1.2rem;cursor:pointer;box-shadow:0 4px 12px rgba(249,115,22,.4);’;
+btn.style.cssText = ‘position:fixed;bottom:1rem;left:1rem;z-index:200;background:var(--accent);color:#fff;border:none;border-radius:50%;width:44px;height:44px;font-size:1.2rem;cursor:pointer;box-shadow:0 4px 12px rgba(249,115,22,.4);’;
 btn.onclick = showTeacherPanel;
 document.body.appendChild(btn);
 }
