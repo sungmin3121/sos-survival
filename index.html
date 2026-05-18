@@ -236,7 +236,8 @@ transition: all .2s;
 width: 100%;
 }
 .room-btn:hover { border-color: var(--text3); color: var(--text); }
-.room-btn.selected { border-color: var(--accent); color: var(--accent); background: rgba(249,115,22,.08); }
+.room-btn.selected { border-color: var(--accent) !important; color: #fff !important; background: var(--accent) !important; box-shadow: 0 0 10px rgba(249,115,22,.5); }
+.room-btn.selected:hover { border-color: var(--accent) !important; color: #fff !important; background: var(--accent) !important; }
 .role-btn {
 background: var(--bg);
 border: 1px solid var(--border);
@@ -251,7 +252,8 @@ text-align: center;
 width: 100%;
 }
 .role-btn:hover { border-color: var(--text3); color: var(--text); }
-.role-btn.selected { border-color: var(--accent); color: var(--accent); background: rgba(249,115,22,.08); }
+.role-btn.selected { border-color: var(--accent) !important; color: var(--accent) !important; background: rgba(249,115,22,.18) !important; box-shadow: 0 0 0 2px var(--accent), 0 0 14px rgba(249,115,22,.3); }
+.role-btn.selected:hover { border-color: var(--accent) !important; color: var(--accent) !important; background: rgba(249,115,22,.18) !important; }
 
 /* MOON EVENT */
 .moon-screen {
@@ -3156,19 +3158,22 @@ const ROLE_TO_TEAM = { volcano:1, arctic:2, jungle:3, desert:4, ocean:5, dino:6 
 const TEAM_TO_ROLE = [‘volcano’,‘arctic’,‘jungle’,‘desert’,‘ocean’,‘dino’];
 
 // ── 로그인 UI ──
+function updateSelectionVisuals() {
+document.querySelectorAll(‘.room-btn’).forEach(b => b.classList.remove(‘selected’));
+if(myRoom) { const b = document.getElementById(‘roomBtn-’+myRoom); if(b) b.classList.add(‘selected’); }
+document.querySelectorAll(‘.role-btn’).forEach(b => b.classList.remove(‘selected’));
+if(myRole) { const b = document.getElementById(‘roleBtn-’+myRole); if(b) b.classList.add(‘selected’); }
+}
+
 function selectRoom(n) {
 myRoom = n;
-document.querySelectorAll(’.room-btn’).forEach(b => b.classList.remove(‘selected’));
-const btn = document.getElementById(‘roomBtn-’+n);
-if(btn) btn.classList.add(‘selected’);
+updateSelectionVisuals();
 updateLoginBtn();
 }
 
 function selectRole(role) {
 myRole = role;
-document.querySelectorAll(’.role-btn’).forEach(b => b.classList.remove(‘selected’));
-const btn = document.getElementById(‘roleBtn-’+role);
-if(btn) btn.classList.add(‘selected’);
+updateSelectionVisuals();
 updateLoginBtn();
 }
 
