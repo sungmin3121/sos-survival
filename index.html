@@ -3422,25 +3422,70 @@ const statusText = isDone ? '✅ 완료' : waiting ? '⏸️ 대기중' : '⏳ �
 const role = TEAM_TO_ROLE[i];
 const isConnected = !!(connectedRoles && connectedRoles[role]);
 const connDot = isConnected
-  ? '<span style="color:#22c55e;font-size:.7rem;" title="접속중">🟢 접속중</span>'
-  : '<span style="color:var(--text3);font-size:.7rem;" title="미접속">⚫ 미접속</span>';
-const stepBadge = info.step
-  ? `<span style="background:rgba(255,255,255,.07);border-radius:3px;padding:.1rem .35rem;font-size:.6rem;color:var(--text2);">STEP ${info.step} · ${info.label}</span>`
+  ? '<span style="color:#22c55e;font-size:.65rem;">🟢 접속중</span>'
+  : '<span style="color:var(--text3);font-size:.65rem;">⚫ 미접속</span>';
+
+// ── 진행률 계산 (전체 8미션 × 3스텝 = 24단위) ──
+const totalUnits = 8 * 3;
+const doneUnits = completed * 3;
+const stepUnits = info.step ? (info.step - 1) : 0;
+const pct = Math.round((doneUnits + stepUnits) / totalUnits * 100);
+// 완료 구간(초록), 현재 미션 진행 구간(주황) 너비
+const greenW = (completed / 8 * 100).toFixed(1);
+const orangeW = info.step ? ((info.step - 1) / 3 / 8 * 100).toFixed(1) : '0';
+
+// ── 8개 미션 진행 도트 ──
+const pips = Array.from({length:8}, (_,m) => {
+  const mn = m+1;
+  const pipColor = mn <= completed ? '#22c55e'
+    : mn === mission ? isl.color
+    : 'rgba(255,255,255,.12)';
+  const glow = mn === mission ? `box-shadow:0 0 5px ${isl.color};` : '';
+  return `<span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:${pipColor};${glow}flex-shrink:0;"></span>`;
+}).join('');
+
+const stepLabel = info.step
+  ? `<span style="font-size:.58rem;color:var(--text3);margin-left:.3rem;">STEP ${info.step}/3 · ${info.label}</span>`
   : '';
+
 return `
-<div style="background:var(--surface);border:2px solid ${isDone?isl.color:(isConnected?'rgba(34,197,94,.35)':'var(--border)')};border-radius:8px;padding:.85rem;display:flex;flex-direction:column;gap:.4rem;">
+<div style="background:var(--surface);border:2px solid ${isDone?isl.color:(isConnected?'rgba(34,197,94,.3)':'var(--border)')};border-radius:8px;padding:.85rem;display:flex;flex-direction:column;gap:.45rem;">
+
+  <!-- 헤더: 섬 이름 + 코인 + 접속 상태 -->
   <div style="display:flex;align-items:center;gap:.5rem;">
-    <span style="font-size:1.5rem;">${isl.emoji}</span>
+    <span style="font-size:1.4rem;">${isl.emoji}</span>
     <div style="flex:1;min-width:0;">
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:.9rem;color:${isl.color};">${i+1}모둠 · ${isl.name}</div>
-      <div style="font-size:.62rem;color:var(--text3);margin-top:.1rem;">미션 ${mission} · ${info.mission} ${stepBadge}</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:.88rem;color:${isl.color};">${i+1}모둠 · ${isl.name}</div>
+      <div style="margin-top:.1rem;">${connDot}</div>
     </div>
     <div style="text-align:right;flex-shrink:0;">
       <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--accent);">${coins} 🪙</div>
-      <div style="margin-top:.15rem;">${connDot}</div>
+      <div style="font-size:.6rem;color:${statusColor};margin-top:.1rem;">${statusText}</div>
     </div>
   </div>
-  <div style="font-size:.65rem;color:${statusColor};font-weight:bold;">${statusText}</div>
+
+  <!-- 현재 미션 + 스텝 텍스트 -->
+  <div style="font-size:.68rem;color:var(--text2);">
+    미션 ${mission} · <span style="color:${isl.color};font-weight:bold;">${info.mission}</span>${stepLabel}
+  </div>
+
+  <!-- 8개 미션 도트 + 진행률 % -->
+  <div style="display:flex;align-items:center;gap:.5rem;">
+    <div style="display:flex;gap:3px;align-items:center;">${pips}</div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:.85rem;color:var(--text2);margin-left:auto;">${pct}%</div>
+  </div>
+
+  <!-- 진행률 바 (초록=완료, 주황=현재 스텝) -->
+  <div style="position:relative;height:7px;background:rgba(255,255,255,.08);border-radius:4px;overflow:hidden;">
+    <div style="position:absolute;left:0;top:0;height:100%;width:${greenW}%;background:#22c55e;border-radius:4px 0 0 4px;"></div>
+    <div style="position:absolute;left:${greenW}%;top:0;height:100%;width:${orangeW}%;background:${isl.color};"></div>
+    ${[1,2,3,4,5,6,7].map(m=>`<div style="position:absolute;left:${m/8*100}%;top:0;height:100%;width:1px;background:rgba(0,0,0,.35);"></div>`).join('')}
+  </div>
+  <div style="display:flex;justify-content:space-between;font-size:.5rem;color:var(--text3);">
+    ${['위치','거주','식량','동료','달','위기','신호','탈출'].map((n,m)=>`<span>${n}</span>`).join('')}
+  </div>
+
+  <!-- 버튼: 화면 보기 + 스킵 -->
   <div style="display:flex;gap:.35rem;margin-top:.1rem;">
     <button onclick="tdViewTeam(${i})"
       style="flex:1;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.25);border-radius:4px;padding:.3rem;font-size:.65rem;color:var(--accent2);cursor:pointer;">📺 화면 보기</button>
@@ -3450,6 +3495,7 @@ return `
     <button onclick="tdSkipTeam(${i})"
       style="background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.25);border-radius:4px;padding:.3rem .5rem;font-size:.65rem;color:var(--accent);cursor:pointer;">⏭ 스킵</button>
   </div>
+
 </div>`;
 }).join('');
 }
