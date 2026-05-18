@@ -690,9 +690,11 @@ function showScreen(id) {
   document.getElementById('screen-'+id).classList.add('active');
   if(id==='lobby') { renderLobby(); hideHUD(); }
   if(id==='main') { renderFloatBg(); hideHUD(); }
-  // 교사 버튼 표시
-  if(id !== 'login' && myRole === 'teacher' && !document.getElementById('teacherFloatBtn')) {
-    showTeacherBtn();
+  // 교사 전용: 미션 화면에선 대시보드 복귀 버튼 표시, 나머지는 숨김
+  if(myRole === 'teacher') {
+    const bb = document.getElementById('teacherBackBtn');
+    if(id === 'mission') { ensureTeacherBackBtn(); if(bb) bb.style.display=''; }
+    else if(bb) bb.style.display = 'none';
   }
 }
 
@@ -3167,7 +3169,8 @@ main.innerHTML = `<div class="mission-header"> <div class="mission-num">🏆 GAM
 
 // ══ FIREBASE SYNC ══
 let myRole = null;   // 'teacher' | 'volcano' | 'arctic' | …
-let myRoom = null;   // 1~4
+let myRoom = null;   // 5~8
+let connectedRoles = {};  // tracks who is currently connected
 let fbUnsubscribes = [];
 
 const ROLE_TO_TEAM = { volcano:1, arctic:2, jungle:3, desert:4, ocean:5, dino:6 };
@@ -3296,6 +3299,19 @@ refreshCurrentScreen();
 );
 fbUnsubscribes.push(unsub);
 
+// 접속자 변경 감지 (교사용)
+if(myRole === 'teacher') {
+const rolesUnsub = window.firebaseOnValue(
+  window.firebaseRef(db, 'rooms/room'+myRoom+'/connectedRoles'),
+  (snap) => {
+    connectedRoles = snap.exists() ? snap.val() : {};
+    updateTeacherDashboard();
+    updateTeacherMonitor();
+  }
+);
+fbUnsubscribes.push(rolesUnsub);
+}
+
 // 교사 명령 감지 (학생용)
 if(myRole !== 'teacher') {
 const cmdUnsub = window.firebaseOnValue(
@@ -3365,25 +3381,29 @@ location.reload();
 
 // ── 교사 대시보드 ──
 const MISSION_NAMES = {1:'위치파악',2:'거주지',3:'식량',4:'동료',5:'달기지',6:'위기',7:'신호',8:'탈출'};
-const STEP_KEYS = {2:'m2',3:'m3',4:'m4',6:'m5',7:'m6',8:'m7'};
+const STEP_LABELS = ['','도전 전','진행중','결과 확인'];
 
 function getMissionStepInfo(ti) {
 const m = state.teamMission[ti] || 1;
-const key = STEP_KEYS[m];
-if(!key) return { mission: MISSION_NAMES[m]||'?', step:'', total:'' };
-const step = (state.missionStep[key+'_'+ti]) || 1;
-return { mission: MISSION_NAMES[m]||'?', step, total:3 };
+// Mission 1 uses numeric key (ti), others use 'mN_ti' format
+const stepKeyMap = {1: ti, 2:'m2_'+ti, 3:'m3_'+ti, 4:'m4_'+ti, 6:'m5_'+ti, 7:'m6_'+ti, 8:'m7_'+ti};
+const key = stepKeyMap[m];
+if(key === undefined) return { mission: MISSION_NAMES[m]||'?', step:0, label:'진행중' };
+const step = (state.missionStep[key]) || 1;
+return { mission: MISSION_NAMES[m]||'?', step, label: STEP_LABELS[step]||'' };
 }
 
 function showTeacherDashboard() {
 document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
 document.getElementById('screen-teacher').classList.add('active');
+const bb = document.getElementById('teacherBackBtn');
+if(bb) bb.style.display = 'none';
 const sel = document.getElementById('tdForceSelect');
 if(sel && !sel.options.length) {
 [1,2,3,4,5,6,7,8].forEach(m => { const o=document.createElement('option'); o.value=m; o.textContent='미션 '+m+' ('+MISSION_NAMES[m]+')'; sel.appendChild(o); });
 }
 const lbl = document.getElementById('tdRoomLabel');
-if(lbl) lbl.textContent = myRoom+'반 접속중';
+if(lbl) lbl.textContent = myRoom+'반';
 updateTeacherDashboard();
 }
 
@@ -3399,18 +3419,25 @@ const isDone = completed >= mission;
 const waiting = isDone && mission < (state.globalMission||1);
 const statusColor = isDone ? 'var(--success)' : waiting ? 'var(--accent)' : 'var(--accent2)';
 const statusText = isDone ? '✅ 완료' : waiting ? '⏸️ 대기중' : '⏳ 진행중';
-const stepStr = info.step ? ` · ${info.step}/${info.total}단계` : '';
+const role = TEAM_TO_ROLE[i];
+const isConnected = !!(connectedRoles && connectedRoles[role]);
+const connDot = isConnected
+  ? '<span style="color:#22c55e;font-size:.7rem;" title="접속중">🟢 접속중</span>'
+  : '<span style="color:var(--text3);font-size:.7rem;" title="미접속">⚫ 미접속</span>';
+const stepBadge = info.step
+  ? `<span style="background:rgba(255,255,255,.07);border-radius:3px;padding:.1rem .35rem;font-size:.6rem;color:var(--text2);">STEP ${info.step} · ${info.label}</span>`
+  : '';
 return `
-<div style="background:var(--surface);border:2px solid ${isDone?isl.color:'var(--border)'};border-radius:8px;padding:.85rem;display:flex;flex-direction:column;gap:.4rem;">
+<div style="background:var(--surface);border:2px solid ${isDone?isl.color:(isConnected?'rgba(34,197,94,.35)':'var(--border)')};border-radius:8px;padding:.85rem;display:flex;flex-direction:column;gap:.4rem;">
   <div style="display:flex;align-items:center;gap:.5rem;">
     <span style="font-size:1.5rem;">${isl.emoji}</span>
-    <div>
+    <div style="flex:1;min-width:0;">
       <div style="font-family:'Bebas Neue',sans-serif;font-size:.9rem;color:${isl.color};">${i+1}모둠 · ${isl.name}</div>
-      <div style="font-size:.62rem;color:var(--text3);">미션 ${mission} · ${info.mission}${stepStr}</div>
+      <div style="font-size:.62rem;color:var(--text3);margin-top:.1rem;">미션 ${mission} · ${info.mission} ${stepBadge}</div>
     </div>
-    <div style="margin-left:auto;text-align:right;">
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--accent);">${coins}</div>
-      <div style="font-size:.55rem;color:var(--text3);">🪙 코인</div>
+    <div style="text-align:right;flex-shrink:0;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--accent);">${coins} 🪙</div>
+      <div style="margin-top:.15rem;">${connDot}</div>
     </div>
   </div>
   <div style="font-size:.65rem;color:${statusColor};font-weight:bold;">${statusText}</div>
@@ -3430,8 +3457,19 @@ return `
 function tdViewTeam(i) {
 showScreen('mission');
 initMission(i+1, state.teamMission[i]||1);
-const backBtn = document.getElementById('backBtn');
-if(backBtn) backBtn.textContent = '← 대시보드로';
+// Show persistent back-to-dashboard button in the HUD area
+ensureTeacherBackBtn();
+}
+
+function ensureTeacherBackBtn() {
+if(!myRole === 'teacher') return;
+if(document.getElementById('teacherBackBtn')) return;
+const btn = document.createElement('button');
+btn.id = 'teacherBackBtn';
+btn.textContent = '📊 대시보드';
+btn.style.cssText = 'position:fixed;top:.5rem;left:50%;transform:translateX(-50%);z-index:300;background:var(--accent);color:#fff;border:none;border-radius:20px;padding:.35rem 1rem;font-size:.72rem;cursor:pointer;font-family:"Space Mono",monospace;box-shadow:0 2px 8px rgba(249,115,22,.4);';
+btn.onclick = showTeacherDashboard;
+document.body.appendChild(btn);
 }
 
 function tdForceAll() {
