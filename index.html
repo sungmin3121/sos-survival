@@ -3421,9 +3421,9 @@ const statusColor = isDone ? 'var(--success)' : waiting ? 'var(--accent)' : 'var
 const statusText = isDone ? '✅ 완료' : waiting ? '⏸️ 대기중' : '⏳ 진행중';
 const role = TEAM_TO_ROLE[i];
 const isConnected = !!(connectedRoles && connectedRoles[role]);
-const connDot = isConnected
-  ? '<span style="color:#22c55e;font-size:.65rem;">🟢 접속중</span>'
-  : '<span style="color:var(--text3);font-size:.65rem;">⚫ 미접속</span>';
+const connBadge = isConnected
+  ? '<span style="background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.45);border-radius:10px;padding:.15rem .5rem;font-size:.65rem;color:#22c55e;white-space:nowrap;">🟢 접속중</span>'
+  : '<span style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:.15rem .5rem;font-size:.65rem;color:var(--text3);white-space:nowrap;">⚫ 미접속</span>';
 
 // ── 진행률 계산 (전체 8미션 × 3스텝 = 24단위) ──
 const totalUnits = 8 * 3;
@@ -3451,17 +3451,16 @@ const stepLabel = info.step
 return `
 <div style="background:var(--surface);border:2px solid ${isDone?isl.color:(isConnected?'rgba(34,197,94,.3)':'var(--border)')};border-radius:8px;padding:.85rem;display:flex;flex-direction:column;gap:.45rem;">
 
-  <!-- 헤더: 섬 이름 + 코인 + 접속 상태 -->
-  <div style="display:flex;align-items:center;gap:.5rem;">
+  <!-- 헤더 줄 1: 섬 이름 + 접속 배지 -->
+  <div style="display:flex;align-items:center;gap:.4rem;">
     <span style="font-size:1.4rem;">${isl.emoji}</span>
-    <div style="flex:1;min-width:0;">
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:.88rem;color:${isl.color};">${i+1}모둠 · ${isl.name}</div>
-      <div style="margin-top:.1rem;">${connDot}</div>
-    </div>
-    <div style="text-align:right;flex-shrink:0;">
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--accent);">${coins} 🪙</div>
-      <div style="font-size:.6rem;color:${statusColor};margin-top:.1rem;">${statusText}</div>
-    </div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:.88rem;color:${isl.color};">${i+1}모둠 · ${isl.name}</div>
+    <div style="margin-left:auto;">${connBadge}</div>
+  </div>
+  <!-- 헤더 줄 2: 코인 + 상태 -->
+  <div style="display:flex;align-items:center;gap:.5rem;">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;color:var(--accent);">${coins} 🪙</div>
+    <div style="font-size:.62rem;color:${statusColor};font-weight:bold;margin-left:auto;">${statusText}</div>
   </div>
 
   <!-- 현재 미션 + 스텝 텍스트 -->
