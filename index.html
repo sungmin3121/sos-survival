@@ -525,6 +525,24 @@ window.dispatchEvent(new Event('firebaseReady'));
   </div>
 </div>
 
+<!-- ══ TEACHER DASHBOARD ══ -->
+<div id="screen-teacher" class="screen" style="background:var(--bg);flex-direction:column;">
+  <!-- 상단 바 -->
+  <div style="display:flex;align-items:center;gap:.75rem;padding:.75rem 1rem;background:var(--surface);border-bottom:1px solid var(--border);flex-shrink:0;">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.1em;color:var(--accent);">👩‍🏫 교사 대시보드</div>
+    <div id="tdRoomLabel" style="font-size:.7rem;color:var(--text3);flex:1;"></div>
+    <!-- 전체 강제 이동 -->
+    <select id="tdForceSelect" style="background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:.3rem .5rem;font-size:.72rem;color:var(--text);"></select>
+    <button onclick="tdForceAll()" style="background:var(--accent);border:none;border-radius:4px;padding:.3rem .8rem;font-size:.72rem;color:#fff;cursor:pointer;white-space:nowrap;">전체 이동 →</button>
+    <button onclick="teacherSyncNow()" style="background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.3);border-radius:4px;padding:.3rem .7rem;font-size:.72rem;color:var(--accent2);cursor:pointer;">🔄 동기화</button>
+    <button onclick="teacherResetRoom()" style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);border-radius:4px;padding:.3rem .7rem;font-size:.72rem;color:var(--danger);cursor:pointer;">🗑️ 초기화</button>
+  </div>
+  <!-- 모둠 카드 그리드 -->
+  <div style="flex:1;overflow-y:auto;padding:1rem;">
+    <div id="tdGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;"></div>
+  </div>
+</div>
+
 <!-- ══ LOBBY ══ -->
 
 <div id="screen-lobby" class="screen">
@@ -587,7 +605,7 @@ window.dispatchEvent(new Event('firebaseReady'));
         <div class="sml-title">MISSIONS</div>
         <div id="smlList"></div>
       </div>
-      <button class="btn-ghost" onclick="showScreen('lobby')" style="margin-top:auto;">← 로비로</button>
+      <button class="btn-ghost" id="backBtn" onclick="myRole==='teacher'?showTeacherDashboard():showScreen('lobby')" style="margin-top:auto;">← 로비로</button>
     </div>
     <!-- 메인 콘텐츠 -->
     <div class="mission-main" id="missionMain"></div>
@@ -3206,9 +3224,8 @@ const proceed = () => {
 status.textContent = '✅ 접속 완료!';
 setTimeout(() => {
 if(myRole === 'teacher') {
-showScreen('main');
 renderLobby();
-showTeacherBtn();
+showTeacherDashboard();
 } else {
 const teamNum = ROLE_TO_TEAM[myRole];
 document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
@@ -3264,10 +3281,14 @@ const remote = snap.val();
 // 내가 직접 업데이트한 게 아닌 경우만 적용
 if(remote._lastUpdatedBy && remote._lastUpdatedBy !== myRole) {
 const prev = JSON.stringify(state.coins) + JSON.stringify(state.teamMission);
+// Preserve local navigation state — each tab manages its own view
+const savedTeam = state.currentTeam;
+const savedMission = state.currentMission;
 Object.assign(state, remote);
+state.currentTeam = savedTeam;
+state.currentMission = savedMission;
 const curr = JSON.stringify(state.coins) + JSON.stringify(state.teamMission);
 if(prev !== curr) {
-// 현재 보이는 화면 새로고침
 refreshCurrentScreen();
 }
 }
@@ -3310,7 +3331,7 @@ const ti = state.currentTeam;
 renderSidebar(ti+1);
 renderTeamSelector(ti+1);
 updateMissionProgress();
-if(myRole === 'teacher') { renderLobby(); updateTeacherMonitor(); }
+if(myRole === 'teacher') { renderLobby(); updateTeacherDashboard(); updateTeacherMonitor(); }
 checkGlobalGate();
 if(waitingForMission && canAdvance(waitingForMission.toMission)) {
   const { ti: wti, toMission } = waitingForMission;
@@ -3340,6 +3361,106 @@ initMission(teamNum, cmd.missionId);
 } else if(cmd.type === 'resetRoom') {
 location.reload();
 }
+}
+
+// ── 교사 대시보드 ──
+const MISSION_NAMES = {1:'위치파악',2:'거주지',3:'식량',4:'동료',5:'달기지',6:'위기',7:'신호',8:'탈출'};
+const STEP_KEYS = {2:'m2',3:'m3',4:'m4',6:'m5',7:'m6',8:'m7'};
+
+function getMissionStepInfo(ti) {
+const m = state.teamMission[ti] || 1;
+const key = STEP_KEYS[m];
+if(!key) return { mission: MISSION_NAMES[m]||'?', step:'', total:'' };
+const step = (state.missionStep[key+'_'+ti]) || 1;
+return { mission: MISSION_NAMES[m]||'?', step, total:3 };
+}
+
+function showTeacherDashboard() {
+document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+document.getElementById('screen-teacher').classList.add('active');
+const sel = document.getElementById('tdForceSelect');
+if(sel && !sel.options.length) {
+[1,2,3,4,5,6,7,8].forEach(m => { const o=document.createElement('option'); o.value=m; o.textContent='미션 '+m+' ('+MISSION_NAMES[m]+')'; sel.appendChild(o); });
+}
+const lbl = document.getElementById('tdRoomLabel');
+if(lbl) lbl.textContent = myRoom+'반 접속중';
+updateTeacherDashboard();
+}
+
+function updateTeacherDashboard() {
+const grid = document.getElementById('tdGrid');
+if(!grid) return;
+grid.innerHTML = ISLANDS.map((isl,i) => {
+const info = getMissionStepInfo(i);
+const coins = state.coins[i];
+const completed = (state.completedMission||[])[i]||0;
+const mission = state.teamMission[i]||1;
+const isDone = completed >= mission;
+const waiting = isDone && mission < (state.globalMission||1);
+const statusColor = isDone ? 'var(--success)' : waiting ? 'var(--accent)' : 'var(--accent2)';
+const statusText = isDone ? '✅ 완료' : waiting ? '⏸️ 대기중' : '⏳ 진행중';
+const stepStr = info.step ? ` · ${info.step}/${info.total}단계` : '';
+return `
+<div style="background:var(--surface);border:2px solid ${isDone?isl.color:'var(--border)'};border-radius:8px;padding:.85rem;display:flex;flex-direction:column;gap:.4rem;">
+  <div style="display:flex;align-items:center;gap:.5rem;">
+    <span style="font-size:1.5rem;">${isl.emoji}</span>
+    <div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:.9rem;color:${isl.color};">${i+1}모둠 · ${isl.name}</div>
+      <div style="font-size:.62rem;color:var(--text3);">미션 ${mission} · ${info.mission}${stepStr}</div>
+    </div>
+    <div style="margin-left:auto;text-align:right;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--accent);">${coins}</div>
+      <div style="font-size:.55rem;color:var(--text3);">🪙 코인</div>
+    </div>
+  </div>
+  <div style="font-size:.65rem;color:${statusColor};font-weight:bold;">${statusText}</div>
+  <div style="display:flex;gap:.35rem;margin-top:.1rem;">
+    <button onclick="tdViewTeam(${i})"
+      style="flex:1;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.25);border-radius:4px;padding:.3rem;font-size:.65rem;color:var(--accent2);cursor:pointer;">📺 화면 보기</button>
+    <select id="tdSkipSel-${i}" style="flex:1;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:.3rem;font-size:.65rem;color:var(--text);">
+      ${[1,2,3,4,5,6,7,8].map(m=>`<option value="${m}"${state.teamMission[i]===m?' selected':''}>미션${m}</option>`).join('')}
+    </select>
+    <button onclick="tdSkipTeam(${i})"
+      style="background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.25);border-radius:4px;padding:.3rem .5rem;font-size:.65rem;color:var(--accent);cursor:pointer;">⏭ 스킵</button>
+  </div>
+</div>`;
+}).join('');
+}
+
+function tdViewTeam(i) {
+showScreen('mission');
+initMission(i+1, state.teamMission[i]||1);
+const backBtn = document.getElementById('backBtn');
+if(backBtn) backBtn.textContent = '← 대시보드로';
+}
+
+function tdForceAll() {
+const sel = document.getElementById('tdForceSelect');
+if(!sel) return;
+const missionId = parseInt(sel.value);
+if(!confirm(`모든 모둠을 미션 ${missionId}(${MISSION_NAMES[missionId]})로 강제 이동할까요?`)) return;
+teacherForceAll(missionId);
+setTimeout(()=>updateTeacherDashboard(), 300);
+}
+
+async function tdSkipTeam(i) {
+const sel = document.getElementById('tdSkipSel-'+i);
+if(!sel) return;
+const missionId = parseInt(sel.value);
+const role = TEAM_TO_ROLE[i];
+state.teamMission[i] = missionId;
+state.completedMission = state.completedMission || [0,0,0,0,0,0];
+state.completedMission[i] = Math.max(state.completedMission[i]||0, missionId-1);
+state.globalMission = Math.max(state.globalMission||1, missionId);
+await fbSaveState();
+if(window.firebaseReady) {
+  await window.firebaseSet(
+    window.firebaseRef(window.firebaseDB, 'rooms/room'+myRoom+'/teacherCmd'),
+    { type:'skipMission', missionId, target:role, ts:Date.now(), processed:false }
+  );
+}
+updateTeacherDashboard();
+updateTeacherMonitor();
 }
 
 // ── 교사 제어 패널 ──
@@ -3419,7 +3540,6 @@ panel.innerHTML = ISLANDS.map((isl, i) => {
 
 async function teacherForceAll(missionId) {
 if(!missionId || missionId < 1 || missionId > 8) return;
-if(!confirm(`모든 모둠을 미션 ${missionId}로 강제 이동할까요?`)) return;
 for(let i=0;i<6;i++) state.teamMission[i] = missionId;
 state.globalMission = missionId;
 state.completedMission = Array(6).fill(missionId - 1);
@@ -3432,7 +3552,7 @@ if(window.firebaseReady) {
 }
 renderLobby();
 updateTeacherMonitor();
-alert('모든 모둠을 미션 ' + missionId + '로 이동했어요!');
+updateTeacherDashboard();
 }
 
 async function teacherSkip(ti) {
