@@ -535,6 +535,7 @@ window.dispatchEvent(new Event('firebaseReady'));
     <!-- 전체 강제 이동 -->
     <select id="tdForceSelect" style="background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:.3rem .5rem;font-size:.72rem;color:var(--text);"></select>
     <button onclick="tdForceAll()" style="background:var(--accent);border:none;border-radius:4px;padding:.3rem .8rem;font-size:.72rem;color:#fff;cursor:pointer;white-space:nowrap;">전체 이동 →</button>
+    <button onclick="showM7Review()" style="background:rgba(168,85,247,.12);border:1px solid rgba(168,85,247,.3);border-radius:4px;padding:.3rem .7rem;font-size:.72rem;color:#a855f7;cursor:pointer;">📝 미션7 응답</button>
     <button onclick="teacherSyncNow()" style="background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.3);border-radius:4px;padding:.3rem .7rem;font-size:.72rem;color:var(--accent2);cursor:pointer;">🔄 동기화</button>
     <button onclick="teacherResetRoom()" style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);border-radius:4px;padding:.3rem .7rem;font-size:.72rem;color:var(--danger);cursor:pointer;">🗑️ 초기화</button>
   </div>
@@ -3673,6 +3674,68 @@ if(window.firebaseReady) {
 await window.firebaseRemove(window.firebaseRef(window.firebaseDB, 'rooms/room'+myRoom));
 }
 location.reload();
+}
+
+// ── 미션 7 응답 리뷰 오버레이 ──
+function showM7Review() {
+  let ov = document.getElementById('m7ReviewOverlay');
+  if(ov) { ov.remove(); }
+  ov = document.createElement('div');
+  ov.id = 'm7ReviewOverlay';
+  ov.style.cssText = 'position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.85);display:flex;flex-direction:column;overflow:hidden;';
+
+  const GRADE_LABEL = { perfect:'✅ 필수내용+발화', partial:'⚡ 필수내용만', miss:'❌ 미포함' };
+  const GRADE_COLOR = { perfect:'#22c55e', partial:'var(--accent)', miss:'var(--danger)' };
+
+  const cards = ISLANDS.map((isl, i) => {
+    const ti = i;
+    const m7d = MISSION7_DATA[ti];
+    const text = (state.m7text && state.m7text[ti]) || '';
+    const result = (state.m7result && state.m7result[ti]) || null;
+    const grade = result ? result.grade : null;
+    const coins = result ? result.coins : null;
+    const breakdown = result ? (result.breakdown || '') : '';
+
+    const gradeHtml = grade
+      ? `<span style="background:${GRADE_COLOR[grade]}22;border:1px solid ${GRADE_COLOR[grade]}66;border-radius:10px;padding:.15rem .6rem;font-size:.68rem;color:${GRADE_COLOR[grade]};white-space:nowrap;">${GRADE_LABEL[grade]||grade}</span>`
+      : '<span style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:.15rem .6rem;font-size:.68rem;color:var(--text3);">미채점</span>';
+
+    const coinsHtml = coins != null
+      ? `<span style="font-size:.68rem;color:#fbbf24;">🪙 ${coins}코인</span>`
+      : '';
+
+    const textHtml = text
+      ? `<div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:6px;padding:.75rem;font-size:.78rem;color:var(--text);line-height:1.8;white-space:pre-wrap;font-family:'Noto Sans KR',sans-serif;max-height:160px;overflow-y:auto;">${text.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>`
+      : '<div style="background:rgba(255,255,255,.03);border:1px dashed rgba(255,255,255,.1);border-radius:6px;padding:.75rem;font-size:.78rem;color:var(--text3);text-align:center;">미제출</div>';
+
+    const breakdownHtml = breakdown
+      ? `<div style="font-size:.65rem;color:var(--text3);margin-top:.4rem;line-height:1.6;">${breakdown.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>`
+      : '';
+
+    return `<div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.85rem;display:flex;flex-direction:column;gap:.5rem;">
+      <div style="display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;">
+        <span style="font-size:1rem;">${isl.emoji}</span>
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:.95rem;letter-spacing:.05em;color:${isl.color};">${isl.name}</span>
+        ${gradeHtml}
+        ${coinsHtml}
+      </div>
+      <div style="font-size:.65rem;color:var(--text3);">필수: <span style="color:var(--text2);">${m7d.keyKr}</span> (${m7d.warning})</div>
+      ${textHtml}
+      ${breakdownHtml}
+    </div>`;
+  }).join('');
+
+  ov.innerHTML = `
+    <div style="display:flex;align-items:center;gap:.75rem;padding:.75rem 1rem;background:var(--surface);border-bottom:1px solid var(--border);flex-shrink:0;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.1em;color:#a855f7;">📝 미션 7 · 모둠별 응답</div>
+      <div style="flex:1;font-size:.68rem;color:var(--text3);">실시간 반영 — 채점 후 결과 포함</div>
+      <button onclick="document.getElementById('m7ReviewOverlay').remove()" style="background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.25);border-radius:4px;padding:.3rem .8rem;font-size:.72rem;color:var(--danger);cursor:pointer;">✕ 닫기</button>
+    </div>
+    <div style="flex:1;overflow-y:auto;padding:1rem;">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;">${cards}</div>
+    </div>`;
+
+  document.body.appendChild(ov);
 }
 
 // ── 학생 역할일 때 다른 팀 제어 비활성화
