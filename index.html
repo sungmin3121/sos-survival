@@ -3379,6 +3379,9 @@ initMission(teamNum, cmd.missionId);
 for(let i=0;i<6;i++) state.teamMission[i] = cmd.missionId;
 state.globalMission = cmd.missionId;
 state.completedMission = Array(6).fill(cmd.missionId - 1);
+state.missionStep = {};
+state.m7text = {};
+state.m7result = {};
 waitingForMission = null;
 const teamNum = ROLE_TO_TEAM[myRole];
 initMission(teamNum, cmd.missionId);
@@ -3424,9 +3427,10 @@ const coins = state.coins[i];
 const completed = (state.completedMission||[])[i]||0;
 const mission = state.teamMission[i]||1;
 const isDone = completed >= mission;
-const waiting = isDone && mission < (state.globalMission||1);
-const statusColor = isDone ? 'var(--success)' : waiting ? 'var(--accent)' : 'var(--accent2)';
-const statusText = isDone ? '✅ 완료' : waiting ? '⏸️ 대기중' : '⏳ 진행중';
+const fullyDone = completed >= 8;
+const waiting = isDone && !fullyDone;
+const statusColor = fullyDone ? 'var(--success)' : waiting ? 'var(--accent)' : 'var(--accent2)';
+const statusText = fullyDone ? '✅ 완료' : waiting ? '⏸️ 대기중' : '⏳ 진행중';
 const role = TEAM_TO_ROLE[i];
 const isConnected = !!(connectedRoles && connectedRoles[role]);
 const connBadge = isConnected
@@ -3457,7 +3461,7 @@ const stepLabel = info.step
   : '';
 
 return `
-<div style="background:var(--surface);border:2px solid ${isDone?isl.color:(isConnected?'rgba(34,197,94,.3)':'var(--border)')};border-radius:8px;padding:.85rem;display:flex;flex-direction:column;gap:.45rem;">
+<div style="background:var(--surface);border:2px solid ${fullyDone?isl.color:(isConnected?'rgba(34,197,94,.3)':'var(--border)')};border-radius:8px;padding:.85rem;display:flex;flex-direction:column;gap:.45rem;">
 
   <!-- 헤더 줄 1: 섬 이름 + 접속 배지 -->
   <div style="display:flex;align-items:center;gap:.4rem;">
@@ -3615,15 +3619,16 @@ panel.innerHTML = ISLANDS.map((isl, i) => {
   const completed = (state.completedMission || [])[i] || 0;
   const coins = state.coins[i];
   const isDone = completed >= mission;
-  const isWaiting = isDone && mission < (state.globalMission || 1);
+  const fullyDone = completed >= 8;
+  const isWaiting = isDone && !fullyDone;
   return `
-    <div style="background:var(--bg);border:2px solid ${isDone?isl.color:'rgba(255,255,255,.08)'};border-radius:6px;padding:.5rem;text-align:center;">
+    <div style="background:var(--bg);border:2px solid ${fullyDone?isl.color:'rgba(255,255,255,.08)'};border-radius:6px;padding:.5rem;text-align:center;">
       <div style="font-size:1.1rem;">${isl.emoji}</div>
       <div style="font-family:'Bebas Neue',sans-serif;font-size:.78rem;color:${isl.color};">${i+1}모둠</div>
       <div style="font-size:.58rem;color:var(--text3);margin:.1rem 0;">${MN[mission]||'?'}</div>
       <div style="font-size:.65rem;color:var(--accent);">🪙 ${coins}</div>
-      <div style="font-size:.58rem;color:${isDone?'var(--success)':isWaiting?'var(--accent)':'var(--accent2)'};margin-top:.1rem;">
-        ${isDone?'✅ 완료':isWaiting?'⏸️ 대기':'⏳ 진행중'}
+      <div style="font-size:.58rem;color:${fullyDone?'var(--success)':isWaiting?'var(--accent)':'var(--accent2)'};margin-top:.1rem;">
+        ${fullyDone?'✅ 완료':isWaiting?'⏸️ 대기':'⏳ 진행중'}
       </div>
     </div>`;
 }).join('');
@@ -3634,6 +3639,9 @@ if(!missionId || missionId < 1 || missionId > 8) return;
 for(let i=0;i<6;i++) state.teamMission[i] = missionId;
 state.globalMission = missionId;
 state.completedMission = Array(6).fill(missionId - 1);
+state.missionStep = {};
+state.m7text = {};
+state.m7result = {};
 await fbSaveState();
 if(window.firebaseReady) {
   await window.firebaseSet(
