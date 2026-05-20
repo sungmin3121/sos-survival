@@ -765,6 +765,7 @@ function updateMissionProgress() {
 
 // ══ 단계 제한 게이트 ══
 let waitingForMission = null;
+let moonPollIntervalId = null;
 
 function tryAdvanceMission(ti, toMission) {
   state.completedMission = state.completedMission || [0,0,0,0,0,0];
@@ -1842,7 +1843,8 @@ function moonEnd(ti, survived) {
   const main = document.getElementById('missionMain');
   if(main) {
     main.innerHTML = moonBufferingHTML(ti, score);
-    // 폴링: 모든 모둠 완료 여부 체크
+    // 점수 Firebase에 저장 후 폴링 시작
+    fbSaveState();
     moonPollResult(ti);
   }
 }
@@ -1920,15 +1922,15 @@ function moonBufferingHTML(ti, score) {
 
 function moonPollResult(ti) {
   // 기존 인터벌 정리
-  if(state.moonPollInterval) {
-    clearInterval(state.moonPollInterval);
-    state.moonPollInterval = null;
+  if(moonPollIntervalId) {
+    clearInterval(moonPollIntervalId);
+    moonPollIntervalId = null;
   }
-  state.moonPollInterval = setInterval(() => {
+  moonPollIntervalId = setInterval(() => {
     const completed = Object.keys(state.moonScores||{}).length;
     if(completed >= 6) {
-      clearInterval(state.moonPollInterval);
-      state.moonPollInterval = null;
+      clearInterval(moonPollIntervalId);
+      moonPollIntervalId = null;
       // state만 업데이트 (화면은 건드리지 않음)
       if(!state.moonBonusGiven) {
         state.moonBonusGiven = true;
@@ -1940,6 +1942,7 @@ function moonPollResult(ti) {
         else { for(let i=0;i<6;i++) state.coins[i]-=3; }
         state.moonAllDone = true;
         state.moonCleared = cleared;
+        fbSaveState();
       }
       // 현재 화면이 달 기지 버퍼링 페이지인 ti의 화면만 업데이트
       if(state.currentTeam === ti) {
@@ -3308,7 +3311,7 @@ if(!snap.exists()) return;
 const remote = snap.val();
 // 내가 직접 업데이트한 게 아닌 경우만 적용
 if(remote._lastUpdatedBy && remote._lastUpdatedBy !== myRole) {
-const prev = JSON.stringify(state.coins) + JSON.stringify(state.teamMission);
+const prev = JSON.stringify(state.coins) + JSON.stringify(state.teamMission) + JSON.stringify(state.moonScores);
 // Preserve local navigation state — each tab manages its own view
 const savedTeam = state.currentTeam;
 const savedMission = state.currentMission;
@@ -3316,7 +3319,7 @@ Object.assign(state, remote);
 sanitizeState();
 state.currentTeam = savedTeam;
 state.currentMission = savedMission;
-const curr = JSON.stringify(state.coins) + JSON.stringify(state.teamMission);
+const curr = JSON.stringify(state.coins) + JSON.stringify(state.teamMission) + JSON.stringify(state.moonScores);
 if(prev !== curr) {
 refreshCurrentScreen();
 }
@@ -3538,7 +3541,7 @@ ensureTeacherBackBtn();
 }
 
 function ensureTeacherBackBtn() {
-if(!myRole === 'teacher') return;
+if(myRole !== 'teacher') return;
 if(document.getElementById('teacherBackBtn')) return;
 const btn = document.createElement('button');
 btn.id = 'teacherBackBtn';
