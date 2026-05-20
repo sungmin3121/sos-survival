@@ -835,6 +835,7 @@ function applyCoins(ti, baseCoins) {
     coins = coins * 2;
     state.luckyActive[ti] = false;
     // 아이템에서도 제거
+    if(!Array.isArray(state.items[ti])) state.items[ti] = [];
     const idx = state.items[ti].indexOf('lucky');
     if(idx >= 0) state.items[ti].splice(idx, 1);
   }
@@ -891,6 +892,7 @@ function updateHUD(teamNum) {
   hudCoins.textContent = state.coins[ti];
   hudIsland.textContent = isl.emoji + ' ' + isl.name;
   hudIsland.style.borderColor = isl.color;
+  if(!Array.isArray(state.items[ti])) state.items[ti] = [];
   const myItems = state.items[ti];
   if(myItems.length === 0) {
     hudItems.textContent = '🎒 없음';
@@ -957,6 +959,7 @@ const MISSION3_ISLAND_RANDOM = [
 ];
 
 function initMission(teamNum, missionId) {
+  sanitizeState();
   state.currentTeam = teamNum - 1;
   const ti = teamNum - 1;
   // 팀별 현재 미션 업데이트 (뒤로 가지 않음)
@@ -1170,7 +1173,7 @@ function m3Pick(ti, idx){
     const rawCoins3 = MISSION3_RANDOM[roll].coins !== undefined ? MISSION3_RANDOM[roll].coins : (roll===2?0:roll===3?1:2);
     const coins = applyCoins(ti, rawCoins3);
     state.coins[ti]+=coins;
-    if(roll===5) { state.items[ti].push('lucky'); state.luckyActive = state.luckyActive || {}; state.luckyActive[ti] = true; }
+    if(roll===5) { if(!Array.isArray(state.items[ti])) state.items[ti]=[]; state.items[ti].push('lucky'); state.luckyActive = state.luckyActive || {}; state.luckyActive[ti] = true; }
     state.m3result = state.m3result || {};
     state.m3result[ti] = { roll, base, islandDesc, coins };
     fbSaveState();
@@ -1355,7 +1358,7 @@ function m2Pick(ti,idx){
   setTimeout(()=>{
     const m2coins = applyCoins(ti, ch.coins);
     state.coins[ti]+=m2coins;
-    if(ch.item) state.items[ti].push(ch.item);
+    if(ch.item) { if(!Array.isArray(state.items[ti])) state.items[ti]=[]; state.items[ti].push(ch.item); }
     state.m2result = state.m2result || {};
     state.m2result[ti] = ch;
     state.missionStep['m2_'+ti]=3;
@@ -1535,7 +1538,7 @@ function selectChoice(ti, idx) {
   setTimeout(()=>{
     const m1coins = applyCoins(ti, choice.coins);
     state.coins[ti] += m1coins;
-    if(choice.item) state.items[ti].push(choice.item);
+    if(choice.item) { if(!Array.isArray(state.items[ti])) state.items[ti]=[]; state.items[ti].push(choice.item); }
     // 결과 저장 (다른 섬 갔다와도 복원)
     state.m1result = state.m1result || {};
     state.m1result[ti] = choice;
@@ -2247,6 +2250,7 @@ function m5Result(ti, success) {
   state.coins[ti] += m5coins;
   if(!success) {
     // 페널티: 아이템 소멸 또는 코인 감소
+    if(!Array.isArray(state.items[ti])) state.items[ti] = [];
     if(state.items[ti].length > 0 && (ti===0||ti===3)) {
       state.items[ti].pop(); // 화산, 사막: 아이템 소멸
     }
@@ -3365,6 +3369,7 @@ await window.firebaseUpdate(window.firebaseRef(db, 'rooms/room'+myRoom), { state
 
 // ── 현재 화면 새로고침 ──
 function refreshCurrentScreen() {
+sanitizeState();
 const ti = state.currentTeam;
 renderSidebar(ti+1);
 renderTeamSelector(ti+1);
