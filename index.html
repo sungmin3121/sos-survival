@@ -789,12 +789,9 @@ function tryAdvanceMission(ti, toMission) {
   }
 }
 
-function applyRollback(ti, missionId) {
-  const coinSnap = (state.coinSnapshot || {})[ti+'_'+missionId];
-  state.coins[ti] = (coinSnap != null) ? coinSnap : 0;
-  const itemSnap = (state.itemSnapshot || {})[ti+'_'+missionId];
-  state.items[ti] = Array.isArray(itemSnap) ? [...itemSnap] : [];
-  // Clear interaction data for this team for rolled-back missions
+function clearMissionProgress(ti, missionId) {
+  // Clear this team's interaction data and missionStep for missions >= missionId
+  // (Called on both teacher and student side; does NOT touch coins/items)
   if(missionId <= 2) { if(state.m2dropped) delete state.m2dropped[ti]; if(state.m2pieces) delete state.m2pieces[ti]; }
   if(missionId <= 3 && state.m3match) delete state.m3match[ti];
   if(missionId <= 4 && state.m4answers) delete state.m4answers[ti];
@@ -804,11 +801,18 @@ function applyRollback(ti, missionId) {
   }
   if(missionId <= 7) { if(state.m6dropped) delete state.m6dropped[ti]; if(state.m6pieces) delete state.m6pieces[ti]; }
   if(missionId <= 8) { if(state.m7text) delete state.m7text[ti]; if(state.m7result) delete state.m7result[ti]; }
-  // Clear missionStep keys for this team at missions >= missionId
   const stepKeys = [[1,String(ti)],[2,'m2_'+ti],[3,'m3_'+ti],[4,'m4_'+ti],[6,'m5_'+ti],[7,'m6_'+ti],[8,'m7_'+ti]];
   if(state.missionStep) {
     for(const [mid, key] of stepKeys) { if(mid >= missionId) delete state.missionStep[key]; }
   }
+}
+
+function applyRollback(ti, missionId) {
+  const coinSnap = (state.coinSnapshot || {})[ti+'_'+missionId];
+  state.coins[ti] = (coinSnap != null) ? coinSnap : 0;
+  const itemSnap = (state.itemSnapshot || {})[ti+'_'+missionId];
+  state.items[ti] = Array.isArray(itemSnap) ? [...itemSnap] : [];
+  clearMissionProgress(ti, missionId);
 }
 
 function canAdvance(toMission) {
@@ -3500,10 +3504,14 @@ if(cmd.type === 'gotoMission') {
 initMission(ROLE_TO_TEAM[myRole], cmd.missionId);
 } else if(cmd.type === 'skipMission') {
 const teamNum = ROLE_TO_TEAM[myRole];
-state.teamMission[teamNum-1] = cmd.missionId;
+const ti = teamNum - 1;
+clearMissionProgress(ti, cmd.missionId);
+state.teamMission[ti] = cmd.missionId;
 waitingForMission = null;
 initMission(teamNum, cmd.missionId);
 } else if(cmd.type === 'forceAllMission') {
+const teamNum = ROLE_TO_TEAM[myRole];
+clearMissionProgress(teamNum - 1, cmd.missionId);
 for(let i=0;i<6;i++) state.teamMission[i] = cmd.missionId;
 state.globalMission = cmd.missionId;
 state.completedMission = Array(6).fill(cmd.missionId - 1);
@@ -3511,7 +3519,6 @@ state.missionStep = {};
 state.m7text = {};
 state.m7result = {};
 waitingForMission = null;
-const teamNum = ROLE_TO_TEAM[myRole];
 initMission(teamNum, cmd.missionId);
 } else if(cmd.type === 'resetRoom') {
 location.reload();
