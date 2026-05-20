@@ -766,6 +766,7 @@ function updateMissionProgress() {
 // ══ 단계 제한 게이트 ══
 let waitingForMission = null;
 let moonPollIntervalId = null;
+let waitingForFinal = false;
 
 function tryAdvanceMission(ti, toMission) {
   state.completedMission = state.completedMission || [0,0,0,0,0,0];
@@ -3198,24 +3199,57 @@ const { coins, breakdown, grade } = result;
 const emoji = grade==='perfect'?'🎉':grade==='partial'?'😮':coins>0?'👍':'😢';
 const title = grade==='perfect'?'RESCUE COMPLETE!':grade==='partial'?'SIGNAL SENT!':coins>0?'TRIED HARD!':'KEEP GOING!';
 
-const allDone = state.teamMission.every(m => m >= 8);
-const doneCount = state.teamMission.filter(m => m >= 8).length;
-const finalBtnHtml = allDone
-  ? '<button class="btn btn-primary" onclick="m7ShowFinal()">🏆 최종 결과 보기</button>'
-  : `<div style="background:rgba(56,189,248,.07);border:1px solid rgba(56,189,248,.2);border-radius:8px;padding:.55rem .9rem;font-size:.75rem;color:var(--text3);font-family:'Noto Sans KR',sans-serif;">⏳ ${doneCount}/6 완료 — 모든 모둠이 끝나면 결과가 나타나요</div>`;
+rc.innerHTML = `<div class="result-box"> <span class="result-emoji">${emoji}</span> <div class="result-title">${title}</div> <div class="result-coin positive">+${coins} 🪙</div> <div style="background:var(--surface);border-radius:8px;padding:1rem;margin:1rem 0;text-align:left;"> <div style="font-size:.68rem;color:var(--text3);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.1em;">📊 점수 내역</div> ${breakdown.map(b=>'<div style="font-size:.75rem;color:var(--text2);padding:.2rem 0;font-family:Noto Sans KR,sans-serif;">• '+b+'</div>').join('')} </div> <div style="background:var(--surface);border-radius:8px;padding:1rem;margin:.5rem 0;text-align:left;"> <div style="font-size:.68rem;color:var(--text3);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.1em;">작성한 안내문</div> <div style="font-size:.78rem;color:var(--text2);line-height:1.8;white-space:pre-wrap;font-family:Noto Sans KR,sans-serif;">${(state.m7text&&state.m7text[ti])||''}</div> </div> <div style="display:flex;gap:.75rem;justify-content:center;margin-top:1.25rem;"> <button class="btn-ghost" onclick="showScreen('lobby')">← 로비로</button> <button class="btn btn-primary" onclick="m7GoToFinalWaiting(${ti})">결과 화면으로 →</button> </div> </div>`;
+}
 
-rc.innerHTML = `<div class="result-box"> <span class="result-emoji">${emoji}</span> <div class="result-title">${title}</div> <div class="result-coin positive">+${coins} 🪙</div> <div style="background:var(--surface);border-radius:8px;padding:1rem;margin:1rem 0;text-align:left;"> <div style="font-size:.68rem;color:var(--text3);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.1em;">📊 점수 내역</div> ${breakdown.map(b=>'<div style="font-size:.75rem;color:var(--text2);padding:.2rem 0;font-family:Noto Sans KR,sans-serif;">• '+b+'</div>').join('')} </div> <div style="background:var(--surface);border-radius:8px;padding:1rem;margin:.5rem 0;text-align:left;"> <div style="font-size:.68rem;color:var(--text3);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.1em;">작성한 안내문</div> <div style="font-size:.78rem;color:var(--text2);line-height:1.8;white-space:pre-wrap;font-family:Noto Sans KR,sans-serif;">${(state.m7text&&state.m7text[ti])||''}</div> </div> <div style="display:flex;gap:.75rem;justify-content:center;margin-top:1.25rem;"> <button class="btn-ghost" onclick="showScreen('lobby')">← 로비로</button> ${finalBtnHtml} </div> </div>`;
+function m7GoToFinalWaiting(ti) {
+  const allDone = (state.completedMission||[]).every(c => (c||0) >= 8);
+  if(allDone) { m7ShowFinal(); }
+  else { waitingForFinal = true; showM7WaitingFinal(); }
+}
+
+function showM7WaitingFinal() {
+  const main = document.getElementById('missionMain');
+  if(!main) return;
+  const cm = state.completedMission || [0,0,0,0,0,0];
+  const doneCount = cm.filter(c => (c||0) >= 8).length;
+  main.innerHTML = `
+    <div class="mission-header">
+      <div class="mission-num">🏆 최종 결과 대기 중</div>
+      <div class="mission-title">⏳ 다른 모둠 완료 대기...</div>
+    </div>
+    <div class="result-box">
+      <span class="result-emoji" style="animation:pulseGlow 1.5s ease-in-out infinite;">🏆</span>
+      <div class="result-title">WAITING FOR FINAL</div>
+      <div style="font-size:.82rem;color:var(--accent2);margin:.5rem 0 1rem;font-family:'Noto Sans KR',sans-serif;">
+        미션 완료! 다른 모둠이 완료할 때까지 기다려주세요.
+      </div>
+      <div style="background:var(--surface);border-radius:8px;padding:1rem;margin-bottom:1rem;">
+        <div style="font-size:.7rem;color:var(--text3);margin-bottom:.65rem;text-transform:uppercase;letter-spacing:.1em;">모둠 완료 현황</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;">
+          ${ISLANDS.map((isl,i)=>{
+            const done=(cm[i]||0)>=8;
+            return '<div style="background:var(--bg);border:1px solid '+(done?isl.color:'var(--border)')+';border-radius:6px;padding:.5rem;text-align:center;">'
+              +'<div style="font-size:1.1rem;">'+isl.emoji+'</div>'
+              +'<div style="font-size:.6rem;color:'+(done?isl.color:'var(--text3)')+';">'+(done?'✅ 완료':'⏳ 진행중')+'</div>'
+              +'</div>';
+          }).join('')}
+        </div>
+      </div>
+      <div style="font-size:.75rem;color:var(--text3);font-family:'Noto Sans KR',sans-serif;margin-bottom:.75rem;">${doneCount}/6 모둠 완료 — 모두 완료되면 자동으로 최종 결과가 나타나요!</div>
+      <button onclick="inAppRefresh()" style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:.5rem 1.25rem;font-size:.78rem;color:var(--text2);cursor:pointer;font-family:'Space Mono',monospace;">🔄 현황 새로고침</button>
+    </div>`;
 }
 
 function m7ShowFinal() {
 const main = document.getElementById('missionMain');
 if(!main) return;
 
-// 모든 팀 미션 7 완료 체크
-const allDone = state.teamMission.every(m => m >= 8);
+// 모든 팀 미션 8 완료 체크 (completedMission 기준)
+const allDone = (state.completedMission||[]).every(c => (c||0) >= 8);
 if(!allDone) {
-const doneCount = state.teamMission.filter(m => m >= 8).length;
-main.innerHTML = `<div class="mission-header"> <div class="mission-num">🏆 최종 결과 집계 중</div> <div class="mission-title">⏳ 다른 모둠 대기 중...</div> </div> <div class="result-box"> <span class="result-emoji" style="animation:pulseGlow 1.5s infinite;">🏆</span> <div class="result-title">CALCULATING...</div> <div style="font-size:.78rem;color:var(--text3);margin:1rem 0;font-family:'Noto Sans KR',sans-serif;">${doneCount}/6 모둠 완료 — 모두 완료되면 결과가 나와요!</div> <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:1rem;"> ${ISLANDS.map((isl,i)=>{ const done = state.teamMission[i]>=8; return '<div style="background:var(--surface);border:1px solid '+(done?isl.color:'var(--border)')+';border-radius:6px;padding:.5rem;text-align:center;">' +'<div>'+isl.emoji+'</div>' +'<div style="font-size:.65rem;color:'+(done?isl.color:'var(--text3)')+';">'+(done?'완료':'대기중')+'</div>' +'</div>'; }).join('')} </div> <button class="btn-ghost" onclick="m7ShowFinal()" style="width:100%;">↺ 새로고침</button> </div>`;
+waitingForFinal = true;
+showM7WaitingFinal();
 return;
 }
 
@@ -3341,7 +3375,7 @@ if(!snap.exists()) return;
 const remote = snap.val();
 // 내가 직접 업데이트한 게 아닌 경우만 적용
 if(remote._lastUpdatedBy && remote._lastUpdatedBy !== myRole) {
-const prev = JSON.stringify(state.coins) + JSON.stringify(state.teamMission) + JSON.stringify(state.moonScores) + (state.globalMission||1);
+const prev = JSON.stringify(state.coins) + JSON.stringify(state.teamMission) + JSON.stringify(state.moonScores) + (state.globalMission||1) + JSON.stringify(state.completedMission);
 const savedTeam = state.currentTeam;
 const savedMission = state.currentMission;
 // 팀별 상호작용 객체는 shallow copy 보존 (Object.assign이 통째로 덮어씌우는 걸 방지)
@@ -3354,7 +3388,7 @@ sanitizeState();
 for(const k of nestedKeys) state[k] = Object.assign({}, remote[k]||{}, savedNested[k]);
 state.currentTeam = savedTeam;
 state.currentMission = savedMission;
-const curr = JSON.stringify(state.coins) + JSON.stringify(state.teamMission) + JSON.stringify(state.moonScores) + (state.globalMission||1);
+const curr = JSON.stringify(state.coins) + JSON.stringify(state.teamMission) + JSON.stringify(state.moonScores) + (state.globalMission||1) + JSON.stringify(state.completedMission);
 if(prev !== curr) {
 refreshCurrentScreen();
 }
@@ -3414,7 +3448,14 @@ renderTeamSelector(ti+1);
 updateMissionProgress();
 if(myRole === 'teacher') { renderLobby(); updateTeacherDashboard(); updateTeacherMonitor(); }
 checkGlobalGate();
-if(waitingForMission && canAdvance(waitingForMission.toMission)) {
+if(waitingForFinal) {
+  if((state.completedMission||[]).every(c => (c||0) >= 8)) {
+    waitingForFinal = false;
+    m7ShowFinal();
+  } else {
+    showM7WaitingFinal();
+  }
+} else if(waitingForMission && canAdvance(waitingForMission.toMission)) {
   const { ti: wti, toMission } = waitingForMission;
   waitingForMission = null;
   initMission(wti+1, toMission);
