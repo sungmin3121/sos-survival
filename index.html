@@ -771,6 +771,11 @@ let waitingForFinal = false;
 function tryAdvanceMission(ti, toMission) {
   state.completedMission = state.completedMission || [0,0,0,0,0,0];
   state.completedMission[ti] = Math.max(state.completedMission[ti] || 0, toMission - 1);
+  // 미션 시작 직전 코인/아이템 스냅샷 저장 (교사 롤백 복원용)
+  state.coinSnapshot = state.coinSnapshot || {};
+  state.itemSnapshot = state.itemSnapshot || {};
+  state.coinSnapshot[ti+'_'+toMission] = state.coins[ti];
+  state.itemSnapshot[ti+'_'+toMission] = [...(state.items[ti]||[])];
   // teamMission을 저장 전에 업데이트해야 다른 탭의 변경 감지가 작동함
   state.teamMission[ti] = Math.max(state.teamMission[ti] || 1, toMission);
   checkGlobalGate();
@@ -781,6 +786,28 @@ function tryAdvanceMission(ti, toMission) {
   } else {
     waitingForMission = { ti, toMission };
     showWaitingForTeams(ti, toMission);
+  }
+}
+
+function applyRollback(ti, missionId) {
+  const coinSnap = (state.coinSnapshot || {})[ti+'_'+missionId];
+  state.coins[ti] = (coinSnap != null) ? coinSnap : 0;
+  const itemSnap = (state.itemSnapshot || {})[ti+'_'+missionId];
+  state.items[ti] = Array.isArray(itemSnap) ? [...itemSnap] : [];
+  // Clear interaction data for this team for rolled-back missions
+  if(missionId <= 2) { if(state.m2dropped) delete state.m2dropped[ti]; if(state.m2pieces) delete state.m2pieces[ti]; }
+  if(missionId <= 3 && state.m3match) delete state.m3match[ti];
+  if(missionId <= 4 && state.m4answers) delete state.m4answers[ti];
+  if(missionId <= 5 && state.moonScores) {
+    delete state.moonScores[ti];
+    if(!Object.keys(state.moonScores).length) { state.moonAllDone = false; delete state.moonCleared; }
+  }
+  if(missionId <= 7) { if(state.m6dropped) delete state.m6dropped[ti]; if(state.m6pieces) delete state.m6pieces[ti]; }
+  if(missionId <= 8) { if(state.m7text) delete state.m7text[ti]; if(state.m7result) delete state.m7result[ti]; }
+  // Clear missionStep keys for this team at missions >= missionId
+  const stepKeys = [[1,String(ti)],[2,'m2_'+ti],[3,'m3_'+ti],[4,'m4_'+ti],[6,'m5_'+ti],[7,'m6_'+ti],[8,'m7_'+ti]];
+  if(state.missionStep) {
+    for(const [mid, key] of stepKeys) { if(mid >= missionId) delete state.missionStep[key]; }
   }
 }
 
@@ -3644,6 +3671,7 @@ const sel = document.getElementById('tdSkipSel-'+i);
 if(!sel) return;
 const missionId = parseInt(sel.value);
 const role = TEAM_TO_ROLE[i];
+if(missionId <= (state.teamMission[i] || 1)) applyRollback(i, missionId);
 state.teamMission[i] = missionId;
 state.completedMission = state.completedMission || [0,0,0,0,0,0];
 state.completedMission[i] = Math.max(state.completedMission[i]||0, missionId-1);
@@ -3737,7 +3765,10 @@ panel.innerHTML = ISLANDS.map((isl, i) => {
 
 async function teacherForceAll(missionId) {
 if(!missionId || missionId < 1 || missionId > 8) return;
-for(let i=0;i<6;i++) state.teamMission[i] = missionId;
+for(let i=0;i<6;i++) {
+  if(missionId <= (state.teamMission[i] || 1)) applyRollback(i, missionId);
+  state.teamMission[i] = missionId;
+}
 state.globalMission = missionId;
 state.completedMission = Array(6).fill(missionId - 1);
 state.missionStep = {};
@@ -3760,6 +3791,7 @@ const sel = document.getElementById('skipSelect-'+ti);
 if(!sel) return;
 const missionId = parseInt(sel.value);
 const role = TEAM_TO_ROLE[ti];
+if(missionId <= (state.teamMission[ti] || 1)) applyRollback(ti, missionId);
 state.teamMission[ti] = missionId;
 // 스킵된 팀의 완료 기록 & 글로벌 게이트 조정
 state.completedMission = state.completedMission || [0,0,0,0,0,0];
