@@ -686,6 +686,19 @@ const state = {
   globalMission: 1, // 전체 모둠이 진행 가능한 미션 번호
 };
 
+// Firebase는 빈 배열 []을 null로 변환하므로 읽어온 뒤 복원
+function sanitizeState() {
+  if(!Array.isArray(state.items)) state.items = [[],[],[],[],[],[]];
+  else for(let i=0;i<6;i++) { if(!Array.isArray(state.items[i])) state.items[i] = []; }
+  if(!Array.isArray(state.coins)) state.coins = [0,0,0,0,0,0];
+  else for(let i=0;i<6;i++) { if(state.coins[i]==null) state.coins[i] = 0; }
+  if(!Array.isArray(state.teamMission)) state.teamMission = [1,1,1,1,1,1];
+  else for(let i=0;i<6;i++) { if(state.teamMission[i]==null) state.teamMission[i] = 1; }
+  if(!Array.isArray(state.completedMission)) state.completedMission = [0,0,0,0,0,0];
+  else for(let i=0;i<6;i++) { if(state.completedMission[i]==null) state.completedMission[i] = 0; }
+  if(!state.missionStep || typeof state.missionStep !== 'object' || Array.isArray(state.missionStep)) state.missionStep = {};
+}
+
 // ══ SCREEN ══
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
@@ -1398,7 +1411,7 @@ function renderSidebar(teamNum) {
   document.getElementById('sideCoins').textContent = state.coins[teamNum-1];
   // items
   const itemsEl = document.getElementById('sideItems');
-  const myItems = state.items[teamNum-1];
+  const myItems = state.items[teamNum-1] || [];
   if(myItems.length===0) {
     itemsEl.innerHTML = '<span style="font-size:.7rem;color:var(--text3)">없음</span>';
   } else {
@@ -3261,7 +3274,7 @@ createdAt: Date.now()
 });
 } else {
 const remoteState = snap.val().state;
-if(remoteState) Object.assign(state, remoteState);
+if(remoteState) { Object.assign(state, remoteState); sanitizeState(); }
 }
 await window.firebaseUpdate(
 window.firebaseRef(db, 'rooms/room'+myRoom+'/connectedRoles'),
@@ -3296,6 +3309,7 @@ const prev = JSON.stringify(state.coins) + JSON.stringify(state.teamMission);
 const savedTeam = state.currentTeam;
 const savedMission = state.currentMission;
 Object.assign(state, remote);
+sanitizeState();
 state.currentTeam = savedTeam;
 state.currentMission = savedMission;
 const curr = JSON.stringify(state.coins) + JSON.stringify(state.teamMission);
