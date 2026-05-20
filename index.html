@@ -770,6 +770,8 @@ let moonPollIntervalId = null;
 function tryAdvanceMission(ti, toMission) {
   state.completedMission = state.completedMission || [0,0,0,0,0,0];
   state.completedMission[ti] = Math.max(state.completedMission[ti] || 0, toMission - 1);
+  // teamMission을 저장 전에 업데이트해야 다른 탭의 변경 감지가 작동함
+  state.teamMission[ti] = Math.max(state.teamMission[ti] || 1, toMission);
   checkGlobalGate();
   fbSaveState();
   if(canAdvance(toMission)) {
@@ -824,8 +826,29 @@ function showWaitingForTeams(ti, toMission) {
           }).join('')}
         </div>
       </div>
-      <div style="font-size:.75rem;color:var(--text3);font-family:\'Noto Sans KR\',sans-serif;">${done}/6 모둠 완료 — 모두 완료되면 자동으로 다음 미션이 시작돼요!</div>
+      <div style="font-size:.75rem;color:var(--text3);font-family:\'Noto Sans KR\',sans-serif;margin-bottom:.75rem;">${done}/6 모둠 완료 — 모두 완료되면 자동으로 다음 미션이 시작돼요!</div>
+      <button onclick="inAppRefresh()" style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:.5rem 1.25rem;font-size:.78rem;color:var(--text2);cursor:pointer;font-family:'Space Mono',monospace;">🔄 현황 새로고침</button>
     </div>`;
+}
+
+async function inAppRefresh() {
+  if(!window.firebaseReady || !window.firebaseDB) { location.reload(); return; }
+  try {
+    const snap = await window.firebaseGet(window.firebaseRef(window.firebaseDB, 'rooms/room'+myRoom+'/state'));
+    if(!snap.exists()) return;
+    const remote = snap.val();
+    const savedTeam = state.currentTeam;
+    const savedMission = state.currentMission;
+    const nestedKeys = ['m6dropped','m6pieces','m4answers','m3match','m2dropped','m2pieces','missionStep'];
+    const savedNested = {};
+    for(const k of nestedKeys) savedNested[k] = state[k] ? {...state[k]} : {};
+    Object.assign(state, remote);
+    sanitizeState();
+    for(const k of nestedKeys) state[k] = Object.assign({}, remote[k]||{}, savedNested[k]);
+    state.currentTeam = savedTeam;
+    state.currentMission = savedMission;
+    refreshCurrentScreen();
+  } catch(e) { console.warn('inAppRefresh error:', e); }
 }
 
 // ── 코인 적용 헬퍼 (NPC 버프 + 행운의 열매 효과 포함) ──
@@ -1395,6 +1418,12 @@ function m2Pick(ti,idx){
 
 function renderTeamSelector(activeTeam) {
   const c = document.getElementById('teamSelector');
+  if(myRole !== 'teacher') {
+    // 학생은 자기 섬만 표시, 전환 불가
+    const isl = ISLANDS[activeTeam-1];
+    c.innerHTML = `<span class="ts-label" style="color:${isl.color};font-size:.85rem;">${isl.emoji} ${isl.name}</span>`;
+    return;
+  }
   c.innerHTML = '<span class="ts-label">모둠 선택:</span>';
   ISLANDS.forEach((isl,i) => {
     const btn = document.createElement('button');
@@ -3068,6 +3097,7 @@ return;
 state.m7text = state.m7text || {};
 state.m7text[ti] = text;
 state.missionStep['m7_'+ti] = 2;
+fbSaveState();
 renderMission7(ti+1);
 setTimeout(()=>m7RenderScoring(ti), 50);
 }
@@ -3311,15 +3341,20 @@ if(!snap.exists()) return;
 const remote = snap.val();
 // 내가 직접 업데이트한 게 아닌 경우만 적용
 if(remote._lastUpdatedBy && remote._lastUpdatedBy !== myRole) {
-const prev = JSON.stringify(state.coins) + JSON.stringify(state.teamMission) + JSON.stringify(state.moonScores);
-// Preserve local navigation state — each tab manages its own view
+const prev = JSON.stringify(state.coins) + JSON.stringify(state.teamMission) + JSON.stringify(state.moonScores) + (state.globalMission||1);
 const savedTeam = state.currentTeam;
 const savedMission = state.currentMission;
+// 팀별 상호작용 객체는 shallow copy 보존 (Object.assign이 통째로 덮어씌우는 걸 방지)
+const nestedKeys = ['m6dropped','m6pieces','m4answers','m3match','m2dropped','m2pieces','missionStep'];
+const savedNested = {};
+for(const k of nestedKeys) savedNested[k] = state[k] ? {...state[k]} : {};
 Object.assign(state, remote);
 sanitizeState();
+// remote의 다른 팀 데이터 + 내 최신 로컬 데이터를 병합
+for(const k of nestedKeys) state[k] = Object.assign({}, remote[k]||{}, savedNested[k]);
 state.currentTeam = savedTeam;
 state.currentMission = savedMission;
-const curr = JSON.stringify(state.coins) + JSON.stringify(state.teamMission) + JSON.stringify(state.moonScores);
+const curr = JSON.stringify(state.coins) + JSON.stringify(state.teamMission) + JSON.stringify(state.moonScores) + (state.globalMission||1);
 if(prev !== curr) {
 refreshCurrentScreen();
 }
