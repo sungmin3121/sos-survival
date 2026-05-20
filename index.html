@@ -3704,7 +3704,13 @@ alert('동기화 완료!');
 async function teacherResetRoom() {
 if(!confirm('방 데이터를 초기화할까요? 모든 진행 상황이 사라져요.')) return;
 if(window.firebaseReady) {
-await window.firebaseRemove(window.firebaseRef(window.firebaseDB, 'rooms/room'+myRoom));
+  // 학생 탭에 먼저 리로드 명령 전송 후 방 삭제
+  await window.firebaseSet(
+    window.firebaseRef(window.firebaseDB, 'rooms/room'+myRoom+'/teacherCmd'),
+    { type:'resetRoom', target:'all', ts:Date.now(), processed:false }
+  );
+  await new Promise(r => setTimeout(r, 1200));
+  await window.firebaseRemove(window.firebaseRef(window.firebaseDB, 'rooms/room'+myRoom));
 }
 location.reload();
 }
